@@ -1,0 +1,23 @@
+{
+  "name": "TicoBrete: empleos en Costa Rica",
+  "short_name": "TicoBrete",
+  "description": "Todos los bretes de Costa Rica en un solo lugar. Gratis y actualizado automáticamente.",
+  "lang": "es-CR",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#070d2b",
+  "theme_color": "#0a1030",
+  "categories": ["business", "productivity"],
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Trabajo remoto", "url": "empleos/remoto/" },
+    { "name": "Bretes guardados", "url": "./?g=1" }
+  ]
+}

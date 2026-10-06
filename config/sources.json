@@ -1,0 +1,45 @@
+{
+  "_ayuda": "Para agregar una fuente solo se edita este archivo. Cada fuente usa una API o página pública pensada para ser leída. No se agregan sitios que prohíban el scraping.",
+  "maxAgeDays": 45,
+  "maxJobs": 4000,
+  "workday": [
+    { "id": "wd-medtronic", "name": "Medtronic", "tenant": "medtronic", "dc": "wd1", "site": "MedtronicCareers" },
+    { "id": "wd-abbott", "name": "Abbott", "tenant": "abbott", "dc": "wd5", "site": "abbottcareers" },
+    { "id": "wd-stryker", "name": "Stryker", "tenant": "stryker", "dc": "wd1", "site": "StrykerCareers" },
+    { "id": "wd-intel", "name": "Intel", "tenant": "intel", "dc": "wd1", "site": "External" },
+    { "id": "wd-philips", "name": "Philips", "tenant": "philips", "dc": "wd3", "site": "jobs-and-careers" },
+    { "id": "wd-baxter", "name": "Baxter", "tenant": "baxter", "dc": "wd1", "site": "baxter" },
+    { "id": "wd-pg", "name": "Procter & Gamble", "tenant": "pg", "dc": "wd5", "site": "1000" },
+    { "id": "wd-unisys", "name": "Unisys", "tenant": "unisys", "dc": "wd5", "site": "External" },
+    { "id": "wd-jci", "name": "Johnson Controls", "tenant": "jci", "dc": "wd5", "site": "JCI" },
+    { "id": "wd-pfizer", "name": "Pfizer", "tenant": "pfizer", "dc": "wd1", "site": "PfizerCareers" },
+    { "id": "wd-equifax", "name": "Equifax", "tenant": "equifax", "dc": "wd5", "site": "External" },
+    { "id": "wd-kyndryl", "name": "Kyndryl", "tenant": "kyndryl", "dc": "wd5", "site": "KyndrylProfessionalCareers" },
+    { "id": "wd-hp", "name": "HP", "tenant": "hp", "dc": "wd5", "site": "ExternalCareerSite" },
+    { "id": "wd-kimberlyclark", "name": "Kimberly-Clark", "tenant": "kimberlyclark", "dc": "wd1", "site": "GLOBAL" },
+    { "id": "wd-3m", "name": "3M", "tenant": "3m", "dc": "wd1", "site": "Search" },
+    { "id": "wd-citi", "name": "Citi", "tenant": "citi", "dc": "wd5", "site": "2" },
+    { "id": "wd-unilever", "name": "Unilever", "tenant": "unilever", "dc": "wd3", "site": "Unilever_Experienced_Professionals" },
+    { "id": "wd-amgen", "name": "Amgen", "tenant": "amgen", "dc": "wd1", "site": "Careers" },
+    { "id": "wd-mastercard", "name": "Mastercard", "tenant": "mastercard", "dc": "wd1", "site": "CorporateCareers" },
+    { "id": "wd-msd", "name": "MSD", "tenant": "msd", "dc": "wd5", "site": "SearchJobs" },
+    { "id": "wd-analogdevices", "name": "Analog Devices", "tenant": "analogdevices", "dc": "wd1", "site": "External" }
+  ],
+  "greenhouse": [
+    { "id": "gh-elastic", "name": "Elastic", "token": "elastic" },
+    { "id": "gh-encora", "name": "Encora", "token": "encora10" }
+  ],
+  "lever": [
+    { "id": "lv-3pillar", "name": "3Pillar Global", "slug": "3pillarglobal" }
+  ],
+  "telegram": [
+    { "id": "tg-stemjobscr", "channel": "STEMJobsCR", "label": "Telegram @STEMJobsCR", "format": "estructurado", "kind": "comunidad" },
+    { "id": "tg-empleos506cr", "channel": "empleos506cr", "label": "Telegram @empleos506cr", "format": "busca", "kind": "comunidad" },
+    { "id": "tg-stemjobslatam", "channel": "STEMJobsLATAM", "label": "Telegram @STEMJobsLATAM", "format": "estructurado", "kind": "remoto", "remote": true }
+  ],
+  "remote": ["jobicy", "remotive", "himalayas", "remoteok", "weworkremotely"],
+  "jooble": {
+    "keywords": ["", "servicio al cliente", "ventas", "operario", "bodega", "contador", "asistente administrativo", "chofer", "mesero", "técnico", "ingeniero", "desarrollador", "limpieza", "seguridad", "enfermera", "bilingüe"],
+    "pages": 2
+  }
+}

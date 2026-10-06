@@ -1,0 +1,76 @@
+name: Actualizar TicoBrete
+
+on:
+  schedule:
+    - cron: '17 */3 * * *' # cada 3 horas
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Pruebas
+        if: github.event_name == 'push'
+        run: node --test test/*.test.mjs
+
+      - name: Recopilar empleos y construir el sitio
+        env:
+          REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+          PREVIOUS_JOBS_URL: ${{ env.SITE_URL }}/data/jobs.json
+          JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
+        run: node scripts/build.mjs
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+      # GitHub pausa los cron de repositorios sin actividad por 60 días.
+      # Este latido (un commit pequeño cada ~45 días) evita que eso pase.
+      - name: Mantener vivo el programador
+        run: |
+          last=$(git log -1 --format=%ct)
+          now=$(date +%s)
+          if [ $(( now - last )) -gt 3888000 ]; then
+            git config user.name "ticobrete-bot"
+            git config user.email "ticobrete-bot@users.noreply.github.com"
+            date -u +%FT%TZ > .heartbeat
+            git add .heartbeat
+            git commit -m "chore: latido para mantener activo el programador [skip ci]"
+            git push
+          fi
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

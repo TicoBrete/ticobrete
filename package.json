@@ -1,0 +1,16 @@
+{
+  "name": "ticobrete",
+  "version": "1.0.0",
+  "description": "TicoBrete: la bolsa de empleo automática de Costa Rica. Sin servidores, sin mantenimiento.",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "license": "MIT"
+}

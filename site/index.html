@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es-CR" data-root="{{ROOT}}" data-preset="{{PRESET}}" data-repo="{{REPO_URL}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0A1030">
+  <link rel="canonical" href="{{CANONICAL}}">
+  <link rel="icon" href="{{ROOT}}assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ROOT}}assets/icon-192.png">
+  <link rel="manifest" href="{{ROOT}}manifest.webmanifest">
+  <link rel="alternate" type="application/rss+xml" title="TicoBrete: bretes nuevos" href="{{ROOT}}feed.xml">
+  <link rel="preload" href="{{ROOT}}assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ROOT}}assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ROOT}}data/jobs.json" as="fetch" crossorigin>
+  <link rel="stylesheet" href="{{ROOT}}assets/styles.css">
+  <script src="{{ROOT}}assets/theme.js"></script>
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CR">
+  <meta property="og:site_name" content="TicoBrete">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <meta property="og:image" content="{{SITE_URL}}/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{TITLE}}">
+  <meta name="twitter:description" content="{{DESCRIPTION}}">
+  <meta name="twitter:image" content="{{SITE_URL}}/assets/og-image.png">
+  {{JSONLD}}
+</head>
+<body>
+  <a class="skip" href="#empleos">Saltar a los empleos</a>
+
+  <svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.9-8-11A4.6 4.6 0 0 1 12 6.8a4.6 4.6 0 0 1 8 2.7c0 6.1-8 11-8 11Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-heart-fill" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.9-8-11A4.6 4.6 0 0 1 12 6.8a4.6 4.6 0 0 1 8 2.7c0 6.1-8 11-8 11Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3v12M7.5 7.5 12 3l4.5 4.5M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-ext" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z" fill="currentColor"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4.5 6v5.5c0 4.6 3.1 8.2 7.5 9.5 4.4-1.3 7.5-4.9 7.5-9.5V6L12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m8.8 12 2.4 2.4 4.2-4.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-rss" viewBox="0 0 24 24"><path d="M5 5a14 14 0 0 1 14 14M5 11a8 8 0 0 1 8 8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="6" cy="18" r="1.8" fill="currentColor"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+      <symbol id="i-building" viewBox="0 0 24 24"><path d="M5 21V4h9v17M14 9h5v12M3 21h18M8.5 8h2M8.5 12h2M8.5 16h2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="flag-ribbon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+  <header class="hero" id="top">
+    <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span><span class="grid"></span></div>
+
+    <nav class="nav container" aria-label="Principal">
+      <a class="brand" href="{{ROOT}}" aria-label="TicoBrete, inicio">
+        <img src="{{ROOT}}assets/logo.svg" width="38" height="38" alt="">
+        <span class="brand-word">Tico<b>Brete</b></span>
+      </a>
+      <div class="nav-links">
+        <a href="#como-funciona">Cómo funciona</a>
+        <a href="#seguridad">Evitá estafas</a>
+        <a href="#fuentes">Fuentes</a>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="btn-saved" type="button" aria-label="Ver empleos guardados" title="Guardados">
+          <svg class="ico"><use href="#i-heart"/></svg><span class="count-bubble" id="saved-count" hidden>0</span>
+        </button>
+        <button class="icon-btn" id="btn-theme" type="button" aria-label="Cambiar entre modo claro y oscuro" title="Tema">
+          <svg class="ico ico-moon"><use href="#i-moon"/></svg><svg class="ico ico-sun"><use href="#i-sun"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <div class="hero-inner container">
+      <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span><span id="updated-text">Cargando bretes…</span></p>
+      <h1>{{H1}}</h1>
+      <p class="lead">Empresas, comunidades y bolsas de empleo en un solo lugar. Se actualiza solito, todos los días, y es <strong>gratis para siempre</strong>.</p>
+
+      <form class="searchbar" id="search-form" role="search" autocomplete="off">
+        <label class="sb-field sb-q">
+          <svg class="ico"><use href="#i-search"/></svg>
+          <span class="sr">Puesto, empresa o palabra clave</span>
+          <input id="q" name="q" type="search" placeholder="Puesto, empresa o palabra clave" enterkeyhint="search" spellcheck="false">
+        </label>
+        <label class="sb-field sb-loc">
+          <svg class="ico"><use href="#i-pin"/></svg>
+          <span class="sr">Provincia</span>
+          <select id="prov-select" name="prov"><option value="">Todo el país</option></select>
+        </label>
+        <button class="btn btn-primary sb-go" type="submit">Buscar bretes</button>
+      </form>
+
+      <div class="quick" id="quick" aria-label="Búsquedas populares"></div>
+
+      <dl class="stats" id="stats">
+        <div><dt>Bretes activos</dt><dd id="st-total">–</dd></div>
+        <div><dt>Nuevos hoy</dt><dd id="st-new">–</dd></div>
+        <div><dt>Empresas</dt><dd id="st-co">–</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <main>
+    <section class="container cats" aria-labelledby="cats-title">
+      <h2 id="cats-title" class="sr">Categorías</h2>
+      <div class="cat-rail" id="cat-rail"></div>
+    </section>
+
+    <section class="container results" id="empleos" aria-labelledby="res-title">
+      <div class="toolbar">
+        <div class="segmented" id="scope" role="tablist" aria-label="Tipo de empleo">
+          <button role="tab" data-scope="all" aria-selected="true" type="button">Todos</button>
+          <button role="tab" data-scope="cr" aria-selected="false" type="button">En Costa Rica</button>
+          <button role="tab" data-scope="remote" aria-selected="false" type="button">Remoto</button>
+        </div>
+        <div class="toolbar-right">
+          <label class="sort"><span class="sr">Ordenar por</span>
+            <select id="sort"><option value="recent">Más recientes</option><option value="relevance">Más relevantes</option></select>
+          </label>
+          <button class="btn btn-ghost only-mobile" id="btn-filters" type="button"><svg class="ico"><use href="#i-filter"/></svg> Filtros <span class="count-bubble" id="filters-count" hidden>0</span></button>
+        </div>
+      </div>
+
+      <div class="layout">
+        <aside class="filters" id="filters" aria-label="Filtros">
+          <div class="filters-head">
+            <strong>Filtros</strong>
+            <button class="link-btn" id="btn-reset" type="button">Limpiar todo</button>
+            <button class="icon-btn only-mobile" id="btn-close-filters" type="button" aria-label="Cerrar filtros"><svg class="ico"><use href="#i-x"/></svg></button>
+          </div>
+          <div id="facets"></div>
+          <div class="filters-foot only-mobile"><button class="btn btn-primary btn-block" id="btn-apply" type="button">Ver resultados</button></div>
+        </aside>
+
+        <div class="list-col">
+          <div class="list-head">
+            <h2 id="res-title"><span id="res-count" aria-live="polite">–</span></h2>
+            <div class="active-chips" id="active-chips"></div>
+          </div>
+          <div id="jobs" class="jobs" aria-busy="true">
+            <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+          </div>
+          <div class="more"><button class="btn btn-ghost" id="btn-more" type="button" hidden>Mostrar más bretes</button></div>
+          {{NOSCRIPT}}
+        </div>
+      </div>
+    </section>
+
+    <section class="container how" id="como-funciona" aria-labelledby="how-title">
+      <h2 id="how-title">Cómo funciona <span class="grad">TicoBrete</span></h2>
+      <p class="section-lead">Sin cuentas, sin pagos y sin que nadie tenga que subir nada a mano.</p>
+      <ol class="steps">
+        <li><span class="step-n">1</span><h3>Buscamos</h3><p>Cada pocas horas un robot revisa las páginas de empleo de las empresas, canales comunitarios y bolsas de trabajo remoto.</p></li>
+        <li><span class="step-n">2</span><h3>Limpiamos</h3><p>Quitamos repetidos, vencidos y anuncios sospechosos. Ordenamos por provincia, tipo de trabajo y categoría.</p></li>
+        <li><span class="step-n">3</span><h3>Publicamos</h3><p>El sitio se vuelve a publicar solo. No hay servidores ni bases de datos: por eso es gratis y no se cae.</p></li>
+        <li><span class="step-n">4</span><h3>Vos aplicás</h3><p>Te llevamos directo al anuncio original. Nunca te pedimos plata ni datos personales.</p></li>
+      </ol>
+    </section>
+
+    <section class="container safety" id="seguridad" aria-labelledby="safe-title">
+      <div class="safety-card">
+        <div class="safety-head"><svg class="ico big"><use href="#i-shield"/></svg><div><h2 id="safe-title">Cuidado con las estafas</h2><p>Bloqueamos lo sospechoso, pero ninguna lista es perfecta. Antes de aplicar, recordá esto:</p></div></div>
+        <ul class="tips">
+          <li><b>Un trabajo de verdad nunca cobra</b> para contratarte: ni inscripción, ni uniforme, ni “kit”, ni capacitación.</li>
+          <li><b>Desconfiá de “ganá $500 diarios”</b>, de trabajar dando likes o de promesas sin entrevista.</li>
+          <li><b>Revisá la empresa</b>: buscala en Google, mirá su sitio oficial y su perfil de LinkedIn.</li>
+          <li><b>No compartás</b> cédula, fotos de tarjetas ni claves. Un reclutador no las necesita para una entrevista.</li>
+          <li><b>Si algo huele raro, reportalo</b> y no mandés dinero. Pura vida, pero con ojo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container sources" id="fuentes" aria-labelledby="src-title">
+      <h2 id="src-title">De dónde salen los bretes</h2>
+      <p class="section-lead">Solo leemos fuentes públicas y siempre te mandamos al sitio original. TicoBrete no es el empleador ni cobra por nada.</p>
+      <ul class="src-list" id="src-list"></ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container foot-grid">
+      <div>
+        <a class="brand brand-foot" href="{{ROOT}}"><img src="{{ROOT}}assets/logo.svg" width="34" height="34" alt=""><span class="brand-word">Tico<b>Brete</b></span></a>
+        <p class="foot-note">Hecho con cariño en Costa Rica para que nadie se quede sin brete. Gratis, abierto y automático.</p>
+      </div>
+      <div>
+        <h3>Explorar</h3>
+        <ul id="foot-provs" class="foot-links"></ul>
+      </div>
+      <div>
+        <h3>Más</h3>
+        <ul class="foot-links">
+          <li><a href="{{ROOT}}empleos/remoto/">Trabajo remoto</a></li>
+          <li><a href="{{ROOT}}feed.xml">Feed RSS</a></li>
+          <li id="li-suggest" hidden><a id="a-suggest" rel="noopener" target="_blank">Sugerir una fuente</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container foot-legal">
+      <p>TicoBrete reúne enlaces a ofertas publicadas por terceros. Los derechos y marcas pertenecen a sus dueños y no verificamos cada anuncio. La contratación es directamente entre vos y la empresa.</p>
+    </div>
+  </footer>
+
+  <div class="scrim" id="scrim" hidden></div>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script type="module" src="{{ROOT}}assets/app.js"></script>
+</body>
+</html>
