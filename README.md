@@ -2,7 +2,7 @@
 
 **Todos los bretes de Costa Rica en un solo lugar.** Gratis, sin registro y al día.
 
-👉 **https://ticobrete.github.io/ticobrete/**
+👉 **https://ticobrete.com/**
 
 ## ¿Qué es?
 Una página que junta ofertas de trabajo de empresas, canales de empleo y negocios locales para que buscar brete sea menos tortuoso. Se actualiza sola varias veces al día. Siempre te lleva al anuncio original: TicoBrete no es el empleador y nunca cobra a quien busca ni a quien publica.
