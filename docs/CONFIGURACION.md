@@ -24,6 +24,7 @@ Un robot (GitHub Actions) corre **cada 3 horas**, junta los empleos de varias fu
 | Tipo | Fuentes | C├│mo se leen |
 |---|---|---|
 | Empresas directas | Medtronic, Abbott, Stryker, Intel, Philips, Baxter, P&G, Unisys, Johnson Controls, Pfizer, Equifax, Kyndryl, HP, Kimberly-Clark, 3M, Citi, Unilever, Amgen, Mastercard, MSD, Analog Devices (Workday), Elastic y Encora (Greenhouse), 3Pillar (Lever) | APIs JSON p├║blicas de sus p├íginas de empleo |
+| Estado | ANE, la Agencia Nacional de Empleo del MTSS (ane.cr) | Páginas públicas de resultados, una a la vez y con pausa; el enlace lleva a la búsqueda del ANE ya filtrada |
 | Comunidades | Telegram @STEMJobsCR, @empleos506cr, @STEMJobsLATAM | Vista p├║blica `t.me/s/canal` |
 | Trabajo remoto para ticos | Jobicy, Remotive, Himalayas, Remote OK, We Work Remotely | APIs/RSS p├║blicos, solo puestos abiertos a Costa Rica o Latinoam├®rica |
 | Buscador (opcional) | Jooble | API gratuita con llave (ver abajo) |

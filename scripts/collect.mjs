@@ -6,6 +6,7 @@ import { fetchTelegram } from './sources/telegram.mjs';
 import { fetchRemote } from './sources/remote.mjs';
 import { fetchJooble } from './sources/jooble.mjs';
 import { fetchSubmissions } from './sources/submissions.mjs';
+import { fetchAne } from './sources/ane.mjs';
 
 const SECRETS = () => ['JOOBLE_API_KEY'].map((k) => process.env[k]).filter(Boolean);
 const redact = (msg) => SECRETS().reduce((m, s) => m.split(s).join('***'), String(msg)).slice(0, 160);
@@ -20,6 +21,7 @@ function buildTasks(config, ctx) {
     const id = { jobicy: 'rm-jobicy', remotive: 'rm-remotive', himalayas: 'rm-himalayas', remoteok: 'rm-remoteok', weworkremotely: 'rm-wwr' }[n];
     tasks.push({ id, name: n, authoritative: true, run: () => fetchRemote(n, ctx) });
   }
+  if (config.ane) tasks.push({ id: 'ane', name: 'ANE (Agencia Nacional de Empleo)', authoritative: true, run: () => fetchAne(config.ane, ctx) });
   if (config.submissions) tasks.push({ id: 'sub-form', name: 'Publicados en TicoBrete', authoritative: true, run: () => fetchSubmissions(config.submissions, ctx) });
   if (config.jooble) tasks.push({ id: 'agg-jooble', name: 'Jooble', authoritative: false, run: () => fetchJooble(config.jooble, ctx) });
   return tasks;

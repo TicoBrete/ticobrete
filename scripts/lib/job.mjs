@@ -3,7 +3,7 @@ import { classify, detectTags } from './classify.mjs';
 import { detectModality, detectProvince } from './geo.mjs';
 import { looksLikeScam, stripContacts } from './safety.mjs';
 
-const KIND_RANK = { empresa: 0, publicado: 1, remoto: 1, agregador: 2, comunidad: 3 };
+const KIND_RANK = { empresa: 0, estado: 1, publicado: 1, remoto: 1, agregador: 2, comunidad: 3 };
 export const kindRank = (k) => KIND_RANK[k] ?? 9;
 
 /**

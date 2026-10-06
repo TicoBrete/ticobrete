@@ -30,7 +30,7 @@ const PROVS = [
 ];
 const PROV_NAME = Object.fromEntries(PROVS);
 const MODS = { presencial: 'Presencial', hibrido: 'Híbrido', remoto: 'Remoto' };
-const ORIGINS = { empresa: 'Empresas directas', publicado: 'Publicados por negocios', comunidad: 'Comunidades y redes', remoto: 'Bolsas de trabajo remoto', agregador: 'Buscadores de empleo' };
+const ORIGINS = { empresa: 'Empresas directas', publicado: 'Publicados por negocios', estado: 'Agencia Nacional de Empleo (Estado)', comunidad: 'Comunidades y redes', remoto: 'Bolsas de trabajo remoto', agregador: 'Buscadores de empleo' };
 const TAGS = { bilingue: 'Inglés o bilingüe', junior: 'Sin experiencia o pasantía', temporal: 'Temporal o medio tiempo' };
 const DAYS = [[0, 'Cualquier fecha'], [1, 'Últimas 24 horas'], [3, 'Últimos 3 días'], [7, 'Última semana'], [30, 'Último mes']];
 const QUICK = [
