@@ -1,6 +1,6 @@
 const doc = document.documentElement;
 const ROOT = doc.dataset.root || './';
-const REPO = (doc.dataset.repo || '').replace(/\/$/, '');
+const REPORT = /^https:\/\/docs\.google\.com\/forms\//.test(doc.dataset.report || '') ? doc.dataset.report : '';
 const SUBMIT = /^https:\/\//.test(doc.dataset.submit || '') ? doc.dataset.submit : '';
 const PRESET = doc.dataset.preset || '';
 const NS = 'http://www.w3.org/2000/svg';
@@ -215,7 +215,7 @@ function card(j, i) {
       badges,
       j.excerpt && h('p', { class: 'job-excerpt', text: j.excerpt }),
       h('p', { class: 'job-src' }, 'Fuente:', h('b', { text: j.source }), j.via && `· vía ${j.via}`,
-        REPO && h('a', { class: 'report', target: '_blank', rel: 'noopener', href: `${REPO}/issues/new?labels=reporte&title=${encodeURIComponent('Reportar: ' + j.title)}&body=${encodeURIComponent('Oferta: ' + href + '\n¿Qué pasa con este anuncio? (estafa, ya no existe, repetido…)')}`, text: 'Reportar' })),
+        REPORT && h('a', { class: 'report', target: '_blank', rel: 'noopener', href: `${REPORT}${encodeURIComponent(href)}`, text: 'Reportar' })),
     ),
     h('div', { class: 'job-aside' },
       h('span', { class: 'when' }, icon('clock'), ago(j._t)),
@@ -401,9 +401,9 @@ function buildFooter() {
     for (const id of ['#a-publish', '#a-publish-cta', '#a-publish-foot']) $(id).href = SUBMIT;
     for (const id of ['#a-publish', '#li-publish', '#publicar']) $(id).hidden = false;
   }
-  if (REPO) {
-    $('#li-suggest').hidden = false;
-    $('#a-suggest').href = `${REPO.replace(/\/$/, '')}/issues/new?title=${encodeURIComponent('Sugerencia de fuente: ')}&labels=fuente`;
+  if (REPORT) {
+    $('#li-report').hidden = false;
+    $('#a-report').href = REPORT.split('?')[0];
   }
 }
 function buildQuick() {

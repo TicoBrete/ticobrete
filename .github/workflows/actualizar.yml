@@ -38,7 +38,7 @@ jobs:
 
       - name: Recopilar empleos y construir el sitio
         env:
-          REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+          REPORT_URL: ${{ vars.REPORT_URL }}
           PREVIOUS_JOBS_URL: ${{ env.SITE_URL }}/data/jobs.json
           JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
           SUBMISSIONS_CSV_URL: ${{ secrets.SUBMISSIONS_CSV_URL }}

@@ -11,7 +11,7 @@ const DIST = join(ROOT, 'dist');
 const CACHE = join(ROOT, '.cache', 'jobs.json');
 
 const SITE_URL = (process.env.SITE_URL || 'http://localhost:4173').replace(/\/$/, '');
-const REPO_URL = (process.env.REPO_URL || '').replace(/\/$/, '');
+const REPORT_URL = /^https:\/\/docs\.google\.com\/forms\//.test(process.env.REPORT_URL || '') ? process.env.REPORT_URL : '';
 const SUBMIT_URL = /^https:\/\//.test(process.env.SUBMIT_URL || '') ? process.env.SUBMIT_URL : '';
 const BASE_PATH = new URL(SITE_URL).pathname.replace(/\/?$/, '/');
 
@@ -123,7 +123,7 @@ async function main() {
       CANONICAL: esc(canonical),
       SITE_URL: esc(SITE_URL),
       PRESET: esc(p.preset || ''),
-      REPO_URL: esc(REPO_URL),
+      REPORT_URL: esc(REPORT_URL),
       SUBMIT_URL: esc(SUBMIT_URL),
       H1: p.h1,
       NOSCRIPT: noscriptList(p.list),
@@ -137,7 +137,7 @@ async function main() {
   // 404 con rutas absolutas (funciona desde cualquier URL)
   writeFileSync(
     join(DIST, '404.html'),
-    page(template, { ROOT: BASE_PATH, TITLE: 'Página no encontrada | TicoBrete', DESCRIPTION: 'Esta página no existe, pero hay bretes esperándote.', CANONICAL: `${SITE_URL}/`, SITE_URL: esc(SITE_URL), PRESET: '', REPO_URL: esc(REPO_URL), SUBMIT_URL: esc(SUBMIT_URL), H1: 'Esa página no existe, <em>pero los bretes sí</em>', NOSCRIPT: '', JSONLD: '' }).replace('<meta charset="utf-8">', '<meta charset="utf-8"><meta name="robots" content="noindex">'),
+    page(template, { ROOT: BASE_PATH, TITLE: 'Página no encontrada | TicoBrete', DESCRIPTION: 'Esta página no existe, pero hay bretes esperándote.', CANONICAL: `${SITE_URL}/`, SITE_URL: esc(SITE_URL), PRESET: '', REPORT_URL: esc(REPORT_URL), SUBMIT_URL: esc(SUBMIT_URL), H1: 'Esa página no existe, <em>pero los bretes sí</em>', NOSCRIPT: '', JSONLD: '' }).replace('<meta charset="utf-8">', '<meta charset="utf-8"><meta name="robots" content="noindex">'),
   );
 
   writeFileSync(join(DIST, 'feed.xml'), rss(jobs));
