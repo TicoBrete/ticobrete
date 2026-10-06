@@ -41,6 +41,8 @@ jobs:
           REPO_URL: ${{ github.server_url }}/${{ github.repository }}
           PREVIOUS_JOBS_URL: ${{ env.SITE_URL }}/data/jobs.json
           JOOBLE_API_KEY: ${{ secrets.JOOBLE_API_KEY }}
+          SUBMISSIONS_CSV_URL: ${{ secrets.SUBMISSIONS_CSV_URL }}
+          SUBMIT_URL: ${{ vars.SUBMIT_URL }}
         run: node scripts/build.mjs
 
       - uses: actions/configure-pages@v5

@@ -109,6 +109,18 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 [data-theme="dark"] .ico-sun { display: block; }
 [data-theme="dark"] .ico-moon { display: none; }
 .filters .icon-btn { color: var(--text); border-color: var(--line); background: var(--surface-2); backdrop-filter: none; }
+.publish-btn { align-self: center; padding: 10px 16px; border-radius: 14px; font-weight: 650; font-size: .92rem; background: #fff; color: #0d1530; white-space: nowrap; box-shadow: 0 8px 20px -8px rgba(0,0,0,.5); transition: .2s; }
+.publish-btn:hover { transform: translateY(-1px); background: #ffe3e8; }
+.nav-actions { align-items: center; }
+.report { margin-left: auto; color: var(--muted); text-decoration: underline; text-underline-offset: 2px; opacity: .8; }
+.report:hover { color: var(--red); opacity: 1; }
+.cta { margin-top: 64px; }
+.cta-card { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: clamp(22px, 4vw, 36px); border-radius: 28px; color: #fff; background: radial-gradient(circle at 0% 0%, #2f55ff, transparent 55%), radial-gradient(circle at 100% 100%, #ff3b5c, transparent 50%), #0a1030; box-shadow: var(--shadow-md); }
+.cta-card h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800; letter-spacing: -.03em; }
+.cta-card p { margin-top: 8px; color: rgba(255,255,255,.82); max-width: 52ch; }
+.cta-card .btn { background: #fff; color: #0d1530; box-shadow: none; white-space: nowrap; }
+.cta-card .btn:hover { background: #ffe3e8; }
+@media (max-width: 720px) { .publish-btn .long { display: none; } .nav { gap: 10px; } .nav-actions { gap: 6px; } .icon-btn { width: 38px; height: 38px; } .cta-card { flex-direction: column; align-items: flex-start; } .publish-btn { padding: 9px 12px; font-size: .85rem; } }
 .count-bubble { position: absolute; top: -6px; right: -6px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 99px; background: var(--red); color: #fff; font-size: .72rem; font-weight: 700; display: grid; place-items: center; }
 
 .hero-inner { padding-top: clamp(28px, 6vw, 64px); text-align: center; display: flex; flex-direction: column; align-items: center; }

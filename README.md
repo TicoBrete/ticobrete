@@ -55,6 +55,36 @@ Compre `ticobrete.com` o `ticobrete.cr`, configúrelo en **Settings → Pages �
 2. **Settings → Secrets and variables → Actions → Secrets → New secret**: nombre `JOOBLE_API_KEY`.
 3. Listo: en la próxima corrida aparecen los resultados de Jooble. La llave nunca llega al sitio público.
 
+## Que los negocios publiquen sus bretes (gratis, sin cuenta)
+
+Los negocios llenan un **Google Form**; sus respuestas llegan a una hoja de Google y el robot las lee en cada corrida. Salen en el sitio con el mismo formato que los demás (categoría, provincia y modalidad se detectan solos), con la etiqueta "Publicados por negocios" y un enlace "Reportar". Pasan por los mismos filtros anti-estafa.
+
+**Configurarlo (una vez, ~10 minutos):**
+1. Cree un Google Form con estas preguntas (el orden da igual; lo que cuenta es que el título **contenga** estas palabras):
+
+   | Pregunta | Tipo | Obligatoria |
+   |---|---|---|
+   | Puesto | Respuesta corta | Sí |
+   | Empresa | Respuesta corta | Sí |
+   | Provincia | Lista desplegable (las 7 provincias) | Sí |
+   | Lugar (cantón o distrito) | Respuesta corta | No |
+   | Modalidad | Lista: Presencial / Híbrido / Remoto | Sí |
+   | Salario | Respuesta corta | No |
+   | Descripción | Párrafo (máx. 500 caracteres) | No |
+   | Cómo aplicar (enlace o WhatsApp) | Respuesta corta | Sí |
+
+   Ponga un texto de ayuda: "No se permiten cobros a quien aplica ni ofertas de inversión o dinero fácil".
+2. En el Form: **Respuestas → Vincular con Hojas de cálculo**.
+3. En la hoja: **Archivo → Compartir → Publicar en la web**, elija la pestaña de respuestas, formato **Valores separados por comas (.csv)** y copie el enlace.
+4. En GitHub: **Settings → Secrets and variables → Actions → Secrets → `SUBMISSIONS_CSV_URL`** = ese enlace.
+5. En GitHub: **Variables → `SUBMIT_URL`** = el enlace público del formulario (botón "Enviar" del Form).
+
+Con eso aparecen los botones "Publicar un brete" en el sitio. Sin `SUBMIT_URL` los botones quedan ocultos.
+
+**Control (opcional, 5 segundos por brete):** en la hoja agregue las columnas `Bloqueado` (escriba "sí" para quitar un brete) y `Aprobado`. Si quiere que **solo salga lo que usted apruebe**, ponga `"requireApproval": true` en `submissions` de `config/sources.json`.
+
+Protecciones automáticas: solo se aceptan enlaces web o números de WhatsApp de Costa Rica (se convierten en un enlace `wa.me`), se rechazan acortadores (bit.ly, etc.) y direcciones IP, un negocio puede tener máximo 8 bretes, y todo vence a los 45 días.
+
 ## Agregar o quitar fuentes
 Todo está en `config/sources.json`.
 - **Otra multinacional en Workday:** copie un bloque de `workday`. Los datos salen de la URL `https://EMPRESA.wdX.myworkdayjobs.com/SITIO`.

@@ -3,7 +3,7 @@ import { classify, detectTags } from './classify.mjs';
 import { detectModality, detectProvince } from './geo.mjs';
 import { looksLikeScam, stripContacts } from './safety.mjs';
 
-const KIND_RANK = { empresa: 0, remoto: 1, agregador: 2, comunidad: 3 };
+const KIND_RANK = { empresa: 0, publicado: 1, remoto: 1, agregador: 2, comunidad: 3 };
 export const kindRank = (k) => KIND_RANK[k] ?? 9;
 
 /**
@@ -35,7 +35,7 @@ export function makeJob(raw, ctx) {
   const tags = [...new Set([...(raw.tags || []), ...detectTags(title, excerpt, raw.tagHint)])];
 
   return {
-    id: hash(`${raw.sourceId}|${url}`),
+    id: hash(`${raw.sourceId}|${url}${raw.kind === 'publicado' ? `|${title}` : ''}`),
     s: raw.sourceId,
     title,
     company,
@@ -67,8 +67,10 @@ export function dupKey(job) {
 export function dedupe(jobs) {
   const byUrl = new Map();
   for (const j of jobs) {
-    const prev = byUrl.get(j.url);
-    if (!prev || kindRank(j.kind) < kindRank(prev.kind)) byUrl.set(j.url, j);
+    // Un mismo WhatsApp o sitio puede tener varios puestos publicados directamente.
+    const key = j.kind === 'publicado' ? `${j.url}#${j.title}` : j.url;
+    const prev = byUrl.get(key);
+    if (!prev || kindRank(j.kind) < kindRank(prev.kind)) byUrl.set(key, j);
   }
   const unique = [...byUrl.values()];
 

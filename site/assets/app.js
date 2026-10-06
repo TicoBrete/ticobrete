@@ -1,6 +1,7 @@
 const doc = document.documentElement;
 const ROOT = doc.dataset.root || './';
-const REPO = doc.dataset.repo || '';
+const REPO = (doc.dataset.repo || '').replace(/\/$/, '');
+const SUBMIT = /^https:\/\//.test(doc.dataset.submit || '') ? doc.dataset.submit : '';
 const PRESET = doc.dataset.preset || '';
 const NS = 'http://www.w3.org/2000/svg';
 const PAGE = 24;
@@ -29,7 +30,7 @@ const PROVS = [
 ];
 const PROV_NAME = Object.fromEntries(PROVS);
 const MODS = { presencial: 'Presencial', hibrido: 'Híbrido', remoto: 'Remoto' };
-const ORIGINS = { empresa: 'Empresas directas', comunidad: 'Comunidades y redes', remoto: 'Bolsas de trabajo remoto', agregador: 'Buscadores de empleo' };
+const ORIGINS = { empresa: 'Empresas directas', publicado: 'Publicados por negocios', comunidad: 'Comunidades y redes', remoto: 'Bolsas de trabajo remoto', agregador: 'Buscadores de empleo' };
 const TAGS = { bilingue: 'Inglés o bilingüe', junior: 'Sin experiencia o pasantía', temporal: 'Temporal o medio tiempo' };
 const DAYS = [[0, 'Cualquier fecha'], [1, 'Últimas 24 horas'], [3, 'Últimos 3 días'], [7, 'Última semana'], [30, 'Último mes']];
 const QUICK = [
@@ -213,7 +214,8 @@ function card(j, i) {
       ),
       badges,
       j.excerpt && h('p', { class: 'job-excerpt', text: j.excerpt }),
-      h('p', { class: 'job-src' }, 'Fuente:', h('b', { text: j.source }), j.via && `· vía ${j.via}`),
+      h('p', { class: 'job-src' }, 'Fuente:', h('b', { text: j.source }), j.via && `· vía ${j.via}`,
+        REPO && h('a', { class: 'report', target: '_blank', rel: 'noopener', href: `${REPO}/issues/new?labels=reporte&title=${encodeURIComponent('Reportar: ' + j.title)}&body=${encodeURIComponent('Oferta: ' + href + '\n¿Qué pasa con este anuncio? (estafa, ya no existe, repetido…)')}`, text: 'Reportar' })),
     ),
     h('div', { class: 'job-aside' },
       h('span', { class: 'when' }, icon('clock'), ago(j._t)),
@@ -395,6 +397,10 @@ function paintMeta() {
 function buildFooter() {
   const ul = $('#foot-provs');
   for (const [k, name] of PROVS) ul.append(h('li', {}, h('a', { href: `${ROOT}empleos/${k}/`, text: `Empleos en ${name}` })));
+  if (SUBMIT) {
+    for (const id of ['#a-publish', '#a-publish-cta', '#a-publish-foot']) $(id).href = SUBMIT;
+    for (const id of ['#a-publish', '#li-publish', '#publicar']) $(id).hidden = false;
+  }
   if (REPO) {
     $('#li-suggest').hidden = false;
     $('#a-suggest').href = `${REPO.replace(/\/$/, '')}/issues/new?title=${encodeURIComponent('Sugerencia de fuente: ')}&labels=fuente`;

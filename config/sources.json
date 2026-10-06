@@ -37,6 +37,7 @@
     { "id": "tg-empleos506cr", "channel": "empleos506cr", "label": "Telegram @empleos506cr", "format": "busca", "kind": "comunidad" },
     { "id": "tg-stemjobslatam", "channel": "STEMJobsLATAM", "label": "Telegram @STEMJobsLATAM", "format": "estructurado", "kind": "remoto", "remote": true }
   ],
+  "submissions": { "requireApproval": false, "maxPerCompany": 8, "maxTotal": 300 },
   "remote": ["jobicy", "remotive", "himalayas", "remoteok", "weworkremotely"],
   "jooble": {
     "keywords": ["", "servicio al cliente", "ventas", "operario", "bodega", "contador", "asistente administrativo", "chofer", "mesero", "técnico", "ingeniero", "desarrollador", "limpieza", "seguridad", "enfermera", "bilingüe"],

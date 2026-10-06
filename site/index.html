@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es-CR" data-root="{{ROOT}}" data-preset="{{PRESET}}" data-repo="{{REPO_URL}}">
+<html lang="es-CR" data-root="{{ROOT}}" data-preset="{{PRESET}}" data-repo="{{REPO_URL}}" data-submit="{{SUBMIT_URL}}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -74,6 +74,7 @@
         <a href="#fuentes">Fuentes</a>
       </div>
       <div class="nav-actions">
+        <a class="publish-btn" id="a-publish" target="_blank" rel="noopener" hidden>Publicar<span class="long"> un brete</span></a>
         <button class="icon-btn" id="btn-saved" type="button" aria-label="Ver empleos guardados" title="Guardados">
           <svg class="ico"><use href="#i-heart"/></svg><span class="count-bubble" id="saved-count" hidden>0</span>
         </button>
@@ -169,6 +170,16 @@
       </ol>
     </section>
 
+    <section class="container cta" id="publicar" aria-labelledby="cta-title" hidden>
+      <div class="cta-card">
+        <div>
+          <h2 id="cta-title">¿Tu negocio tiene un brete?</h2>
+          <p>Publicalo gratis en 2 minutos, sin cuenta. Sale en TicoBrete con el mismo formato que los demás y la gente te contacta directo.</p>
+        </div>
+        <a class="btn btn-primary" id="a-publish-cta" target="_blank" rel="noopener">Publicar mi brete gratis</a>
+      </div>
+    </section>
+
     <section class="container safety" id="seguridad" aria-labelledby="safe-title">
       <div class="safety-card">
         <div class="safety-head"><svg class="ico big"><use href="#i-shield"/></svg><div><h2 id="safe-title">Cuidado con las estafas</h2><p>Bloqueamos lo sospechoso, pero ninguna lista es perfecta. Antes de aplicar, recordá esto:</p></div></div>
@@ -204,6 +215,7 @@
         <ul class="foot-links">
           <li><a href="{{ROOT}}empleos/remoto/">Trabajo remoto</a></li>
           <li><a href="{{ROOT}}feed.xml">Feed RSS</a></li>
+          <li id="li-publish" hidden><a id="a-publish-foot" target="_blank" rel="noopener">Publicar un brete</a></li>
           <li id="li-suggest" hidden><a id="a-suggest" rel="noopener" target="_blank">Sugerir una fuente</a></li>
         </ul>
       </div>
