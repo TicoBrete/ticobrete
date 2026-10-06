@@ -92,6 +92,8 @@ const state = { ...DEFAULTS };
 let ALL = [];
 let META = null;
 let shown = PAGE;
+let autoLoads = 0;
+let suppressAuto = false;
 const saved = (() => {
   try { return JSON.parse(localStorage.getItem('tb.saved') || '{}'); } catch { return {}; }
 })();
@@ -121,7 +123,7 @@ function writeUrl() {
   for (const k of ['q', 'p', 'm', 'c', 'd', 's', 'o', 't', 'so']) put(k, state[k], preset[k] ?? (Array.isArray(DEFAULTS[k]) ? '' : DEFAULTS[k]));
   if (state.g) q.set('g', '1');
   const qs = q.toString();
-  history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : ''));
+  history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
 }
 
 /* ---------- Filtrado ---------- */
@@ -315,6 +317,7 @@ function activeChips() {
 
 /* ---------- Render principal ---------- */
 function render() {
+  if (shown === PAGE) autoLoads = 0;
   const list = state.g ? Object.values(saved).map(prepare) : filtered();
   if (!state.g) {
     const tq = terms();
@@ -452,10 +455,19 @@ function bind() {
     if (e.key === '/' && !/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) { e.preventDefault(); q.focus(); }
   });
 
-  // Carga automática al llegar al final de la lista
+  // Carga automática al llegar al final de la lista, con tres límites para que no se coma el resto de la página:
+  // máximo 3 cargas seguidas, y nunca mientras se navega a una sección con los enlaces del menú.
   const more = $('#btn-more');
+  document.addEventListener('click', (e) => {
+    if (e.target.closest && e.target.closest('a[href^="#"]')) {
+      suppressAuto = true;
+      setTimeout(() => { suppressAuto = false; }, 3500);
+    }
+  });
   if ('IntersectionObserver' in window) {
-    new IntersectionObserver((es) => { if (es[0].isIntersecting && !more.hidden) more.click(); }, { rootMargin: '500px' }).observe(more);
+    new IntersectionObserver((es) => {
+      if (es[0].isIntersecting && !more.hidden && !suppressAuto && autoLoads < 3) { autoLoads++; more.click(); }
+    }, { rootMargin: '300px' }).observe(more);
   }
 }
 
