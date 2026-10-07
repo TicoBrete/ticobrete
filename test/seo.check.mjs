@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
-const pages = walk(DIST).filter((f) => f.endsWith('.html') && !f.endsWith('404.html'));
+const pages = walk(DIST).filter((f) => f.endsWith('.html') && !f.endsWith('404.html') && !/google[a-f0-9]{16}\.html$/.test(f));
 const problems = [];
 const titles = new Map();
 const descs = new Map();
