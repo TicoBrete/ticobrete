@@ -99,10 +99,20 @@ const saved = (() => {
 })();
 const persistSaved = () => { try { localStorage.setItem('tb.saved', JSON.stringify(saved)); } catch { /* sin almacenamiento */ } };
 
+// Las páginas por provincia, categoría o ambas traen filtros ya puestos, por ejemplo "cat:tecnologia,prov:heredia".
+function presetMap() {
+  const map = {};
+  for (const part of PRESET.split(',').filter(Boolean)) {
+    const [k, v] = part.split(':');
+    const key = { prov: 'p', scope: 's', cat: 'c' }[k];
+    if (key) map[key] = v;
+  }
+  return map;
+}
+
 function readUrl() {
   const q = new URLSearchParams(location.search);
-  const preset = {};
-  if (PRESET) { const [k, v] = PRESET.split(':'); preset[{ prov: 'p', scope: 's', cat: 'c' }[k]] = v; }
+  const preset = presetMap();
   const get = (k) => (q.has(k) ? q.get(k) : preset[k]);
   state.q = (q.get('q') || '').slice(0, 80);
   state.p = PROV_NAME[get('p')] ? get('p') : '';
@@ -117,8 +127,7 @@ function readUrl() {
 }
 function writeUrl() {
   const q = new URLSearchParams();
-  const preset = {};
-  if (PRESET) { const [k, v] = PRESET.split(':'); preset[{ prov: 'p', scope: 's', cat: 'c' }[k]] = v; }
+  const preset = presetMap();
   const put = (k, v, def) => { const sv = Array.isArray(v) ? v.join(',') : String(v); if (sv !== String(def)) q.set(k, sv); };
   for (const k of ['q', 'p', 'm', 'c', 'd', 's', 'o', 't', 'so']) put(k, state[k], preset[k] ?? (Array.isArray(DEFAULTS[k]) ? '' : DEFAULTS[k]));
   if (state.g) q.set('g', '1');

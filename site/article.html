@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es-CR" data-root="{{ROOT}}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{{TITLE}}</title>
+  <meta name="description" content="{{DESCRIPTION}}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#0A1030">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+  <link rel="canonical" href="{{CANONICAL}}">
+  <link rel="alternate" hreflang="es-CR" href="{{CANONICAL}}">
+  <link rel="alternate" hreflang="x-default" href="{{CANONICAL}}">
+  {{VERIFY}}
+  <link rel="icon" href="{{ROOT}}assets/logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="{{ROOT}}assets/icon-192.png">
+  <link rel="manifest" href="{{ROOT}}manifest.webmanifest">
+  <link rel="preload" href="{{ROOT}}assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="{{ROOT}}assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ROOT}}assets/styles.css">
+  <script src="{{ROOT}}assets/theme.js"></script>
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="es_CR">
+  <meta property="og:site_name" content="TicoBrete">
+  <meta property="og:title" content="{{TITLE}}">
+  <meta property="og:description" content="{{DESCRIPTION}}">
+  <meta property="og:url" content="{{CANONICAL}}">
+  <meta property="og:image" content="{{SITE_URL}}/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{TITLE}}">
+  <meta name="twitter:description" content="{{DESCRIPTION}}">
+  <meta name="twitter:image" content="{{SITE_URL}}/assets/og-image.png">
+  {{JSONLD}}
+</head>
+<body class="page-article">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <div class="flag-ribbon" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <header class="article-head">
+    <nav class="nav container" aria-label="Principal">
+      <a class="brand" href="{{ROOT}}" aria-label="TicoBrete, inicio">
+        <img src="{{ROOT}}assets/logo.svg" width="38" height="38" alt="">
+        <span class="brand-word">Tico<b>Brete</b></span>
+      </a>
+      <div class="nav-links">
+        <a href="{{ROOT}}">Empleos</a>
+        <a href="{{ROOT}}empleos/remoto/">Remoto</a>
+        <a href="{{ROOT}}guias/">Guías</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenido" class="container article-main">
+    <nav class="crumbs" aria-label="Ruta"><a href="{{ROOT}}">Inicio</a> <i aria-hidden="true">›</i> <a href="{{ROOT}}guias/">Guías</a></nav>
+    <article class="article">
+      <h1>{{H1}}</h1>
+      <p class="article-lead">{{LEAD}}</p>
+      {{DATE_LINE}}
+      <div class="article-body">
+        {{BODY}}
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container foot-legal">
+      <p>TicoBrete reúne enlaces a ofertas publicadas por terceros. La contratación es directamente entre vos y la empresa. Gratis, abierto y automático. <a href="{{ROOT}}">Volver a los empleos</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -9,7 +9,11 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#0A1030">
+  <meta name="robots" content="{{ROBOTS}}">
   <link rel="canonical" href="{{CANONICAL}}">
+  <link rel="alternate" hreflang="es-CR" href="{{CANONICAL}}">
+  <link rel="alternate" hreflang="x-default" href="{{CANONICAL}}">
+  {{VERIFY}}
   <link rel="icon" href="{{ROOT}}assets/logo.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="{{ROOT}}assets/icon-192.png">
   <link rel="manifest" href="{{ROOT}}manifest.webmanifest">
@@ -69,6 +73,7 @@
         <span class="brand-word">Tico<b>Brete</b></span>
       </a>
       <div class="nav-links">
+        <a href="{{ROOT}}guias/">Guías</a>
         <a href="#como-funciona">Cómo funciona</a>
         <a href="#seguridad">Evitá estafas</a>
         <a href="#fuentes">Fuentes</a>
@@ -120,6 +125,7 @@
     </section>
 
     <section class="container results" id="empleos" aria-labelledby="res-title">
+      {{CRUMBS}}
       <div class="toolbar">
         <div class="segmented" id="scope" role="tablist" aria-label="Tipo de empleo">
           <button role="tab" data-scope="all" aria-selected="true" type="button">Todos</button>
@@ -151,13 +157,15 @@
             <div class="active-chips" id="active-chips"></div>
           </div>
           <div id="jobs" class="jobs" aria-busy="true">
-            <div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div>
+            {{JOBS_STATIC}}
           </div>
           <div class="more"><button class="btn btn-ghost" id="btn-more" type="button" hidden>Mostrar más bretes</button></div>
-          {{NOSCRIPT}}
+          <noscript><p class="noscript-note">Activá JavaScript para buscar y filtrar. Abajo ves los bretes más recientes.</p></noscript>
         </div>
       </div>
     </section>
+
+    {{SEO_BLOCK}}
 
     <section class="container how" id="como-funciona" aria-labelledby="how-title">
       <h2 id="how-title">Cómo funciona <span class="grad">TicoBrete</span></h2>
@@ -209,6 +217,10 @@
       <div>
         <h3>Explorar</h3>
         <ul id="foot-provs" class="foot-links"></ul>
+      </div>
+      <div>
+        <h3>Guías</h3>
+        <ul class="foot-links">{{GUIDE_LINKS}}</ul>
       </div>
       <div>
         <h3>Más</h3>
