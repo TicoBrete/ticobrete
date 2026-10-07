@@ -129,3 +129,11 @@ Requiere Node 20+. No hay dependencias que instalar. Con `?still&theme=dark` en 
 ## Cr├®ditos
 Tipograf├¡as [Inter](https://rsms.me/inter/) y [Bricolage Grotesque](https://github.com/ateliertriay/bricolage) (licencia OFL, incluidas en `site/assets/fonts/`).
 Los empleos pertenecen a sus empresas y a las fuentes citadas. Remotive, Jobicy, Remote OK y otros piden enlazar a su sitio: se hace en cada oferta.
+
+## SEO (cómo está armado)
+- **El HTML ya trae los bretes**: cada página escribe en el HTML los 30 más recientes y un texto propio con datos reales (cantidad, categorías, empresas, fecha). JavaScript después los reemplaza por la versión interactiva.
+- **Páginas generadas en cada corrida**: portada, 7 provincias, remoto, categorías (con 3+ bretes) y categoría × provincia (con 5+ bretes, `MIN_COMBO` en `scripts/build.mjs`). Así no se crean páginas vacías.
+- **Guías**: el contenido está en `content/guias.mjs`. Para agregar una, se suma un objeto a la lista y se publica. Mantenga fechas reales.
+- **Datos estructurados**: Organization, WebSite, CollectionPage/WebPage y BreadcrumbList en las páginas de empleo; Article en las guías. No se usa `JobPosting` porque Google lo exige solo en la página completa de cada puesto, y aquí los bretes se publican en el sitio original.
+- **Verificación de buscadores**: `config/site.json` (`googleVerification`, `bingVerification`) más el archivo `site/google*.html`. No los borre o se pierde la verificación.
+- **Revisión automática**: `node test/seo.check.mjs` (después de `node scripts/build.mjs`) revisa títulos, descripciones, H1, JSON-LD, enlaces rotos y el mapa del sitio.
