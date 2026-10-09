@@ -7,6 +7,7 @@ const DIST = resolve(dirname(fileURLToPath(import.meta.url)), '..', 'dist');
 const walk = (d) => readdirSync(d).flatMap((f) => (statSync(join(d, f)).isDirectory() ? walk(join(d, f)) : [join(d, f)]));
 const pages = walk(DIST).filter((f) => f.endsWith('.html') && !f.endsWith('404.html') && !/google[a-f0-9]{16}\.html$/.test(f));
 const problems = [];
+let noindexCount = 0;
 const titles = new Map();
 const descs = new Map();
 const warn = (p, msg) => problems.push(`${relative(DIST, p)}: ${msg}`);
@@ -33,7 +34,9 @@ for (const p of pages) {
   }
   if (!canonical || !canonical.startsWith('http')) warn(p, 'canonical inválido');
   if (h1s !== 1) warn(p, `debe haber 1 <h1> y hay ${h1s}`);
-  if (!/name="robots" content="index/.test(html)) warn(p, 'sin robots index');
+  const noindex = /name="robots" content="noindex/.test(html);
+  if (!noindex && !/name="robots" content="index/.test(html)) warn(p, 'sin robots index');
+  if (noindex) noindexCount++;
   if (/style="/.test(html)) warn(p, 'atributo style (rompe la CSP)');
   if (/<script(?![^>]*(src=|type="application\/ld\+json"))[^>]*>/.test(html)) warn(p, 'script en línea (rompe la CSP)');
   for (const m of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
@@ -54,7 +57,7 @@ for (const p of pages) {
 const sitemap = readFileSync(join(DIST, 'sitemap.xml'), 'utf8');
 const locs = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
 console.log(`Páginas HTML: ${pages.length} | URLs en el sitemap: ${locs.length}`);
-if (locs.length !== pages.length) problems.push(`El sitemap tiene ${locs.length} URLs y hay ${pages.length} páginas`);
+if (locs.length !== pages.length - noindexCount) problems.push(`El sitemap tiene ${locs.length} URLs y hay ${pages.length - noindexCount} páginas indexables`);
 if (/Disallow: \/data/.test(readFileSync(join(DIST, 'robots.txt'), 'utf8'))) problems.push('robots.txt bloquea /data/ (Google necesita leerlo para dibujar la página)');
 
 if (problems.length) {

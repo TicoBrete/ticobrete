@@ -5,7 +5,29 @@ import { collect } from './collect.mjs';
 import { CATEGORIES } from './lib/classify.mjs';
 import { PROVINCES } from './lib/geo.mjs';
 import { getJson } from './lib/util.mjs';
-import { GUIAS } from '../content/guias.mjs';
+import { GUIAS as GUIAS_BASE } from '../content/guias.mjs';
+import { GUIAS_LABORALES } from '../content/guias-laborales.mjs';
+import { GUIAS_SEO } from '../content/guias-seo.mjs';
+
+// Grupos para el índice de guías. Cada guía debe estar en un grupo (se valida al construir).
+const GRUPOS_GUIAS = [
+  ['Empezar a buscar trabajo', ['como-buscar-trabajo-en-costa-rica', 'bolsas-de-empleo-costa-rica', 'primer-empleo-costa-rica', 'trabajos-sin-experiencia-costa-rica', 'trabajar-call-center-costa-rica', 'trabajo-remoto-desde-costa-rica']],
+  ['Currículum, entrevistas y aumentos', ['curriculum-costa-rica', 'carta-de-presentacion-costa-rica', 'entrevista-de-trabajo-costa-rica', 'entrevista-en-ingles-costa-rica', 'como-pedir-aumento-costa-rica']],
+  ['Tus derechos laborales', ['derechos-laborales-costa-rica', 'salario-minimo-costa-rica', 'aguinaldo-costa-rica', 'teletrabajo-ley-costa-rica', 'despido-cesantia-preaviso-costa-rica', 'liquidacion-laboral-finiquito-costa-rica', 'denunciar-patrono-mtss-costa-rica']],
+  ['Estafas y seguridad', ['estafas-laborales-costa-rica', 'ofertas-de-trabajo-falsas-whatsapp-facebook']],
+];
+const DESTACADAS = ['como-buscar-trabajo-en-costa-rica', 'estafas-laborales-costa-rica', 'derechos-laborales-costa-rica', 'salario-minimo-costa-rica', 'aguinaldo-costa-rica', 'primer-empleo-costa-rica'];
+const TODAS = [...GUIAS_BASE, ...GUIAS_LABORALES, ...GUIAS_SEO];
+const enGrupos = new Set(GRUPOS_GUIAS.flatMap(([, s]) => s));
+for (const g of TODAS) if (!enGrupos.has(g.slug)) throw new Error(`La guía "${g.slug}" no está en ningún grupo (GRUPOS_GUIAS en scripts/build.mjs)`);
+for (const s of enGrupos) if (!TODAS.some((g) => g.slug === s)) throw new Error(`El grupo de guías menciona "${s}", que no existe`);
+if (new Set(TODAS.map((g) => g.slug)).size !== TODAS.length) throw new Error('Hay guías con el mismo slug');
+const GUIAS = [...DESTACADAS.map((s) => TODAS.find((g) => g.slug === s)), ...TODAS.filter((g) => !DESTACADAS.includes(g.slug))];
+const guiasRelacionadas = (g) => {
+  const grupo = GRUPOS_GUIAS.find(([, s]) => s.includes(g.slug))[1];
+  const orden = [...grupo, ...DESTACADAS].filter((s) => s !== g.slug);
+  return [...new Set(orden)].slice(0, 6).map((s) => GUIAS.find((x) => x.slug === s));
+};
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist');
@@ -78,7 +100,7 @@ const FAQ_COMMON = [
   ['¿Cómo sé si una oferta es una estafa?', 'Un trabajo de verdad nunca te cobra para contratarte. Si te piden dinero, un depósito o datos de tu tarjeta, no apliqués. Podés leer nuestra guía de estafas laborales y reportar cualquier oferta sospechosa con el enlace "Reportar".'],
 ];
 
-function buildPageSpecs(jobs, meta) {
+function buildPageSpecs(jobs, meta, prevPaths = new Set()) {
   const total = jobs.length;
   const day = meta.updatedAt;
   const provNames = PROVINCES;
@@ -155,7 +177,7 @@ function buildPageSpecs(jobs, meta) {
 
   // Categorías y combinaciones
   for (const [key, name] of Object.entries(CATEGORIES)) {
-    if (key === 'otros' || (catCount.get(key) || 0) < 3) continue;
+    if (key === 'otros' || ((catCount.get(key) || 0) < 3 && !prevPaths.has(`empleos/${key}/`))) continue;
     const l = jobs.filter((j) => j.category === key);
     specs.push({
       path: `empleos/${key}/`, preset: `cat:${key}`, list: l, crumbs: [[`Empleos de ${lc(name)}`, `empleos/${key}/`]],
@@ -172,7 +194,7 @@ function buildPageSpecs(jobs, meta) {
     });
     for (const [pk, pn] of Object.entries(provNames)) {
       const n = comboCount.get(`${key}/${pk}`) || 0;
-      if (n < MIN_COMBO) continue;
+      if (n < MIN_COMBO && !prevPaths.has(`empleos/${key}/${pk}/`)) continue;
       const lc2 = jobs.filter((j) => j.category === key && j.province === pk);
       specs.push({
         path: `empleos/${key}/${pk}/`, preset: `cat:${key},prov:${pk}`, list: lc2, crumbs: [[`Empleos de ${lc(name)}`, `empleos/${key}/`], [pn, `empleos/${key}/${pk}/`]],
@@ -205,7 +227,7 @@ function relatedHtml(spec, specs, jobs) {
   if (p) {
     out.push(block(`Empleos en ${PROVINCES[p[1]]} por categoría`, Object.entries(CATEGORIES).map(([ck, cn]) => [cn, `empleos/${ck}/${p[1]}/`, jobs.filter((j) => j.category === ck && j.province === p[1]).length])));
   }
-  out.push(block('Por provincia', provLinks), block('Por categoría', catLinks), `<div><h3>Guías</h3><ul>${GUIAS.map((g) => `<li><a href="{ROOT}guias/${g.slug}/">${esc(g.h1)}</a></li>`).join('')}</ul></div>`);
+  out.push(block('Por provincia', provLinks), block('Por categoría', catLinks), `<div><h3>Guías</h3><ul>${GUIAS.slice(0, 6).map((g) => `<li><a href="{ROOT}guias/${g.slug}/">${esc(g.h1)}</a></li>`).join('')}<li><a href="{ROOT}guias/">Todas las guías</a></li></ul></div>`);
   return `<nav class="related" aria-label="Más empleos y guías">${out.join('')}</nav>`;
 }
 
@@ -257,15 +279,18 @@ async function main() {
   cpSync(join(ROOT, 'site'), DIST, { recursive: true });
   for (const f of ['article.html']) rmSync(join(DIST, f), { force: true });
   mkdirSync(join(DIST, 'data'), { recursive: true });
+
+  const template = readFileSync(join(ROOT, 'site', 'index.html'), 'utf8');
+  const articleTpl = readFileSync(join(ROOT, 'site', 'article.html'), 'utf8');
+  // Una página que ya existió no se borra aunque hoy tenga pocos bretes (evita errores 404 en Google); si queda delgada pasa a noindex.
+  const specs = buildPageSpecs(jobs, meta, new Set(prev?.meta?.pages || []));
+  for (const s of specs) s.thin = s.path !== '' && s.list.length < 3;
+  meta.pages = specs.map((s) => s.path);
   const payload = JSON.stringify({ meta, jobs });
   writeFileSync(join(DIST, 'data', 'jobs.json'), payload);
   mkdirSync(dirname(CACHE), { recursive: true });
   writeFileSync(CACHE, payload);
-
-  const template = readFileSync(join(ROOT, 'site', 'index.html'), 'utf8');
-  const articleTpl = readFileSync(join(ROOT, 'site', 'article.html'), 'utf8');
-  const specs = buildPageSpecs(jobs, meta);
-  const guideLinks = GUIAS.map((g) => `<li><a href="{ROOT}guias/${g.slug}/">${esc(g.h1)}</a></li>`).join('');
+  const guideLinks = GUIAS.slice(0, 6).map((g) => `<li><a href="{ROOT}guias/${g.slug}/">${esc(g.h1)}</a></li>`).join('') + '<li><a href="{ROOT}guias/">Todas las guías</a></li>';
   const day = meta.updatedAt.slice(0, 10);
 
   const write = (path, html) => {
@@ -285,7 +310,7 @@ async function main() {
       DESCRIPTION: esc(s.desc),
       CANONICAL: esc(canonical),
       SITE_URL: esc(SITE_URL),
-      ROBOTS: 'index,follow,max-image-preview:large,max-snippet:-1',
+      ROBOTS: s.thin ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1',
       VERIFY: verifyMeta(),
       PRESET: esc(s.preset),
       REPORT_URL: esc(REPORT_URL),
@@ -313,7 +338,7 @@ async function main() {
   const orgRef = { '@type': 'Organization', name: 'TicoBrete', url: `${SITE_URL}/`, logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/icon-512.png` } };
   for (const g of GUIAS) {
     const path = `guias/${g.slug}/`;
-    const related = GUIAS.filter((x) => x.slug !== g.slug).map((x) => `<li><a href="{ROOT}guias/${x.slug}/">${esc(x.h1)}</a></li>`).join('');
+    const related = guiasRelacionadas(g).map((x) => `<li><a href="{ROOT}guias/${x.slug}/">${esc(x.h1)}</a></li>`).join('');
     const body = `${g.html}<aside class="article-cta"><h2>Buscá tu próximo brete</h2><p>Más de ${Math.floor(jobs.length / 100) * 100} ofertas de trabajo en Costa Rica, actualizadas todos los días y sin registro.</p><a class="btn btn-primary" href="{ROOT}">Ver empleos</a></aside><nav class="related-guides" aria-label="Otras guías"><h2>Otras guías</h2><ul>${related}</ul></nav>`;
     write(path, guideShell(g, body, {
       path, title: g.title.length > 48 ? g.title : `${g.title} | TicoBrete`, desc: g.description, h1: g.h1, lead: g.lead,
@@ -323,7 +348,7 @@ async function main() {
       ] }),
     }));
   }
-  const idx = `<ul class="guide-list">${GUIAS.map((g) => `<li><a href="{ROOT}guias/${g.slug}/"><h2>${esc(g.h1)}</h2><p>${esc(g.description)}</p><span>Leer guía →</span></a></li>`).join('')}</ul>`;
+  const idx = GRUPOS_GUIAS.map(([titulo, slugs]) => `<section class="guide-group"><h2 class="guide-group-title">${esc(titulo)}</h2><ul class="guide-list">${slugs.map((s) => GUIAS.find((g) => g.slug === s)).map((g) => `<li><a href="{ROOT}guias/${g.slug}/"><h3>${esc(g.h1)}</h3><p>${esc(g.description)}</p><span>Leer guía →</span></a></li>`).join('')}</ul></section>`).join('');
   write('guias/', guideShell(null, idx, {
     path: 'guias/', title: 'Guías para buscar trabajo en Costa Rica | TicoBrete', h1: 'Guías para buscar trabajo en Costa Rica',
     desc: 'Guías prácticas para conseguir brete en Costa Rica: cómo buscar trabajo, hacer un currículum, prepararte para la entrevista y evitar estafas laborales.',
@@ -338,7 +363,7 @@ async function main() {
   );
 
   writeFileSync(join(DIST, 'feed.xml'), rss(jobs));
-  const urls = [...specs.map((s) => [s.path, day, s.path ? '0.7' : '1.0', 'daily']), ['guias/', GUIAS[0].date, '0.7', 'monthly'], ...GUIAS.map((g) => [`guias/${g.slug}/`, g.date, '0.6', 'monthly'])];
+  const urls = [...specs.filter((s) => !s.thin).map((s) => [s.path, day, s.path ? '0.7' : '1.0', 'daily']), ['guias/', GUIAS.map((g) => g.date).sort().pop(), '0.7', 'monthly'], ...GUIAS.map((g) => [`guias/${g.slug}/`, g.date, '0.6', 'monthly'])];
   writeFileSync(
     join(DIST, 'sitemap.xml'),
     `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map(([p, d, pr, cf]) => `<url><loc>${SITE_URL}/${p}</loc><lastmod>${d}</lastmod><changefreq>${cf}</changefreq><priority>${pr}</priority></url>`).join('')}</urlset>`,

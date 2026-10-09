@@ -388,3 +388,23 @@ html[data-still] *, html[data-still] *::before, html[data-still] *::after { anim
 .guide-list span { color: var(--brand); font-weight: 650; font-size: .92rem; }
 .page-article .footer { margin-top: 50px; padding: 30px 0; }
 .page-article .footer a { color: #fff; text-decoration: underline; }
+/* ---------- Guías: avisos, tablas y grupos ---------- */
+.note { margin: 18px 0 8px; padding: 14px 16px; border-radius: 14px; background: var(--amber-soft); border: 1px solid color-mix(in srgb, var(--amber) 35%, var(--line)); color: var(--text); font-size: .95rem; line-height: 1.55; }
+.note p { margin: 6px 0 0; }
+.note p:first-child { margin-top: 0; }
+.note strong { color: var(--text); }
+.data-table { width: 100%; margin: 16px 0; border-collapse: collapse; font-size: .96rem; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.data-table th, .data-table td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.data-table th { background: var(--surface-2); font-weight: 700; font-size: .88rem; }
+.data-table tr:last-child td { border-bottom: 0; }
+.guide-group { margin-top: 34px; }
+.guide-group-title { font-size: 1.25rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 12px; }
+.guide-list h3 { margin: 0; font-size: 1.15rem; font-weight: 800; letter-spacing: -.02em; }
+/* El índice de guías usa tarjetas, no el estilo de texto corrido */
+.article-body .guide-list { list-style: none; padding-left: 0; margin-top: 8px; display: grid; gap: 14px; }
+.article-body .guide-list li { margin: 0; }
+.article-body .guide-list a { text-decoration: none; color: var(--text); font-weight: 400; }
+.article-body .guide-list h3 { color: var(--text); margin: 0; }
+.article-body .guide-list p { margin: 6px 0 10px; color: var(--muted); }
+.article-body .guide-list span { color: var(--brand); font-weight: 650; }
+.article-body .guide-group-title { margin-top: 0; }

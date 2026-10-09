@@ -137,3 +137,8 @@ Los empleos pertenecen a sus empresas y a las fuentes citadas. Remotive, Jobicy,
 - **Datos estructurados**: Organization, WebSite, CollectionPage/WebPage y BreadcrumbList en las páginas de empleo; Article en las guías. No se usa `JobPosting` porque Google lo exige solo en la página completa de cada puesto, y aquí los bretes se publican en el sitio original.
 - **Verificación de buscadores**: `config/site.json` (`googleVerification`, `bingVerification`) más el archivo `site/google*.html`. No los borre o se pierde la verificación.
 - **Revisión automática**: `node test/seo.check.mjs` (después de `node scripts/build.mjs`) revisa títulos, descripciones, H1, JSON-LD, enlaces rotos y el mapa del sitio.
+## Guías (contenido)
+- Están en `content/guias.mjs`, `content/guias-laborales.mjs` y `content/guias-seo.mjs`. Para agregar una, sume un objeto (`slug`, `title`, `description`, `h1`, `lead`, `date`, `html`) y póngala en un grupo de `GRUPOS_GUIAS` en `scripts/build.mjs`; el sitio no compila si falta.
+- **Las guías legales citan fuentes oficiales** (MTSS, Código de Trabajo, Ley 9738). Los montos del salario mínimo cambian cada enero: actualice `salario-minimo-costa-rica` y su fecha cada año.
+- Los enlaces entre guías usan `{ROOT}`; el generador los convierte en rutas correctas.
+- **Páginas que no desaparecen**: una página de empleo que ya existió se conserva aunque hoy tenga pocos bretes (evita errores 404); si tiene menos de 3, se marca `noindex` y sale del mapa del sitio. La lista se guarda en `meta.pages` de `data/jobs.json`.
