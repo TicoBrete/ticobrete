@@ -8,26 +8,13 @@ import { getJson } from './lib/util.mjs';
 import { GUIAS as GUIAS_BASE } from '../content/guias.mjs';
 import { GUIAS_LABORALES } from '../content/guias-laborales.mjs';
 import { GUIAS_SEO } from '../content/guias-seo.mjs';
+import { GUIAS_EXTRA } from '../content/guias-extra.mjs';
+import { GUIAS_CALC } from '../content/guias-calc.mjs';
+import { DESTACADAS, META, TEMAS } from '../content/guias-meta.mjs';
+import { construirGuias, prepararGuias } from './lib/guias-site.mjs';
 
-// Grupos para el índice de guías. Cada guía debe estar en un grupo (se valida al construir).
-const GRUPOS_GUIAS = [
-  ['Empezar a buscar trabajo', ['como-buscar-trabajo-en-costa-rica', 'bolsas-de-empleo-costa-rica', 'primer-empleo-costa-rica', 'trabajos-sin-experiencia-costa-rica', 'trabajar-call-center-costa-rica', 'trabajo-remoto-desde-costa-rica']],
-  ['Currículum, entrevistas y aumentos', ['curriculum-costa-rica', 'carta-de-presentacion-costa-rica', 'entrevista-de-trabajo-costa-rica', 'entrevista-en-ingles-costa-rica', 'como-pedir-aumento-costa-rica']],
-  ['Tus derechos laborales', ['derechos-laborales-costa-rica', 'salario-minimo-costa-rica', 'aguinaldo-costa-rica', 'teletrabajo-ley-costa-rica', 'despido-cesantia-preaviso-costa-rica', 'liquidacion-laboral-finiquito-costa-rica', 'denunciar-patrono-mtss-costa-rica']],
-  ['Estafas y seguridad', ['estafas-laborales-costa-rica', 'ofertas-de-trabajo-falsas-whatsapp-facebook']],
-];
-const DESTACADAS = ['como-buscar-trabajo-en-costa-rica', 'estafas-laborales-costa-rica', 'derechos-laborales-costa-rica', 'salario-minimo-costa-rica', 'aguinaldo-costa-rica', 'primer-empleo-costa-rica'];
-const TODAS = [...GUIAS_BASE, ...GUIAS_LABORALES, ...GUIAS_SEO];
-const enGrupos = new Set(GRUPOS_GUIAS.flatMap(([, s]) => s));
-for (const g of TODAS) if (!enGrupos.has(g.slug)) throw new Error(`La guía "${g.slug}" no está en ningún grupo (GRUPOS_GUIAS en scripts/build.mjs)`);
-for (const s of enGrupos) if (!TODAS.some((g) => g.slug === s)) throw new Error(`El grupo de guías menciona "${s}", que no existe`);
-if (new Set(TODAS.map((g) => g.slug)).size !== TODAS.length) throw new Error('Hay guías con el mismo slug');
-const GUIAS = [...DESTACADAS.map((s) => TODAS.find((g) => g.slug === s)), ...TODAS.filter((g) => !DESTACADAS.includes(g.slug))];
-const guiasRelacionadas = (g) => {
-  const grupo = GRUPOS_GUIAS.find(([, s]) => s.includes(g.slug))[1];
-  const orden = [...grupo, ...DESTACADAS].filter((s) => s !== g.slug);
-  return [...new Set(orden)].slice(0, 6).map((s) => GUIAS.find((x) => x.slug === s));
-};
+// Guías y calculadoras: se validan al construir (cada una necesita su ficha en content/guias-meta.mjs).
+const { guias: GUIAS, temas: TEMAS_GUIAS } = prepararGuias([...GUIAS_BASE, ...GUIAS_LABORALES, ...GUIAS_SEO, ...GUIAS_EXTRA, ...GUIAS_CALC], TEMAS, META, DESTACADAS);
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist');
@@ -325,36 +312,8 @@ async function main() {
     write(s.path, html);
   }
 
-  // Guías
-  const guideShell = (g, bodyHtml, extra) => {
-    const rootRel = rootFor(extra.path);
-    const canonical = `${SITE_URL}/${extra.path}`;
-    return fill(articleTpl, {
-      ROOT: rootRel, TITLE: esc(extra.title), DESCRIPTION: esc(extra.desc), CANONICAL: esc(canonical), SITE_URL: esc(SITE_URL),
-      VERIFY: verifyMeta(), H1: esc(extra.h1), LEAD: esc(extra.lead || ''), BODY: bodyHtml, DATE_LINE: g ? `<p class="article-date"><time datetime="${g.date}">${fmtDate(`${g.date}T18:00:00Z`)}</time> · Equipo TicoBrete</p>` : '',
-      JSONLD: `<script type="application/ld+json">${json(extra.ld(canonical))}</script>`,
-    }).replace(/\{ROOT\}/g, rootRel);
-  };
-  const orgRef = { '@type': 'Organization', name: 'TicoBrete', url: `${SITE_URL}/`, logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/icon-512.png` } };
-  for (const g of GUIAS) {
-    const path = `guias/${g.slug}/`;
-    const related = guiasRelacionadas(g).map((x) => `<li><a href="{ROOT}guias/${x.slug}/">${esc(x.h1)}</a></li>`).join('');
-    const body = `${g.html}<aside class="article-cta"><h2>Buscá tu próximo brete</h2><p>Más de ${Math.floor(jobs.length / 100) * 100} ofertas de trabajo en Costa Rica, actualizadas todos los días y sin registro.</p><a class="btn btn-primary" href="{ROOT}">Ver empleos</a></aside><nav class="related-guides" aria-label="Otras guías"><h2>Otras guías</h2><ul>${related}</ul></nav>`;
-    write(path, guideShell(g, body, {
-      path, title: g.title.length > 48 ? g.title : `${g.title} | TicoBrete`, desc: g.description, h1: g.h1, lead: g.lead,
-      ld: (canonical) => ({ '@context': 'https://schema.org', '@graph': [
-        { '@type': 'Article', '@id': `${canonical}#article`, headline: g.h1, description: g.description, inLanguage: 'es-CR', datePublished: g.date, dateModified: g.date, mainEntityOfPage: canonical, image: `${SITE_URL}/assets/og-image.png`, author: orgRef, publisher: orgRef },
-        { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE_URL}/` }, { '@type': 'ListItem', position: 2, name: 'Guías', item: `${SITE_URL}/guias/` }, { '@type': 'ListItem', position: 3, name: g.h1, item: canonical }] },
-      ] }),
-    }));
-  }
-  const idx = GRUPOS_GUIAS.map(([titulo, slugs]) => `<section class="guide-group"><h2 class="guide-group-title">${esc(titulo)}</h2><ul class="guide-list">${slugs.map((s) => GUIAS.find((g) => g.slug === s)).map((g) => `<li><a href="{ROOT}guias/${g.slug}/"><h3>${esc(g.h1)}</h3><p>${esc(g.description)}</p><span>Leer guía →</span></a></li>`).join('')}</ul></section>`).join('');
-  write('guias/', guideShell(null, idx, {
-    path: 'guias/', title: 'Guías para buscar trabajo en Costa Rica | TicoBrete', h1: 'Guías para buscar trabajo en Costa Rica',
-    desc: 'Guías prácticas para conseguir brete en Costa Rica: cómo buscar trabajo, hacer un currículum, prepararte para la entrevista y evitar estafas laborales.',
-    lead: 'Consejos claros y sin vueltas para encontrar trabajo, cuidarte de estafas y llegar preparado a la entrevista.',
-    ld: (canonical) => ({ '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', '@id': `${canonical}#page`, url: canonical, name: 'Guías para buscar trabajo en Costa Rica', inLanguage: 'es-CR', isPartOf: { '@type': 'WebSite', url: `${SITE_URL}/`, name: 'TicoBrete' } }, { '@type': 'BreadcrumbList', itemListElement: [{ '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE_URL}/` }, { '@type': 'ListItem', position: 2, name: 'Guías', item: canonical }] }] }),
-  }));
+  // Guías, calculadoras y páginas por tema
+  const urlsGuias = construirGuias({ guias: GUIAS, temas: TEMAS_GUIAS, DESTACADAS, esc, json, fill, write, rootFor, SITE_URL, articleTpl, verifyMeta, fmtDate, jobsTotal: jobs.length });
 
   // 404 (fuera del índice de buscadores, con rutas absolutas para que funcione en cualquier URL)
   writeFileSync(
@@ -363,14 +322,14 @@ async function main() {
   );
 
   writeFileSync(join(DIST, 'feed.xml'), rss(jobs));
-  const urls = [...specs.filter((s) => !s.thin).map((s) => [s.path, day, s.path ? '0.7' : '1.0', 'daily']), ['guias/', GUIAS.map((g) => g.date).sort().pop(), '0.7', 'monthly'], ...GUIAS.map((g) => [`guias/${g.slug}/`, g.date, '0.6', 'monthly'])];
+  const urls = [...specs.filter((s) => !s.thin).map((s) => [s.path, day, s.path ? '0.7' : '1.0', 'daily']), ...urlsGuias];
   writeFileSync(
     join(DIST, 'sitemap.xml'),
     `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map(([p, d, pr, cf]) => `<url><loc>${SITE_URL}/${p}</loc><lastmod>${d}</lastmod><changefreq>${cf}</changefreq><priority>${pr}</priority></url>`).join('')}</urlset>`,
   );
   writeFileSync(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`);
 
-  console.log(`\nListo: ${jobs.length} puestos, ${specs.length} páginas de empleo y ${GUIAS.length + 1} de guías en dist/ (${(payload.length / 1024).toFixed(0)} KB de datos)`);
+  console.log(`\nListo: ${jobs.length} puestos, ${specs.length} páginas de empleo y ${urlsGuias.length} de guías, calculadoras y temas en dist/ (${(payload.length / 1024).toFixed(0)} KB de datos)`);
 }
 
 main().catch((err) => {

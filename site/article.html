@@ -21,7 +21,7 @@
   <link rel="preload" href="{{ROOT}}assets/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="{{ROOT}}assets/styles.css">
   <script src="{{ROOT}}assets/theme.js"></script>
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="{{OGTYPE}}">
   <meta property="og:locale" content="es_CR">
   <meta property="og:site_name" content="TicoBrete">
   <meta property="og:title" content="{{TITLE}}">
@@ -54,11 +54,11 @@
   </header>
 
   <main id="contenido" class="container article-main">
-    <nav class="crumbs" aria-label="Ruta"><a href="{{ROOT}}">Inicio</a> <i aria-hidden="true">›</i> <a href="{{ROOT}}guias/">Guías</a></nav>
+    {{CRUMBS}}
     <article class="article">
       <h1>{{H1}}</h1>
       <p class="article-lead">{{LEAD}}</p>
-      {{DATE_LINE}}
+      {{META_LINE}}
       <div class="article-body">
         {{BODY}}
       </div>
@@ -70,5 +70,6 @@
       <p>TicoBrete reúne enlaces a ofertas publicadas por terceros. La contratación es directamente entre vos y la empresa. Gratis, abierto y automático. <a href="{{ROOT}}">Volver a los empleos</a>.</p>
     </div>
   </footer>
+  {{SCRIPTS}}
 </body>
 </html>
