@@ -39,7 +39,26 @@
     { "id": "wd-dxc", "name": "DXC Technology", "tenant": "dxctechnology", "dc": "wd1", "site": "DXCJobs" },
     { "id": "wd-visa", "name": "Visa", "tenant": "visa", "dc": "wd5", "site": "Visa" },
     { "id": "wd-aliaxis", "name": "Aliaxis", "tenant": "aliaxis", "dc": "wd3", "site": "Aliaxis_LATAM_Career_Site" },
-    { "id": "wd-concentrix", "name": "Concentrix", "tenant": "cnx", "dc": "wd1", "site": "external_global" }
+    { "id": "wd-concentrix", "name": "Concentrix", "tenant": "cnx", "dc": "wd1", "site": "external_global" },
+    { "id": "wd-integer", "name": "Integer Holdings", "tenant": "integer", "dc": "wd1", "site": "External" },
+    { "id": "wd-cardinalhealth", "name": "Cardinal Health", "tenant": "cardinalhealth", "dc": "wd1", "site": "EXT" },
+    { "id": "wd-jnj", "name": "Johnson & Johnson", "tenant": "jj", "dc": "wd5", "site": "JJ" },
+    { "id": "wd-gsk", "name": "GSK", "tenant": "gsk", "dc": "wd5", "site": "GSKCareers" },
+    { "id": "wd-zoetis", "name": "Zoetis", "tenant": "zoetis", "dc": "wd5", "site": "zoetis_intl" },
+    { "id": "wd-roche", "name": "Roche", "tenant": "roche", "dc": "wd3", "site": "roche-ext" },
+    { "id": "wd-bridgestone", "name": "Bridgestone", "tenant": "bridgestone", "dc": "wd5", "site": "LATAMExternalCareers" },
+    { "id": "wd-cisco", "name": "Cisco", "tenant": "cisco", "dc": "wd5", "site": "Cisco_Careers" },
+    { "id": "wd-adobe", "name": "Adobe", "tenant": "adobe", "dc": "wd5", "site": "external_experienced" },
+    { "id": "wd-hpe", "name": "Hewlett Packard Enterprise", "tenant": "hpe", "dc": "wd5", "site": "Jobsathpe" },
+    { "id": "wd-bd", "name": "BD", "tenant": "bdx", "dc": "wd1", "site": "EXTERNAL_CAREER_SITE_COSTA_RICA" },
+    { "id": "wd-freudenberg", "name": "Freudenberg Medical", "tenant": "freudenberg", "dc": "wd3", "site": "freudenberg-group" },
+    { "id": "wd-cadence", "name": "Cadence", "tenant": "cadence", "dc": "wd1", "site": "External_Careers" },
+    { "id": "wd-apmterminals", "name": "APM Terminals (Maersk)", "tenant": "maersk", "dc": "wd3", "site": "APMT_Careers" },
+    { "id": "wd-aptiv", "name": "Aptiv", "tenant": "aptiv", "dc": "wd5", "site": "APTIV_CAREERS" },
+    { "id": "wd-bacardi", "name": "Bacardi", "tenant": "bacardi", "dc": "wd3", "site": "Jobs_Bacardi" },
+    { "id": "wd-skechers", "name": "Skechers", "tenant": "skechers", "dc": "wd5", "site": "One-career-site" },
+    { "id": "wd-alexion", "name": "AstraZeneca (Alexion)", "tenant": "astrazeneca", "dc": "wd3", "site": "Alexion" },
+    { "id": "wd-abbott-agency", "name": "Abbott (servicio al cliente)", "tenant": "abbott", "dc": "wd5", "site": "Agency" }
   ],
   "greenhouse": [
     { "id": "gh-elastic", "name": "Elastic", "token": "elastic" },
@@ -82,7 +101,8 @@
     { "id": "sr-deliveryhero", "name": "Delivery Hero / PedidosYa", "company": "DeliveryHero" },
     { "id": "sr-wnsglobalservices144", "name": "WNS", "company": "WNSGlobalServices144" },
     { "id": "sr-hitachisolutions", "name": "Hitachi Solutions", "company": "HitachiSolutions" },
-    { "id": "sr-colibriteams", "name": "Colibri Teams", "company": "colibriteams" }
+    { "id": "sr-colibriteams", "name": "Colibri Teams", "company": "colibriteams" },
+    { "id": "sr-abbvie", "name": "AbbVie / Allergan", "company": "abbvie" }
   ],
   "oracle": [
     { "id": "or-dospinos", "name": "Dos Pinos", "host": "fa-enfw-saasfaprod1.fa.ocs.oraclecloud.com", "site": "CX_4001" },
@@ -99,7 +119,8 @@
     { "id": "sf-coloplast", "name": "Coloplast", "url": "https://careers.coloplast.com/go/Costa_Rica_es/4770001/", "trusted": true },
     { "id": "sf-foundever", "name": "Foundever", "url": "https://jobs.foundever.com/go/Jobs-in-Costa-Rica/9235400/", "trusted": true },
     { "id": "sf-ey", "name": "EY", "url": "https://careers.ey.com/ey/search/?q=&locationsearch=Costa+Rica" },
-    { "id": "sf-nestle", "name": "Nestlé", "url": "https://jobdetails.nestle.com/search/?createNewAlert=false&q=&locationsearch=Costa+Rica" }
+    { "id": "sf-nestle", "name": "Nestlé", "url": "https://jobdetails.nestle.com/search/?createNewAlert=false&q=&locationsearch=Costa+Rica" },
+    { "id": "sf-bostonscientific", "name": "Boston Scientific", "url": "https://jobs.bostonscientific.com/search/?q=&locationsearch=Costa+Rica" }
   ],
   "ane": { "maxPages": 60, "delayMs": 900 },
   "submissions": { "requireApproval": false, "maxPerCompany": 8, "maxTotal": 300 },
