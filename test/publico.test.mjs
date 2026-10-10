@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { parseDgsc } from '../scripts/sources/dgsc.mjs';
 import { parseBancoPopular, parsePoderJudicial } from '../scripts/sources/publico.mjs';
 import { parseSfDate, parseSfRows } from '../scripts/sources/successfactors.mjs';
+import { parseTalentClue } from '../scripts/sources/talentclue.mjs';
 
 test('SuccessFactors: fechas en español e inglés', () => {
   assert.equal(parseSfDate('21 sept 2026 ').slice(0, 10), '2026-09-21');
@@ -38,4 +39,12 @@ test('Poder Judicial y Banco Popular', () => {
   const [b] = parseBancoPopular(bp);
   assert.equal(b.title, 'Científico(a) de Datos');
   assert.equal(b.url, 'https://www.bancopopular.fi.cr/wp-content/uploads/a.pdf');
+});
+
+test('Talent Clue: filas de ofertas', () => {
+  const html = `<table><tbody><tr class="odd"><td><img src="x"></td><td><a href="https://careers.talentclue.com/es/node/1/4590" external="1">Gondolero/a Auto Mercado Yoses</a></td><td>Auto Mercado</td><td>Montes de Oca</td><td>San José</td><td>09/10/2026</td></tr></tbody></table>`;
+  const [r] = parseTalentClue(html);
+  assert.equal(r.title, 'Gondolero/a Auto Mercado Yoses');
+  assert.equal(r.province, 'San José');
+  assert.equal(r.href, 'https://careers.talentclue.com/es/node/1/4590');
 });

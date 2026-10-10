@@ -5,6 +5,7 @@ import { fetchWorkday } from './sources/workday.mjs';
 import { fetchGreenhouse, fetchLever } from './sources/ats.mjs';
 import { fetchSmartRecruiters } from './sources/smartrecruiters.mjs';
 import { fetchOracle } from './sources/oracle.mjs';
+import { fetchTalentClue } from './sources/talentclue.mjs';
 import { fetchDgsc } from './sources/dgsc.mjs';
 import { fetchPoderJudicial, fetchBancoPopular } from './sources/publico.mjs';
 import { fetchSuccessFactors } from './sources/successfactors.mjs';
@@ -26,6 +27,7 @@ function buildTasks(config, ctx) {
   const PUBLICO = { dgsc: fetchDgsc, 'poder-judicial': fetchPoderJudicial, 'banco-popular': fetchBancoPopular };
   for (const c of config.publico || []) tasks.push({ id: c.id, name: c.name, authoritative: true, allowEmpty: true, run: () => PUBLICO[c.type](c, ctx) });
   for (const c of config.successfactors || []) tasks.push({ id: c.id, name: c.name, authoritative: true, allowEmpty: !!c.allowEmpty, run: () => fetchSuccessFactors(c, ctx) });
+  for (const c of config.talentclue || []) tasks.push({ id: c.id, name: c.name, authoritative: true, run: () => fetchTalentClue(c, ctx) });
   for (const c of config.oracle || []) tasks.push({ id: c.id, name: c.name, authoritative: true, run: () => fetchOracle(c, ctx) });
   for (const n of config.remote || []) {
     const id = { jobicy: 'rm-jobicy', remotive: 'rm-remotive', himalayas: 'rm-himalayas', remoteok: 'rm-remoteok', weworkremotely: 'rm-wwr' }[n];

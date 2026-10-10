@@ -58,7 +58,8 @@
     { "id": "wd-bacardi", "name": "Bacardi", "tenant": "bacardi", "dc": "wd3", "site": "Jobs_Bacardi" },
     { "id": "wd-skechers", "name": "Skechers", "tenant": "skechers", "dc": "wd5", "site": "One-career-site" },
     { "id": "wd-alexion", "name": "AstraZeneca (Alexion)", "tenant": "astrazeneca", "dc": "wd3", "site": "Alexion" },
-    { "id": "wd-abbott-agency", "name": "Abbott (servicio al cliente)", "tenant": "abbott", "dc": "wd5", "site": "Agency" }
+    { "id": "wd-abbott-agency", "name": "Abbott (servicio al cliente)", "tenant": "abbott", "dc": "wd5", "site": "Agency" },
+    { "id": "wd-tigo", "name": "Tigo (Millicom)", "tenant": "tigo", "dc": "wd103", "site": "tigocareers" }
   ],
   "greenhouse": [
     { "id": "gh-elastic", "name": "Elastic", "token": "elastic" },
@@ -107,6 +108,9 @@
   "oracle": [
     { "id": "or-dospinos", "name": "Dos Pinos", "host": "fa-enfw-saasfaprod1.fa.ocs.oraclecloud.com", "site": "CX_4001" },
     { "id": "or-iom", "name": "OIM (Organización Internacional para las Migraciones)", "host": "fa-evlj-saasfaprod1.fa.ocs.oraclecloud.com", "site": "CX_1001", "keyword": "Costa Rica", "lang": "en" }
+  ],
+  "talentclue": [
+    { "id": "tc-automercado", "name": "Auto Mercado", "company": "79792744" }
   ],
   "publico": [
     { "id": "pub-dgsc", "type": "dgsc", "name": "Servicio Civil (vacantes del Estado)" },
