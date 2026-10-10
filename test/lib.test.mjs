@@ -5,7 +5,6 @@ import { classify, detectTags } from '../scripts/lib/classify.mjs';
 import { looksLikeScam, stripContacts } from '../scripts/lib/safety.mjs';
 import { dedupe, makeJob } from '../scripts/lib/job.mjs';
 import { safeUrl, smartCase, cleanText, htmlToText } from '../scripts/lib/util.mjs';
-import { parseBusca, parseMessages, parseStructured } from '../scripts/sources/telegram.mjs';
 
 test('isCostaRica reconoce lugares del país y descarta el resto', () => {
   for (const ok of ['Costa Rica', 'Alajuela Coyol, Alajuela, Costa Rica', 'CRI - Heredia', 'La Aurora, Heredia', 'San José', 'Escazú', 'Heredia, CR']) {
@@ -93,20 +92,3 @@ test('dedupe prefiere la fuente directa de la empresa', () => {
   assert.equal(out[0].kind, 'empresa');
 });
 
-test('Telegram: formato estructurado', () => {
-  const html = `<div class="tgme_widget_message_wrap"><div data-post="STEMJobsCR/10"><time datetime="2026-10-01T10:00:00+00:00"></time><div class="tgme_widget_message_text js-message_text"><i class="emoji" style="x"><b>🧑‍💼</b></i>  |  <b>Cloud Engineer (AWS | Python)</b><br/><br/><b>Empresa:</b> Acme<br/><b>Ubicación:</b> Heredia, Costa Rica (Hybrid)<br/><br/><a href="https://www.linkedin.com/jobs/view/1?trk=x">link</a></div></div></div>`;
-  const [msg] = parseMessages(html);
-  const p = parseStructured(msg, { label: 'Telegram @x' });
-  assert.equal(p.title, 'Cloud Engineer (AWS | Python)');
-  assert.equal(p.company, 'Acme');
-  assert.equal(p.source, 'LinkedIn');
-});
-
-test('Telegram: formato "EMPRESA busca"', () => {
-  const msg = { post: 'empleos506cr/1', text: ' #Empleos506CR  #Alajuela\nMR JEFF LAVANDERÍA busca "OPERARIA PARA LAVANDERÍA", Alajuela.', links: [] };
-  const p = parseBusca(msg, { label: 'Telegram @empleos506cr' });
-  assert.equal(p.title, 'Operaria para Lavandería');
-  assert.equal(p.company, 'Mr Jeff Lavandería');
-  assert.equal(p.location, 'Alajuela');
-  assert.equal(p.url, 'https://t.me/empleos506cr/1');
-});

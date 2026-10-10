@@ -91,9 +91,9 @@
     </nav>
 
     <div class="hero-inner container">
-      <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span><span id="updated-text">Cargando bretes…</span></p>
+      <p class="eyebrow"><span class="live-dot" aria-hidden="true"></span><span id="updated-text">{{UPDATED}}</span></p>
       <h1>{{H1}}</h1>
-      <p class="lead">Empresas, comunidades y bolsas de empleo en un solo lugar. Se actualiza solito, todos los días, y es <strong>gratis para siempre</strong>.</p>
+      <p class="lead">Empresas, Estado y bolsas de empleo en un solo lugar. Se actualiza solito, todos los días, y es <strong>gratis para siempre</strong>.</p>
 
       <form class="searchbar" id="search-form" role="search" autocomplete="off">
         <label class="sb-field sb-q">
@@ -112,9 +112,9 @@
       <div class="quick" id="quick" aria-label="Búsquedas populares"></div>
 
       <dl class="stats" id="stats">
-        <div><dt>Bretes activos</dt><dd id="st-total">–</dd></div>
-        <div><dt>Nuevos hoy</dt><dd id="st-new">–</dd></div>
-        <div><dt>Empresas</dt><dd id="st-co">–</dd></div>
+        <div><dt>Bretes activos</dt><dd id="st-total">{{ST_TOTAL}}</dd></div>
+        <div><dt>Nuevos hoy</dt><dd id="st-new">{{ST_NEW}}</dd></div>
+        <div><dt>Empresas</dt><dd id="st-co">{{ST_CO}}</dd></div>
       </dl>
     </div>
   </header>
@@ -156,6 +156,7 @@
           <div class="list-head">
             <h2 id="res-title"><span id="res-count" aria-live="polite">–</span></h2>
             <div class="active-chips" id="active-chips"></div>
+            <p class="lang-note" id="lang-note" hidden></p>
           </div>
           <div id="jobs" class="jobs" aria-busy="true">
             {{JOBS_STATIC}}
@@ -172,7 +173,7 @@
       <h2 id="how-title">Cómo funciona <span class="grad">TicoBrete</span></h2>
       <p class="section-lead">Sin cuentas, sin pagos y sin que nadie tenga que subir nada a mano.</p>
       <ol class="steps">
-        <li><span class="step-n">1</span><h3>Buscamos</h3><p>Cada pocas horas un robot revisa las páginas de empleo de las empresas, canales comunitarios y bolsas de trabajo remoto.</p></li>
+        <li><span class="step-n">1</span><h3>Buscamos</h3><p>Cada pocas horas un robot revisa las páginas de empleo de las empresas, la Agencia Nacional de Empleo y bolsas de trabajo remoto con APIs públicas.</p></li>
         <li><span class="step-n">2</span><h3>Limpiamos</h3><p>Quitamos repetidos, vencidos y anuncios sospechosos. Ordenamos por provincia, tipo de trabajo y categoría.</p></li>
         <li><span class="step-n">3</span><h3>Publicamos</h3><p>El sitio se vuelve a publicar solo. No hay servidores ni bases de datos: por eso es gratis y no se cae.</p></li>
         <li><span class="step-n">4</span><h3>Vos aplicás</h3><p>Te llevamos directo al anuncio original. Nunca te pedimos plata ni datos personales.</p></li>
@@ -206,6 +207,7 @@
       <h2 id="src-title">De dónde salen los bretes</h2>
       <p class="section-lead">Solo leemos fuentes públicas y siempre te mandamos al sitio original. TicoBrete no es el empleador ni cobra por nada.</p>
       <ul class="src-list" id="src-list"></ul>
+      <p class="section-lead">Las ofertas remotas vienen de las APIs y feeds públicos de <a href="https://himalayas.app" rel="noopener" target="_blank">Himalayas</a>, <a href="https://remotive.com" rel="noopener" target="_blank">Remotive</a>, <a href="https://weworkremotely.com" rel="noopener" target="_blank">We Work Remotely</a>, <a href="https://jobicy.com" rel="noopener" target="_blank">Jobicy</a> y <a href="https://remoteok.com" rel="noopener" target="_blank">Remote OK</a>. Cada oferta enlaza a su anuncio original en esos sitios, que son sus dueños.</p>
     </section>
   </main>
 

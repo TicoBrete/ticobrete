@@ -1,8 +1,13 @@
 import { daysAgo, pool } from './lib/util.mjs';
 import { dedupe } from './lib/job.mjs';
+import { cleanCompany, detectLang } from './lib/classify.mjs';
 import { fetchWorkday } from './sources/workday.mjs';
 import { fetchGreenhouse, fetchLever } from './sources/ats.mjs';
-import { fetchTelegram } from './sources/telegram.mjs';
+import { fetchSmartRecruiters } from './sources/smartrecruiters.mjs';
+import { fetchOracle } from './sources/oracle.mjs';
+import { fetchDgsc } from './sources/dgsc.mjs';
+import { fetchPoderJudicial, fetchBancoPopular } from './sources/publico.mjs';
+import { fetchSuccessFactors } from './sources/successfactors.mjs';
 import { fetchRemote } from './sources/remote.mjs';
 import { fetchJooble } from './sources/jooble.mjs';
 import { fetchSubmissions } from './sources/submissions.mjs';
@@ -16,10 +21,17 @@ function buildTasks(config, ctx) {
   for (const c of config.workday || []) tasks.push({ id: c.id, name: c.name, authoritative: true, run: () => fetchWorkday(c, ctx) });
   for (const c of config.greenhouse || []) tasks.push({ id: c.id, name: c.name, authoritative: true, run: () => fetchGreenhouse(c, ctx) });
   for (const c of config.lever || []) tasks.push({ id: c.id, name: c.name, authoritative: true, run: () => fetchLever(c, ctx) });
-  for (const c of config.telegram || []) tasks.push({ id: c.id, name: c.label, authoritative: false, run: () => fetchTelegram(c, ctx) });
+  for (const c of config.smartrecruiters || []) tasks.push({ id: c.id, name: c.name, authoritative: true, run: () => fetchSmartRecruiters(c, ctx) });
+  // Los avisos del sector público suben y bajan a diario (a veces no hay ninguno): una lista vacía es válida.
+  const PUBLICO = { dgsc: fetchDgsc, 'poder-judicial': fetchPoderJudicial, 'banco-popular': fetchBancoPopular };
+  for (const c of config.publico || []) tasks.push({ id: c.id, name: c.name, authoritative: true, allowEmpty: true, run: () => PUBLICO[c.type](c, ctx) });
+  for (const c of config.successfactors || []) tasks.push({ id: c.id, name: c.name, authoritative: true, allowEmpty: !!c.allowEmpty, run: () => fetchSuccessFactors(c, ctx) });
+  for (const c of config.oracle || []) tasks.push({ id: c.id, name: c.name, authoritative: true, run: () => fetchOracle(c, ctx) });
   for (const n of config.remote || []) {
     const id = { jobicy: 'rm-jobicy', remotive: 'rm-remotive', himalayas: 'rm-himalayas', remoteok: 'rm-remoteok', weworkremotely: 'rm-wwr' }[n];
-    tasks.push({ id, name: n, authoritative: true, run: () => fetchRemote(n, ctx) });
+    // Himalayas refresca su API cada 24 h y Remotive pide máximo 4 consultas al día: respetamos sus límites.
+    const minHours = { himalayas: 24, remotive: 6 }[n] ?? 0;
+    tasks.push({ id, name: n, authoritative: true, minHours, run: () => fetchRemote(n, ctx) });
   }
   if (config.ane) tasks.push({ id: 'ane', name: 'ANE (Agencia Nacional de Empleo)', authoritative: true, run: () => fetchAne(config.ane, ctx) });
   if (config.submissions) tasks.push({ id: 'sub-form', name: 'Publicados en TicoBrete', authoritative: true, run: () => fetchSubmissions(config.submissions, ctx) });
@@ -52,8 +64,11 @@ export async function collect({ prev, config, now = new Date(), log = console.lo
 
   const results = await pool(tasks, 4, async (task) => {
     const t0 = Date.now();
+    const last = ctx.state.fetchedAt?.[task.id];
+    if (task.minHours && last && now - Date.parse(last) < task.minHours * 3600e3) return { task, cached: true, ms: 0 };
     try {
       const jobs = await task.run();
+      ctx.state.fetchedAt = { ...(ctx.state.fetchedAt || {}), [task.id]: now.toISOString() };
       return { task, jobs, ms: Date.now() - t0 };
     } catch (err) {
       return { task, error: redact(err?.message || err), ms: Date.now() - t0 };
@@ -68,11 +83,15 @@ export async function collect({ prev, config, now = new Date(), log = console.lo
     const before = prevBySource.get(task.id) ?? [];
     let kept;
     let status;
-    if (r.error) {
+    if (r.cached) {
+      kept = before.filter(fresh);
+      status = { ok: true, cached: true };
+      log(`  ✓ ${task.name}: sin consultar (límite de la fuente), se conservan ${kept.length}`);
+    } else if (r.error) {
       kept = before.filter(fresh);
       status = { ok: false, error: r.error };
       log(`  ✗ ${task.name}: ${r.error} (se conservan ${kept.length} anteriores)`);
-    } else if (task.authoritative && r.jobs?.length === 0 && before.length >= 3) {
+    } else if (task.authoritative && !task.allowEmpty && r.jobs?.length === 0 && before.length >= 3) {
       kept = before.filter(fresh);
       status = { ok: false, error: 'La fuente respondió vacía; se conservan los puestos anteriores' };
       log(`  ✗ ${task.name}: respuesta vacía sospechosa (se conservan ${kept.length} anteriores)`);
@@ -102,7 +121,11 @@ export async function collect({ prev, config, now = new Date(), log = console.lo
   // Fuentes que ya no están en la configuración se descartan.
   for (const [id] of prevBySource) if (!knownSources.has(id)) log(`  ⚠ fuente retirada: ${id}`);
 
-  for (const j of merged) j.postedAt ??= j.firstSeen;
+  for (const j of merged) {
+    j.postedAt ??= j.firstSeen;
+    j.company = cleanCompany(j.company);
+    j.lang = detectLang(j);
+  }
 
   const jobs = dedupe(merged)
     .sort((a, b) => (b.postedAt > a.postedAt ? 1 : b.postedAt < a.postedAt ? -1 : a.id.localeCompare(b.id)))

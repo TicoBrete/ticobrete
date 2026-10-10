@@ -119,9 +119,9 @@ function buildPageSpecs(jobs, meta, prevPaths = new Set()) {
     path: '', preset: '', list: jobs, crumbs: [],
     title: 'Empleos en Costa Rica: bretes nuevos cada día | TicoBrete',
     h1: 'Todos los bretes de Costa Rica, <em>en un solo lugar</em>',
-    desc: `${total.toLocaleString('es-CR')} ofertas de trabajo en Costa Rica de empresas, del Estado y de comunidades. Filtrá por provincia, remoto o sin experiencia. Gratis y sin registro.`,
+    desc: `${total.toLocaleString('es-CR')} ofertas de trabajo en Costa Rica de empresas y del Estado. Filtrá por provincia, remoto o sin experiencia. Gratis y sin registro.`,
     heading: 'Empleos en Costa Rica, actualizados todos los días',
-    intro: introFor(jobs, 'en Costa Rica', `<p>En TicoBrete juntamos en un solo lugar ofertas de empresas, de la Agencia Nacional de Empleo y de comunidades, y siempre te llevamos al anuncio original. Hay bretes de ${list(homeCats)}, además de trabajo remoto y puestos sin experiencia.</p>`),
+    intro: introFor(jobs, 'en Costa Rica', `<p>En TicoBrete juntamos en un solo lugar ofertas de empresas y de la Agencia Nacional de Empleo, y siempre te llevamos al anuncio original. Hay bretes de ${list(homeCats)}, además de trabajo remoto y puestos sin experiencia.</p>`),
     faq: [
       ['¿Cómo busco trabajo en Costa Rica?', 'Usá los filtros por provincia, categoría, modalidad (presencial, híbrido o remoto) y fecha. Cuando encontrés un brete, tocá "Ver oferta" para ir al anuncio original y aplicar desde ahí. Si querés más consejos, mirá nuestras guías.'],
       ['¿Hay trabajos sin experiencia?', `Sí. Hoy hay ${plural(junior(jobs), 'oferta', 'ofertas')} marcadas como sin experiencia o pasantía. Usá el filtro "Sin experiencia o pasantía".`],
@@ -157,7 +157,7 @@ function buildPageSpecs(jobs, meta, prevPaths = new Set()) {
     heading: 'Trabajo remoto para personas en Costa Rica',
     intro: introFor(remote, 'remotas abiertas a Costa Rica o Latinoamérica', '<p>Incluimos solo puestos que una persona en Costa Rica pueda tomar. Revisá siempre la moneda, la forma de pago y los requisitos de idioma, y leé nuestra guía de <a href="{ROOT}guias/trabajo-remoto-desde-costa-rica/">trabajo remoto desde Costa Rica</a>.</p>'),
     faq: [
-      ['¿Necesito inglés para trabajar remoto?', 'En muchas ofertas sí, al menos nivel intermedio. Hay también puestos en español para empresas de Latinoamérica y España. Usá el filtro de inglés o bilingüe para verlos.'],
+      ['¿Necesito inglés para trabajar remoto?', 'En muchas ofertas sí, al menos nivel intermedio. Hay también puestos en español para empresas de Latinoamérica y España. Por defecto mostramos solo ofertas en español; elegí «Español e inglés» en los filtros para ver también las de inglés.'],
       ['¿Cómo me pagan si trabajo remoto para una empresa de afuera?', 'Depende de la empresa: transferencia, plataformas de pago o contratos como independiente. Consultá siempre con un contador sobre impuestos y seguro antes de empezar.'],
       ...FAQ_COMMON,
     ],
@@ -263,6 +263,15 @@ async function main() {
     throw new Error(`Caída sospechosa de ${prev.jobs.length} a ${jobs.length} puestos. Se cancela la publicación.`);
   }
 
+  // El sitio muestra por defecto solo ofertas en español; las de inglés viajan en jobs.json y se ven con el filtro de idioma.
+  const siteJobs = jobs.filter((j) => j.lang !== 'en');
+  const stats = {
+    total: siteJobs.length.toLocaleString('es-CR'),
+    fresh: siteJobs.filter((j) => Date.now() - Date.parse(j.postedAt) < 86400000).length.toLocaleString('es-CR'),
+    companies: new Set(siteJobs.map((j) => (j.company || '').toLowerCase()).filter(Boolean)).size.toLocaleString('es-CR'),
+    updated: `Actualizado el ${fmtDate(meta.updatedAt)}`,
+  };
+
   rmSync(DIST, { recursive: true, force: true });
   cpSync(join(ROOT, 'site'), DIST, { recursive: true });
   for (const f of ['article.html']) rmSync(join(DIST, f), { force: true });
@@ -271,7 +280,7 @@ async function main() {
   const template = readFileSync(join(ROOT, 'site', 'index.html'), 'utf8');
   const articleTpl = readFileSync(join(ROOT, 'site', 'article.html'), 'utf8');
   // Una página que ya existió no se borra aunque hoy tenga pocos bretes (evita errores 404 en Google); si queda delgada pasa a noindex.
-  const specs = buildPageSpecs(jobs, meta, new Set(prev?.meta?.pages || []));
+  const specs = buildPageSpecs(siteJobs, meta, new Set(prev?.meta?.pages || []));
   for (const s of specs) s.thin = s.path !== '' && s.list.length < 3;
   meta.pages = specs.map((s) => s.path);
   const payload = JSON.stringify({ meta, jobs });
@@ -301,12 +310,16 @@ async function main() {
       ROBOTS: s.thin ? 'noindex,follow' : 'index,follow,max-image-preview:large,max-snippet:-1',
       VERIFY: verifyMeta(),
       PRESET: esc(s.preset),
+      ST_TOTAL: stats.total,
+      ST_NEW: stats.fresh,
+      ST_CO: stats.companies,
+      UPDATED: esc(stats.updated),
       REPORT_URL: esc(REPORT_URL),
       SUBMIT_URL: esc(SUBMIT_URL),
       H1: s.h1,
       CRUMBS: crumbsHtml(s),
       JOBS_STATIC: cards || '<div class="skeleton"></div><div class="skeleton"></div>',
-      SEO_BLOCK: seoBlock(s, specs, jobs),
+      SEO_BLOCK: seoBlock(s, specs, siteJobs),
       GUIDE_LINKS: guideLinks,
       JSONLD: `<script type="application/ld+json">${json(graphFor(s, canonical, meta.updatedAt))}</script>`,
     }).replace(/\{ROOT\}/g, rootRel);
@@ -314,17 +327,17 @@ async function main() {
   }
 
   // Guías, calculadoras y páginas por tema
-  const urlsGuias = construirGuias({ guias: GUIAS, temas: TEMAS_GUIAS, DESTACADAS, esc, json, fill, write, rootFor, SITE_URL, articleTpl, verifyMeta, fmtDate, jobsTotal: jobs.length });
+  const urlsGuias = construirGuias({ guias: GUIAS, temas: TEMAS_GUIAS, DESTACADAS, esc, json, fill, write, rootFor, SITE_URL, articleTpl, verifyMeta, fmtDate, jobsTotal: siteJobs.length });
 
   const urlsHerr = construirHerramientas({ guias: GUIAS, esc, json, fill, write, rootFor, SITE_URL, articleTpl, verifyMeta, fmtDate });
 
   // 404 (fuera del índice de buscadores, con rutas absolutas para que funcione en cualquier URL)
   writeFileSync(
     join(DIST, '404.html'),
-    fill(template, { ROOT: BASE_PATH, TITLE: 'Página no encontrada | TicoBrete', DESCRIPTION: 'Esta página no existe, pero hay bretes esperándote.', CANONICAL: `${SITE_URL}/`, SITE_URL: esc(SITE_URL), ROBOTS: 'noindex', VERIFY: '', PRESET: '', REPORT_URL: esc(REPORT_URL), SUBMIT_URL: esc(SUBMIT_URL), H1: 'Esa página no existe, <em>pero los bretes sí</em>', CRUMBS: '', JOBS_STATIC: '', SEO_BLOCK: '', GUIDE_LINKS: guideLinks, JSONLD: '' }).replace(/\{ROOT\}/g, BASE_PATH),
+    fill(template, { ROOT: BASE_PATH, TITLE: 'Página no encontrada | TicoBrete', DESCRIPTION: 'Esta página no existe, pero hay bretes esperándote.', CANONICAL: `${SITE_URL}/`, SITE_URL: esc(SITE_URL), ROBOTS: 'noindex', VERIFY: '', PRESET: '', REPORT_URL: esc(REPORT_URL), SUBMIT_URL: esc(SUBMIT_URL), ST_TOTAL: '–', ST_NEW: '–', ST_CO: '–', UPDATED: 'Cargando bretes…', H1: 'Esa página no existe, <em>pero los bretes sí</em>', CRUMBS: '', JOBS_STATIC: '', SEO_BLOCK: '', GUIDE_LINKS: guideLinks, JSONLD: '' }).replace(/\{ROOT\}/g, BASE_PATH),
   );
 
-  writeFileSync(join(DIST, 'feed.xml'), rss(jobs));
+  writeFileSync(join(DIST, 'feed.xml'), rss(siteJobs));
   const urls = [...specs.filter((s) => !s.thin).map((s) => [s.path, day, s.path ? '0.7' : '1.0', 'daily']), ...urlsGuias, ...urlsHerr];
   writeFileSync(
     join(DIST, 'sitemap.xml'),

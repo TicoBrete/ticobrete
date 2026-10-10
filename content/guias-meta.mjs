@@ -20,7 +20,7 @@ export const TEMAS = [
     h1: 'Cómo buscar trabajo en Costa Rica',
     description: 'Guías para buscar trabajo en Costa Rica: dónde mirar, cómo conseguir tu primer empleo, trabajos sin experiencia y cómo combinar el trabajo con los estudios.',
     intro: `<p>Buscar brete cansa cuando las ofertas están regadas en mil páginas, grupos y mensajes. Estas guías te ordenan el camino: <strong>dónde buscar</strong>, qué pedir y cómo no perder el tiempo. Si es tu primera vez, empezá por la guía de <a href="{ROOT}guias/primer-empleo-costa-rica/">primer empleo</a>; si ya tenés experiencia, mirá <a href="{ROOT}guias/bolsas-de-empleo-costa-rica/">dónde buscar trabajo</a> y cómo combinar varias fuentes.</p>
-<p>Todo lo que leás acá lo podés poner en práctica de inmediato: en TicoBrete juntamos las ofertas de empresas, de la Agencia Nacional de Empleo, de comunidades y de trabajo remoto, y podés filtrarlas por provincia, categoría y fecha.</p>`,
+<p>Todo lo que leás acá lo podés poner en práctica de inmediato: en TicoBrete juntamos las ofertas de empresas, de la Agencia Nacional de Empleo y de trabajo remoto, y podés filtrarlas por provincia, categoría y fecha.</p>`,
   },
   {
     id: 'curriculum-entrevistas',

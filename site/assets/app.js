@@ -30,12 +30,12 @@ const PROVS = [
 ];
 const PROV_NAME = Object.fromEntries(PROVS);
 const MODS = { presencial: 'Presencial', hibrido: 'Híbrido', remoto: 'Remoto' };
-const ORIGINS = { empresa: 'Empresas directas', publicado: 'Publicados por negocios', estado: 'Agencia Nacional de Empleo (Estado)', comunidad: 'Comunidades y redes', remoto: 'Bolsas de trabajo remoto', agregador: 'Buscadores de empleo' };
+const ORIGINS = { empresa: 'Empresas directas', publicado: 'Publicados por negocios', estado: 'Sector público (ANE e instituciones)', remoto: 'Bolsas de trabajo remoto', agregador: 'Buscadores de empleo' };
 const TAGS = { bilingue: 'Inglés o bilingüe', junior: 'Sin experiencia o pasantía', temporal: 'Temporal o medio tiempo' };
 const DAYS = [[0, 'Cualquier fecha'], [1, 'Últimas 24 horas'], [3, 'Últimos 3 días'], [7, 'Última semana'], [30, 'Último mes']];
 const QUICK = [
   ['🎧 Servicio al cliente', { c: 'servicio-cliente' }], ['🌎 Remoto', { s: 'remote' }], ['🗣️ Bilingüe', { t: 'bilingue' }],
-  ['🌱 Sin experiencia', { t: 'junior' }], ['🏭 Operario', { q: 'operario' }], ['💻 Desarrollador', { q: 'developer' }], ['📍 Heredia', { p: 'heredia' }],
+  ['🌱 Sin experiencia', { t: 'junior' }], ['🏭 Operario', { q: 'operario' }], ['💻 Desarrollador', { q: 'desarrollador' }], ['📍 Heredia', { p: 'heredia' }],
 ];
 
 const $ = (s, el = document) => el.querySelector(s);
@@ -87,7 +87,7 @@ function toast(msg) {
 }
 
 /* ---------- Estado ---------- */
-const DEFAULTS = { q: '', p: '', m: '', c: '', d: 0, s: 'all', o: '', t: [], so: 'recent', g: false };
+const DEFAULTS = { q: '', p: '', m: '', c: '', d: 0, s: 'all', o: '', t: [], so: 'recent', l: 'es', g: false };
 const state = { ...DEFAULTS };
 let ALL = [];
 let META = null;
@@ -123,13 +123,14 @@ function readUrl() {
   state.o = ORIGINS[get('o')] ? get('o') : '';
   state.t = (get('t') || '').split(',').filter((x) => TAGS[x]);
   state.so = get('so') === 'relevance' ? 'relevance' : 'recent';
+  state.l = get('l') === 'all' ? 'all' : 'es';
   state.g = q.get('g') === '1';
 }
 function writeUrl() {
   const q = new URLSearchParams();
   const preset = presetMap();
   const put = (k, v, def) => { const sv = Array.isArray(v) ? v.join(',') : String(v); if (sv !== String(def)) q.set(k, sv); };
-  for (const k of ['q', 'p', 'm', 'c', 'd', 's', 'o', 't', 'so']) put(k, state[k], preset[k] ?? (Array.isArray(DEFAULTS[k]) ? '' : DEFAULTS[k]));
+  for (const k of ['q', 'p', 'm', 'c', 'd', 's', 'o', 't', 'so', 'l']) put(k, state[k], preset[k] ?? (Array.isArray(DEFAULTS[k]) ? '' : DEFAULTS[k]));
   if (state.g) q.set('g', '1');
   const qs = q.toString();
   history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
@@ -156,6 +157,7 @@ function pass(j, skip, tq, cutoff) {
     if (state.s === 'cr' && j.kind === 'remoto') return false;
     if (state.s === 'remote' && j.modality !== 'remoto') return false;
   }
+  if (skip !== 'l' && state.l === 'es' && j.lang === 'en') return false;
   if (skip !== 'p' && state.p && j.province !== state.p) return false;
   if (skip !== 'm' && state.m && j.modality !== state.m) return false;
   if (skip !== 'c' && state.c && j.category !== state.c) return false;
@@ -262,6 +264,7 @@ function buildFacet(title, key, options, type) {
 function buildFacets() {
   const wrap = $('#facets');
   wrap.append(
+    buildFacet('Idioma del anuncio', 'l', [['es', 'Solo en español'], ['all', 'Español e inglés']], 'radio'),
     buildFacet('Provincia', 'p', [['', 'Todo el país'], ...PROVS], 'radio'),
     buildFacet('Modalidad', 'm', [['', 'Cualquiera'], ...Object.entries(MODS)], 'radio'),
     buildFacet('Publicado', 'd', DAYS.map(([n, l]) => [String(n), l]), 'radio'),
@@ -274,7 +277,8 @@ function updateFacets() {
     const base = filtered(f.key);
     for (const r of f.refs) {
       let n;
-      if (f.key === 'p') n = r.value ? base.filter((j) => j.province === r.value).length : base.length;
+      if (f.key === 'l') n = r.value === 'es' ? base.filter((j) => j.lang !== 'en').length : base.length;
+      else if (f.key === 'p') n = r.value ? base.filter((j) => j.province === r.value).length : base.length;
       else if (f.key === 'm') n = r.value ? base.filter((j) => j.modality === r.value).length : base.length;
       else if (f.key === 'o') n = r.value ? base.filter((j) => j.kind === r.value).length : base.length;
       else if (f.key === 't') n = base.filter((j) => j.tags?.includes(r.value)).length;
@@ -314,6 +318,7 @@ function updateRail() {
 function activeChips() {
   const chips = [];
   const add = (label, clear) => chips.push(h('button', { class: 'chip', type: 'button', 'aria-label': `Quitar filtro ${label}`, onclick: () => { clear(); shown = PAGE; render(); } }, label, icon('x')));
+  if (state.l === 'all') add('Español e inglés', () => (state.l = 'es'));
   if (state.q) add(`“${state.q}”`, () => { state.q = ''; $('#q').value = ''; });
   if (state.p) add(PROV_NAME[state.p], () => (state.p = ''));
   if (state.m) add(MODS[state.m], () => (state.m = ''));
@@ -324,14 +329,19 @@ function activeChips() {
   return chips;
 }
 
+const DAY = 864e5;
+const byDayLocalFirst = (a, b) =>
+  Math.floor(b._t / DAY) - Math.floor(a._t / DAY) || (a.kind === 'remoto') - (b.kind === 'remoto') || b._t - a._t;
+
 /* ---------- Render principal ---------- */
 function render() {
   if (shown === PAGE) autoLoads = 0;
   const list = state.g ? Object.values(saved).map(prepare) : filtered();
   if (!state.g) {
     const tq = terms();
-    list.sort((a, b) => (state.so === 'relevance' && tq.length ? score(b, tq) - score(a, tq) : 0) || b._t - a._t);
+    list.sort((a, b) => (state.so === 'relevance' && tq.length ? score(b, tq) - score(a, tq) : 0) || byDayLocalFirst(a, b));
   } else list.sort((a, b) => b._t - a._t);
+  if (!state.g && state.so !== 'relevance') list.sort(byDayLocalFirst);
 
   const jobsEl = $('#jobs');
   jobsEl.setAttribute('aria-busy', 'false');
@@ -363,9 +373,18 @@ function render() {
   $('#sort').value = state.so;
   $('#prov-select').value = state.p;
   $('#btn-saved').classList.toggle('on', state.g);
+  updateLangNote();
+  if (paintedLang !== state.l) paintStats(paintedLang !== null);
   updateFacets();
   updateRail();
   writeUrl();
+}
+function updateLangNote() {
+  const note = $('#lang-note');
+  const hidden = state.g || state.l !== 'es' ? 0 : filtered('l').filter((j) => j.lang === 'en').length;
+  note.hidden = !hidden;
+  if (!hidden) return;
+  note.replaceChildren('Mostrando solo ofertas en español. ', h('button', { class: 'link-btn', type: 'button', onclick: () => { state.l = 'all'; shown = PAGE; render(); } }, `Ver también ${nf.format(hidden)} en inglés`));
 }
 function resetAll() {
   Object.assign(state, { ...DEFAULTS, t: [] });
@@ -390,11 +409,16 @@ function countUp(el, to) {
   };
   requestAnimationFrame(tick);
 }
+let paintedLang = null;
+function paintStats(animate = true) {
+  paintedLang = state.l;
+  const pool = state.l === 'es' ? ALL.filter((j) => j.lang !== 'en') : ALL;
+  const set = (el, n) => (animate ? countUp(el, n) : (el.textContent = nf.format(n)));
+  set($('#st-total'), pool.length);
+  set($('#st-new'), pool.filter((j) => j._t >= Date.now() - 864e5).length);
+  set($('#st-co'), new Set(pool.map((j) => (j.company || '').toLowerCase()).filter(Boolean)).size);
+}
 function paintMeta() {
-  const live = ALL.filter((j) => j._t >= Date.now() - 864e5).length;
-  countUp($('#st-total'), ALL.length);
-  countUp($('#st-new'), live);
-  countUp($('#st-co'), META.companies || new Set(ALL.map((j) => j.company)).size);
   const upd = Date.parse(META.updatedAt);
   const stale = Date.now() - upd > 24 * 3600e3;
   $('#updated-text').textContent = stale ? `Última revisión ${ago(upd)}` : `Actualizado ${ago(upd)} · se refresca solo`;

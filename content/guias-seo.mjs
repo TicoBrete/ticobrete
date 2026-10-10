@@ -481,7 +481,7 @@ ${AVISO}
 <p>Si querés trabajar desde casa para empresas del exterior, hay plataformas especializadas. En TicoBrete reunimos ofertas de varias en la página de <a href="{ROOT}empleos/remoto/">trabajo remoto</a>, y solo incluimos las abiertas a Costa Rica o Latinoamérica.</p>
 
 <h2>7. TicoBrete</h2>
-<p>TicoBrete es un buscador gratuito que <strong>junta ofertas de varias de estas fuentes</strong> en un solo lugar: empresas, la ANE, comunidades y trabajo remoto. Podés filtrar por <a href="{ROOT}empleos/san-jose/">provincia</a>, categoría, modalidad y fecha, y siempre te llevamos al anuncio original. No pedimos registro.</p>
+<p>TicoBrete es un buscador gratuito que <strong>junta ofertas de varias de estas fuentes</strong> en un solo lugar: empresas, la ANE y trabajo remoto. Podés filtrar por <a href="{ROOT}empleos/san-jose/">provincia</a>, categoría, modalidad y fecha, y siempre te llevamos al anuncio original. No pedimos registro.</p>
 
 <h2>8. Tu red de contactos</h2>
 <p>Mucha gente encuentra su brete por recomendación. Contale a tus conocidos, ex compañeros y familia que estás buscando y qué tipo de trabajo querés.</p>

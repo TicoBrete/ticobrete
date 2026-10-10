@@ -23,19 +23,83 @@
     { "id": "wd-amgen", "name": "Amgen", "tenant": "amgen", "dc": "wd1", "site": "Careers" },
     { "id": "wd-mastercard", "name": "Mastercard", "tenant": "mastercard", "dc": "wd1", "site": "CorporateCareers" },
     { "id": "wd-msd", "name": "MSD", "tenant": "msd", "dc": "wd5", "site": "SearchJobs" },
-    { "id": "wd-analogdevices", "name": "Analog Devices", "tenant": "analogdevices", "dc": "wd1", "site": "External" }
+    { "id": "wd-analogdevices", "name": "Analog Devices", "tenant": "analogdevices", "dc": "wd1", "site": "External" },
+    { "id": "wd-astrazeneca", "name": "AstraZeneca", "tenant": "astrazeneca", "dc": "wd3", "site": "Careers" },
+    { "id": "wd-autodesk", "name": "Autodesk", "tenant": "autodesk", "dc": "wd1", "site": "Ext" },
+    { "id": "wd-curtisswright", "name": "Curtiss-Wright", "tenant": "curtisswright", "dc": "wd1", "site": "CW_External_Career_Site" },
+    { "id": "wd-huntsman", "name": "Huntsman", "tenant": "huntsman", "dc": "wd1", "site": "Huntsman" },
+    { "id": "wd-edwards", "name": "Edwards Lifesciences", "tenant": "edwards", "dc": "wd5", "site": "EdwardsCareers" },
+    { "id": "wd-lonza", "name": "Lonza", "tenant": "lonza", "dc": "wd3", "site": "Lonza_Careers" },
+    { "id": "wd-lseg", "name": "LSEG", "tenant": "lseg", "dc": "wd3", "site": "Careers" },
+    { "id": "wd-smithnephew", "name": "Smith & Nephew", "tenant": "smithnephew", "dc": "wd5", "site": "External" },
+    { "id": "wd-jll", "name": "JLL", "tenant": "jll", "dc": "wd1", "site": "jllcareers" },
+    { "id": "wd-workday", "name": "Workday", "tenant": "workday", "dc": "wd5", "site": "Workday" },
+    { "id": "wd-transunion", "name": "TransUnion", "tenant": "transunion", "dc": "wd5", "site": "TransUnion" },
+    { "id": "wd-fourseasons", "name": "Four Seasons", "tenant": "fourseasons", "dc": "wd3", "site": "search" },
+    { "id": "wd-dxc", "name": "DXC Technology", "tenant": "dxctechnology", "dc": "wd1", "site": "DXCJobs" },
+    { "id": "wd-visa", "name": "Visa", "tenant": "visa", "dc": "wd5", "site": "Visa" },
+    { "id": "wd-aliaxis", "name": "Aliaxis", "tenant": "aliaxis", "dc": "wd3", "site": "Aliaxis_LATAM_Career_Site" },
+    { "id": "wd-concentrix", "name": "Concentrix", "tenant": "cnx", "dc": "wd1", "site": "external_global" }
   ],
   "greenhouse": [
     { "id": "gh-elastic", "name": "Elastic", "token": "elastic" },
-    { "id": "gh-encora", "name": "Encora", "token": "encora10" }
+    { "id": "gh-encora", "name": "Encora", "token": "encora10" },
+    { "id": "gh-criticalmass", "name": "Critical Mass", "token": "criticalmass" },
+    { "id": "gh-smartsheet", "name": "Smartsheet", "token": "smartsheet" },
+    { "id": "gh-konradgroup", "name": "Konrad", "token": "konradgroup" },
+    { "id": "gh-databricks", "name": "Databricks", "token": "databricks" },
+    { "id": "gh-tebra", "name": "Tebra", "token": "tebra" },
+    { "id": "gh-datacor", "name": "Datacor", "token": "datacor" },
+    { "id": "gh-acquia", "name": "Acquia", "token": "acquia" },
+    { "id": "gh-bugcrowd", "name": "Bugcrowd", "token": "bugcrowd" },
+    { "id": "gh-greenlightconsulting", "name": "Greenlight Consulting", "token": "greenlightconsulting" },
+    { "id": "gh-unitriteam", "name": "UniTriTeam", "token": "unitriteam" },
+    { "id": "gh-nttdatausa", "name": "NTT DATA", "token": "nttdatausa" },
+    { "id": "gh-veeamsoftware", "name": "Veeam Software", "token": "veeamsoftware" },
+    { "id": "gh-12jlkfsk", "name": "Orion Global Solutions", "token": "12jlkfsk" },
+    { "id": "gh-zscaler", "name": "Zscaler", "token": "zscaler" },
+    { "id": "gh-sonymusicentertainment", "name": "Sony Music", "token": "sonymusicentertainment" },
+    { "id": "gh-infuse", "name": "INFUSE", "token": "infuse" },
+    { "id": "gh-powerdigitalmarketing", "name": "Power Digital", "token": "powerdigitalmarketing" }
   ],
   "lever": [
-    { "id": "lv-3pillar", "name": "3Pillar Global", "slug": "3pillarglobal" }
+    { "id": "lv-3pillar", "name": "3Pillar Global", "slug": "3pillarglobal" },
+    { "id": "lv-provectus", "name": "Provectus", "slug": "provectus" },
+    { "id": "lv-sysdig", "name": "Sysdig", "slug": "sysdig" },
+    { "id": "lv-omnidian", "name": "Omnidian", "slug": "omnidian" },
+    { "id": "lv-cscgeneration-2", "name": "CSC Generation", "slug": "cscgeneration-2" },
+    { "id": "lv-bluelightconsulting", "name": "Bluelight Consulting", "slug": "bluelightconsulting" },
+    { "id": "lv-atmosera", "name": "Atmosera", "slug": "atmosera" },
+    { "id": "lv-bluecatnetworks", "name": "BlueCat", "slug": "bluecatnetworks" },
+    { "id": "lv-penumbrainc", "name": "Penumbra", "slug": "penumbrainc" }
   ],
-  "telegram": [
-    { "id": "tg-stemjobscr", "channel": "STEMJobsCR", "label": "Telegram @STEMJobsCR", "format": "estructurado", "kind": "comunidad" },
-    { "id": "tg-empleos506cr", "channel": "empleos506cr", "label": "Telegram @empleos506cr", "format": "busca", "kind": "comunidad" },
-    { "id": "tg-stemjobslatam", "channel": "STEMJobsLATAM", "label": "Telegram @STEMJobsLATAM", "format": "estructurado", "kind": "remoto", "remote": true }
+  "smartrecruiters": [
+    { "id": "sr-walmartinc", "name": "Walmart", "company": "WalmartInc" },
+    { "id": "sr-experian", "name": "Experian", "company": "Experian" },
+    { "id": "sr-boschgroup", "name": "Bosch", "company": "BoschGroup" },
+    { "id": "sr-servicenow", "name": "ServiceNow", "company": "ServiceNow" },
+    { "id": "sr-sikaag", "name": "Sika", "company": "SikaAG" },
+    { "id": "sr-deliveryhero", "name": "Delivery Hero / PedidosYa", "company": "DeliveryHero" },
+    { "id": "sr-wnsglobalservices144", "name": "WNS", "company": "WNSGlobalServices144" },
+    { "id": "sr-hitachisolutions", "name": "Hitachi Solutions", "company": "HitachiSolutions" },
+    { "id": "sr-colibriteams", "name": "Colibri Teams", "company": "colibriteams" }
+  ],
+  "oracle": [
+    { "id": "or-dospinos", "name": "Dos Pinos", "host": "fa-enfw-saasfaprod1.fa.ocs.oraclecloud.com", "site": "CX_4001" },
+    { "id": "or-iom", "name": "OIM (Organización Internacional para las Migraciones)", "host": "fa-evlj-saasfaprod1.fa.ocs.oraclecloud.com", "site": "CX_1001", "keyword": "Costa Rica", "lang": "en" }
+  ],
+  "publico": [
+    { "id": "pub-dgsc", "type": "dgsc", "name": "Servicio Civil (vacantes del Estado)" },
+    { "id": "pub-poder-judicial", "type": "poder-judicial", "name": "Poder Judicial", "url": "https://ghreclutamientoyseleccion.poder-judicial.go.cr/index.php/concursos-y-convocatorias/vigentes" },
+    { "id": "pub-banco-popular", "type": "banco-popular", "name": "Banco Popular", "url": "https://www.bancopopular.fi.cr/formulario-bolsa-de-empleo/" }
+  ],
+  "successfactors": [
+    { "id": "sf-ice", "name": "ICE (Grupo ICE)", "url": "https://empleos.grupoice.com/search/?q=", "trusted": true, "kind": "estado", "allowEmpty": true },
+    { "id": "sf-grupoq", "name": "Grupo Q", "url": "https://empleos.grupoq.com/search/?q=&locationsearch=Costa+Rica" },
+    { "id": "sf-coloplast", "name": "Coloplast", "url": "https://careers.coloplast.com/go/Costa_Rica_es/4770001/", "trusted": true },
+    { "id": "sf-foundever", "name": "Foundever", "url": "https://jobs.foundever.com/go/Jobs-in-Costa-Rica/9235400/", "trusted": true },
+    { "id": "sf-ey", "name": "EY", "url": "https://careers.ey.com/ey/search/?q=&locationsearch=Costa+Rica" },
+    { "id": "sf-nestle", "name": "Nestlé", "url": "https://jobdetails.nestle.com/search/?createNewAlert=false&q=&locationsearch=Costa+Rica" }
   ],
   "ane": { "maxPages": 60, "delayMs": 900 },
   "submissions": { "requireApproval": false, "maxPerCompany": 8, "maxTotal": 300 },

@@ -56,3 +56,24 @@ export function detectTags(...texts) {
   if (/temporal|temporary|\bcontract\b|por contrato|plazo fijo|tiempo parcial|part.?time|medio tiempo|freelance|por horas/.test(t)) tags.push('temporal');
   return tags;
 }
+
+const ES_WORDS = new Set('de del la las el los para con en y un una unos unas por se que es al su sus como nuestro nuestra buscamos experiencia requisitos puesto empresa trabajo ventas servicio cliente clientes atencion gerente ingeniero ingeniera desarrollador desarrolladora analista asistente operario operaria tecnico tecnica jefe jefa coordinador coordinadora supervisor supervisora auxiliar encargado encargada contador contadora vendedor vendedora agente asesor asesora ejecutivo ejecutiva oficial bodega planta produccion mantenimiento ayudante chofer conductor mensajero cajero cajera secretaria recepcionista medico enfermero enfermera docente profesor profesora abogado abogada disenador mercadeo soporte sistemas practicante pasante gestor especialista responsable personal oportunidad jornada tiempo completo medio presencial hibrido remoto teletrabajo'.split(/\s+/));
+const EN_WORDS = new Set('the and of to for with in you we our your is are will an be as on at or by from this that engineer developer manager senior specialist analyst designer sales customer support representative associate director team work job role about who what join looking ability skills management officer executive technician operator administrator accountant consultant coordinator producer intern internship service services lead head full time part remote hybrid onsite site location responsibilities requirements qualifications benefits company staff clerk agent advisor assistant operations business account partner success growth product'.split(/\s+/));
+
+const GENERIC_COMPANY = /^(confidencial|confidential|an[oó]nim[oa]|anonymous|empresa confidencial|n\/a|na)$/i;
+export const cleanCompany = (c) => (c && !GENERIC_COMPANY.test(String(c).trim()) ? c : null);
+
+/** 'es' o 'en' según el texto del anuncio (título y extracto). Ante empate, lo remoto de bolsas extranjeras cuenta como inglés. */
+export function detectLang(job) {
+  const raw = `${job.title || ''} ${job.excerpt || ''}`.toLowerCase();
+  const accents = (raw.match(/[áéíóúñ¿¡]/g) || []).length * 2;
+  let es = accents;
+  let en = 0;
+  for (const w of fold(raw).split(/[^a-z]+/).filter(Boolean)) {
+    if (ES_WORDS.has(w)) es++;
+    if (EN_WORDS.has(w)) en++;
+  }
+  if (es > en) return 'es';
+  if (en > es) return 'en';
+  return job.kind === 'remoto' ? 'en' : 'es';
+}

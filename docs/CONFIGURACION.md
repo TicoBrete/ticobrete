@@ -25,14 +25,13 @@ Un robot (GitHub Actions) corre **cada 3 horas**, junta los empleos de varias fu
 |---|---|---|
 | Empresas directas | Medtronic, Abbott, Stryker, Intel, Philips, Baxter, P&G, Unisys, Johnson Controls, Pfizer, Equifax, Kyndryl, HP, Kimberly-Clark, 3M, Citi, Unilever, Amgen, Mastercard, MSD, Analog Devices (Workday), Elastic y Encora (Greenhouse), 3Pillar (Lever) | APIs JSON p├║blicas de sus p├íginas de empleo |
 | Estado | ANE, la Agencia Nacional de Empleo del MTSS (ane.cr) | Páginas públicas de resultados, una a la vez y con pausa; el enlace lleva a la búsqueda del ANE ya filtrada |
-| Comunidades | Telegram @STEMJobsCR, @empleos506cr, @STEMJobsLATAM | Vista p├║blica `t.me/s/canal` |
 | Trabajo remoto para ticos | Jobicy, Remotive, Himalayas, Remote OK, We Work Remotely | APIs/RSS p├║blicos, solo puestos abiertos a Costa Rica o Latinoam├®rica |
 | Buscador (opcional) | Jooble | API gratuita con llave (ver abajo) |
 
 Siempre se enlaza a la oferta original y se muestra de d├│nde viene. No se copian descripciones completas.
 
 ### Lo que NO se hace (a prop├│sito)
-- **No se lee Facebook, Instagram, WhatsApp, LinkedIn, Indeed ni Computrabajo directamente.** Sus t├®rminos lo proh├¡ben y bloquean a los robots. Hacerlo pondr├¡a el proyecto en riesgo legal y se romper├¡a a cada rato. Parte de ese contenido llega de forma leg├¡tima porque los canales de Telegram lo recopilan y enlazan.
+- **No se lee Facebook, Instagram, WhatsApp, LinkedIn, Indeed ni Computrabajo directamente.** Sus t├®rminos lo proh├¡ben y bloquean a los robots. Hacerlo pondr├¡a el proyecto en riesgo legal y se romper├¡a a cada rato. Tampoco se leen canales de Telegram: sus t├®rminos proh├¡ben el scraping y la agregaci├│n de su contenido.
 - Para sumar m├ís bolsas locales de forma legal use **Jooble** (abajo) o pida permiso a la bolsa para leer su feed.
 
 ## Publicarlo (una sola vez, unos 10 minutos)
@@ -99,7 +98,6 @@ Cada brete tiene un enlace **Reportar** y el pie del sitio tiene **Reportar o su
 Todo est├í en `config/sources.json`.
 - **Otra multinacional en Workday:** copie un bloque de `workday`. Los datos salen de la URL `https://EMPRESA.wdX.myworkdayjobs.com/SITIO`.
 - **Greenhouse / Lever:** `token` o `slug` de la empresa en su URL de empleos.
-- **Otro canal p├║blico de Telegram:** agregue su nombre (formato `estructurado` o `busca`).
 
 Cada fuente falla por separado: nada se rompe si una cambia.
 

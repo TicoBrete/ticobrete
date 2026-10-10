@@ -7,6 +7,30 @@ const NOT_FOR_CR = /(usa only|us only|u\.s\. only|united states only|us resident
 
 const eligible = (loc) => OPEN_TO_CR.test(loc || '') && !NOT_FOR_CR.test(loc || '');
 
+// Muchas bolsas dicen "Anywhere" pero el texto del anuncio limita la contratacion a otros paises.
+const PLACE = 'us|u\\.s\\.|usa|united states|canada|uk|u\\.k\\.|united kingdom|europe|european union|eu|emea|india|germany|ireland|portugal|spain|netherlands|france|poland|australia|new zealand|north america|philippines|south africa|israel';
+const GEO_LOCK = [
+  new RegExp(`\\b(must|need to|required to|have to)\\s+(be\\s+)?(located|based|reside|residing|live|living|resident)\\s+(in|within)\\s+(the\\s+)?(${PLACE})\\b`, 'i'),
+  new RegExp(`\\b(candidates|applicants|employees|people|talent)\\s+(who are\\s+)?(based|located|residing|living)\\s+(in|within)\\s+(the\\s+)?(${PLACE})\\b`, 'i'),
+  new RegExp(`\\b(hire|hiring)\\s+(candidates\\s+|people\\s+)?(based|located|residing|living)\\s+(in|within)\\s+(the\\s+)?(${PLACE})\\b`, 'i'),
+  new RegExp(`\\b(${PLACE})[- ](based|only|residents)\\b`, 'i'),
+  new RegExp(`\\bauthori[sz]ed to work (in|within) (the\\s+)?(${PLACE})\\b`, 'i'),
+  /\b(canada|united states|usa|us)\s*[-\u2013]\s*remote\s*\(/i,
+  /\bremote\s*[-\u2013(]\s*(us|usa|canada|uk|eu|europe)\b/i,
+];
+const HQ_OPEN = /(worldwide|anywhere|global|latam|latin america|latinoam|costa rica|central america|americas|south america)/i;
+const HQ_PLACE = new RegExp(`\\b(${PLACE})\\b`, 'i');
+const TITLE_US_CITY = /\([^)]*,\s*[A-Z]{2}\)\s*$/;
+
+export function geoLocked(title = '', text = '') {
+  const t = `${title}\n${text}`;
+  if (HQ_OPEN.test(text.slice(0, 600)) && !/\bonly\b/i.test(text.slice(0, 200))) return false;
+  if (GEO_LOCK.some((re) => re.test(t))) return true;
+  if (TITLE_US_CITY.test(title)) return true;
+  const hq = text.match(/headquarters:\s*([^\n]{0,160})/i)?.[1] || '';
+  return !!hq && !HQ_OPEN.test(hq) && HQ_PLACE.test(hq);
+}
+
 const base = (cfg) => ({ kind: 'remoto', remote: true, modality: 'remoto', location: 'Remoto desde Costa Rica', ...cfg });
 
 const SOURCES = {
@@ -14,6 +38,7 @@ const SOURCES = {
     const d = await getJson('https://jobicy.com/api/v2/remote-jobs?count=50&geo=costa-rica');
     return (d.jobs || [])
       .filter((j) => eligible(j.jobGeo) || /latam|anywhere/i.test(j.jobGeo || ''))
+      .filter((j) => !geoLocked(j.jobTitle, htmlToText(j.jobDescription || j.jobExcerpt || '')))
       .map((j) =>
         makeJob(
           base({
@@ -36,6 +61,7 @@ const SOURCES = {
     const d = await getJson('https://remotive.com/api/remote-jobs');
     return (d.jobs || [])
       .filter((j) => eligible(j.candidate_required_location))
+      .filter((j) => !geoLocked(j.title, htmlToText(j.description || '')))
       .map((j) =>
         makeJob(
           base({
@@ -63,6 +89,7 @@ const SOURCES = {
         const r = j.locationRestrictions || [];
         const ok = r.length === 0 || r.some((x) => /^costa rica$/i.test(x));
         if (!ok) continue;
+        if (geoLocked(j.title, htmlToText(j.description || j.excerpt || ''))) continue;
         out.push(
           makeJob(
             base({
@@ -89,7 +116,7 @@ const SOURCES = {
   async remoteok(ctx) {
     const d = await getJson('https://remoteok.com/api');
     return d
-      .filter((j) => j && j.position && eligible(j.location))
+      .filter((j) => j && j.position && eligible(j.location) && !geoLocked(j.position, htmlToText(j.description || '')))
       .map((j) =>
         makeJob(
           base({
@@ -114,6 +141,7 @@ const SOURCES = {
       const tag = (n) => decodeEntities(item.match(new RegExp(`<${n}>([\\s\\S]*?)</${n}>`))?.[1] ?? '').replace(/<!\[CDATA\[|\]\]>/g, '').trim();
       const region = `${tag('region')} ${tag('country')}`;
       if (!eligible(region)) continue;
+      if (geoLocked(tag('title'), htmlToText(tag('description')))) continue;
       const full = tag('title');
       const [company, ...rest] = full.split(': ');
       out.push(
