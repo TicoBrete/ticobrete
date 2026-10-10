@@ -51,6 +51,7 @@ export function makeJob(raw, ctx) {
     via: raw.via ? cleanText(raw.via, 50) : null,
     kind: raw.kind,
     postedAt,
+    until: toIso(raw.validUntil)?.slice(0, 10) ?? null,
     firstSeen: now.toISOString(),
   };
 }

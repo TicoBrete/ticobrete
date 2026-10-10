@@ -114,6 +114,7 @@
   ],
   "publico": [
     { "id": "pub-dgsc", "type": "dgsc", "name": "Servicio Civil (vacantes del Estado)" },
+    { "id": "pub-procomer", "type": "procomer", "name": "Talent Costa Rica (PROCOMER)" },
     { "id": "pub-poder-judicial", "type": "poder-judicial", "name": "Poder Judicial", "url": "https://ghreclutamientoyseleccion.poder-judicial.go.cr/index.php/concursos-y-convocatorias/vigentes" },
     { "id": "pub-banco-popular", "type": "banco-popular", "name": "Banco Popular", "url": "https://www.bancopopular.fi.cr/formulario-bolsa-de-empleo/" }
   ],

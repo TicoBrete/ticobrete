@@ -5,6 +5,7 @@ import { fetchWorkday } from './sources/workday.mjs';
 import { fetchGreenhouse, fetchLever } from './sources/ats.mjs';
 import { fetchSmartRecruiters } from './sources/smartrecruiters.mjs';
 import { fetchOracle } from './sources/oracle.mjs';
+import { fetchProcomer } from './sources/procomer.mjs';
 import { fetchTalentClue } from './sources/talentclue.mjs';
 import { fetchDgsc } from './sources/dgsc.mjs';
 import { fetchPoderJudicial, fetchBancoPopular } from './sources/publico.mjs';
@@ -24,7 +25,7 @@ function buildTasks(config, ctx) {
   for (const c of config.lever || []) tasks.push({ id: c.id, name: c.name, authoritative: true, run: () => fetchLever(c, ctx) });
   for (const c of config.smartrecruiters || []) tasks.push({ id: c.id, name: c.name, authoritative: true, run: () => fetchSmartRecruiters(c, ctx) });
   // Los avisos del sector público suben y bajan a diario (a veces no hay ninguno): una lista vacía es válida.
-  const PUBLICO = { dgsc: fetchDgsc, 'poder-judicial': fetchPoderJudicial, 'banco-popular': fetchBancoPopular };
+  const PUBLICO = { procomer: fetchProcomer, dgsc: fetchDgsc, 'poder-judicial': fetchPoderJudicial, 'banco-popular': fetchBancoPopular };
   for (const c of config.publico || []) tasks.push({ id: c.id, name: c.name, authoritative: true, allowEmpty: true, run: () => PUBLICO[c.type](c, ctx) });
   for (const c of config.successfactors || []) tasks.push({ id: c.id, name: c.name, authoritative: true, allowEmpty: !!c.allowEmpty, run: () => fetchSuccessFactors(c, ctx) });
   for (const c of config.talentclue || []) tasks.push({ id: c.id, name: c.name, authoritative: true, run: () => fetchTalentClue(c, ctx) });
@@ -78,7 +79,9 @@ export async function collect({ prev, config, now = new Date(), log = console.lo
   });
 
   const cutoff = daysAgo(maxAgeDays, now);
-  const fresh = (j) => (j.postedAt ?? j.firstSeen) >= cutoff;
+  // Una oferta vigente según su propia fuente (fecha de cierre futura) no se descarta por antigüedad.
+  const today = now.toISOString().slice(0, 10);
+  const fresh = (j) => (j.postedAt ?? j.firstSeen) >= cutoff || (j.until && j.until >= today);
 
   for (const r of results) {
     const { task } = r;
