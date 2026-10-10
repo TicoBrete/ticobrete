@@ -157,7 +157,7 @@ function buildPageSpecs(jobs, meta, prevPaths = new Set()) {
     heading: 'Trabajo remoto para personas en Costa Rica',
     intro: introFor(remote, 'remotas abiertas a Costa Rica o Latinoamérica', '<p>Incluimos solo puestos que una persona en Costa Rica pueda tomar. Revisá siempre la moneda, la forma de pago y los requisitos de idioma, y leé nuestra guía de <a href="{ROOT}guias/trabajo-remoto-desde-costa-rica/">trabajo remoto desde Costa Rica</a>.</p>'),
     faq: [
-      ['¿Necesito inglés para trabajar remoto?', 'En muchas ofertas sí, al menos nivel intermedio. Hay también puestos en español para empresas de Latinoamérica y España. Por defecto mostramos solo ofertas en español; elegí «Español e inglés» en los filtros para ver también las de inglés.'],
+      ['¿Necesito inglés para trabajar remoto?', 'En muchas ofertas sí, al menos nivel intermedio. Hay también puestos en español para empresas de Latinoamérica y España. Usá el filtro «Idioma» para ver solo las ofertas en español o solo las de inglés.'],
       ['¿Cómo me pagan si trabajo remoto para una empresa de afuera?', 'Depende de la empresa: transferencia, plataformas de pago o contratos como independiente. Consultá siempre con un contador sobre impuestos y seguro antes de empezar.'],
       ...FAQ_COMMON,
     ],
@@ -263,8 +263,8 @@ async function main() {
     throw new Error(`Caída sospechosa de ${prev.jobs.length} a ${jobs.length} puestos. Se cancela la publicación.`);
   }
 
-  // El sitio muestra por defecto solo ofertas en español; las de inglés viajan en jobs.json y se ven con el filtro de idioma.
-  const siteJobs = jobs.filter((j) => j.lang !== 'en');
+  // Por defecto se muestran todas las ofertas; el filtro de idioma permite ver solo español o solo inglés.
+  const siteJobs = jobs;
   const stats = {
     total: siteJobs.length.toLocaleString('es-CR'),
     fresh: siteJobs.filter((j) => Date.now() - Date.parse(j.postedAt) < 86400000).length.toLocaleString('es-CR'),
