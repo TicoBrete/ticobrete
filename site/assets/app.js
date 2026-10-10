@@ -35,7 +35,7 @@ const TAGS = { bilingue: 'Inglés o bilingüe', junior: 'Sin experiencia o pasan
 const DAYS = [[0, 'Cualquier fecha'], [1, 'Últimas 24 horas'], [3, 'Últimos 3 días'], [7, 'Última semana'], [30, 'Último mes']];
 const QUICK = [
   ['🎧 Servicio al cliente', { c: 'servicio-cliente' }], ['🌎 Remoto', { s: 'remote' }], ['🗣️ Bilingüe', { t: 'bilingue' }],
-  ['🌱 Sin experiencia', { t: 'junior' }], ['🏭 Operario', { q: 'operario' }], ['💻 Desarrollador', { q: 'desarrollador' }], ['📍 Heredia', { p: 'heredia' }],
+  ['🌱 Sin experiencia', { t: 'junior' }], ['🏭 Operario', { q: 'operario' }], ['💻 Desarrollador', { q: 'desarrollador' }], ['🇨🇷 Español', { l: 'es' }],
 ];
 
 const $ = (s, el = document) => el.querySelector(s);
@@ -264,7 +264,7 @@ function buildFacet(title, key, options, type) {
 function buildFacets() {
   const wrap = $('#facets');
   wrap.append(
-    buildFacet('Idioma del anuncio', 'l', [['es', 'Solo en español'], ['all', 'Español e inglés']], 'radio'),
+    buildFacet('Idioma', 'l', [['es', 'Español'], ['all', 'Español e inglés']], 'radio'),
     buildFacet('Provincia', 'p', [['', 'Todo el país'], ...PROVS], 'radio'),
     buildFacet('Modalidad', 'm', [['', 'Cualquiera'], ...Object.entries(MODS)], 'radio'),
     buildFacet('Publicado', 'd', DAYS.map(([n, l]) => [String(n), l]), 'radio'),

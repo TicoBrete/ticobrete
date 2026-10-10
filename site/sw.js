@@ -1,4 +1,4 @@
-const CACHE = 'ticobrete-v1';
+const CACHE = 'ticobrete-v2';
 
 self.addEventListener('install', () => self.skipWaiting());
 
