@@ -34,8 +34,8 @@ const ORIGINS = { empresa: 'Empresas directas', publicado: 'Publicados por negoc
 const TAGS = { junior: 'Sin experiencia o pasantía', temporal: 'Temporal o medio tiempo' };
 const DAYS = [[0, 'Cualquier fecha'], [1, 'Últimas 24 horas'], [3, 'Últimos 3 días'], [7, 'Última semana'], [30, 'Último mes']];
 const QUICK = [
-  ['🎧 Servicio al cliente', { c: 'servicio-cliente' }], ['🌎 Remoto', { s: 'remote' }], ['🇺🇸 Inglés', { l: 'en' }],
-  ['🌱 Sin experiencia', { t: 'junior' }], ['🏭 Operario', { q: 'operario' }], ['💻 Desarrollador', { q: 'desarrollador' }], ['🇨🇷 Español', { l: 'es' }],
+  ['🎧 Servicio al cliente', { c: 'servicio-cliente' }], ['🌎 Remoto', { s: 'remote' }], ['🌐 Inglés', { l: 'en' }],
+  ['🌱 Sin experiencia', { t: 'junior' }], ['🏭 Operario', { q: 'operario' }], ['💻 Desarrollador', { q: 'desarrollador' }], ['🗣️ Español', { l: 'es' }],
 ];
 
 const $ = (s, el = document) => el.querySelector(s);
