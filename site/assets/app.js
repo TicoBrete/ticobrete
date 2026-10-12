@@ -508,10 +508,7 @@ function bind() {
 }
 
 /* ---------- Arranque ---------- */
-async function init() {
-  readUrl();
-  buildFacets(); buildRail(); buildQuick(); buildFooter(); bind(); updateSavedCount();
-  $('#q').value = state.q;
+async function loadData() {
   try {
     const res = await fetch(`${ROOT}data/jobs.json`, { cache: 'no-cache' });
     if (!res.ok) throw new Error(res.status);
@@ -528,6 +525,19 @@ async function init() {
       h('p', { text: 'Revisá tu conexión e intentá de nuevo.' }),
       h('button', { class: 'btn btn-primary', type: 'button', onclick: () => location.reload() }, 'Reintentar')));
   }
+}
+
+/* Los datos se piden cuando la página ya pintó (o apenas la persona interactúa): así no compiten con lo primero que se ve. */
+function init() {
+  readUrl();
+  buildFacets(); buildRail(); buildQuick(); buildFooter(); bind(); updateSavedCount();
+  $('#q').value = state.q;
+  let pedido = false;
+  const pedir = () => { if (!pedido) { pedido = true; loadData(); } };
+  for (const ev of ['pointerdown', 'keydown', 'focusin', 'touchstart']) addEventListener(ev, pedir, { once: true, capture: true, passive: true });
+  const luego = () => setTimeout(pedir, 150);
+  if (document.readyState === 'complete') luego(); else addEventListener('load', luego, { once: true });
   if ('serviceWorker' in navigator) navigator.serviceWorker.register(`${ROOT}sw.js`).catch(() => {});
 }
+
 init();
