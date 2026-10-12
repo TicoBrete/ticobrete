@@ -504,3 +504,12 @@ html[data-still] *, html[data-still] *::before, html[data-still] *::after { anim
 }
 .lang-note { margin: 8px 0 0; font-size: .9rem; color: var(--muted, #5b6480); }
 .lang-note .link-btn { padding: 0 2px; font-size: inherit; }
+
+/* Rendimiento: degradados en lugar de blur() (mismo aspecto, mucho más barato de pintar) y contraste de opciones vacías */
+.blob { filter: none; }
+.b1 { width: 820px; height: 820px; left: -300px; top: -380px; background: radial-gradient(closest-side, #2346f5, rgba(35, 70, 245, 0)); }
+.b2 { width: 700px; height: 700px; right: -260px; top: -260px; background: radial-gradient(closest-side, #10b5c8, rgba(16, 181, 200, 0)); }
+.b3 { width: 640px; height: 640px; bottom: -420px; background: radial-gradient(closest-side, #ff3b5c, rgba(255, 59, 92, 0)); }
+@media (max-width: 700px) { .blob { animation: none; will-change: auto; } }
+.opt.is-empty { opacity: 1; }
+.opt.is-empty .opt-label, .opt.is-empty .opt-count { color: var(--muted); }
