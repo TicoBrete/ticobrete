@@ -1,5 +1,5 @@
 // Calculadoras laborales. El cálculo corre en el navegador (site/assets/calc.js) y no se envía ningún dato.
-const AVISO = `<aside class="note"><strong>Cálculo de referencia, no asesoría legal.</strong> El resultado es aproximado y no sustituye el cálculo que haga tu empleador ni el del MTSS. Tus datos no salen de tu dispositivo. Última revisión: 9 de octubre de 2026.</aside>`;
+const AVISO = `<aside class="note"><strong>Cálculo de referencia, no asesoría legal.</strong> El resultado es aproximado y no sustituye el cálculo que haga tu empleador ni el del MTSS. Tus datos no salen de tu dispositivo. Última revisión: 13 de octubre de 2026.</aside>`;
 
 const campo = (etiqueta, nombre, extra = '', ayuda = '') =>
   `<label class="field"><span>${etiqueta}</span><input name="${nombre}" ${extra}>${ayuda ? `<small>${ayuda}</small>` : ''}</label>`;

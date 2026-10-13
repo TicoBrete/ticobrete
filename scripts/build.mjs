@@ -14,6 +14,7 @@ import { GUIAS_NUEVAS } from '../content/guias-nuevas.mjs';
 import { DESTACADAS, META, TEMAS } from '../content/guias-meta.mjs';
 import { construirGuias, prepararGuias } from './lib/guias-site.mjs';
 import { construirHerramientas } from './lib/herramientas.mjs';
+import { construirMercado } from './lib/mercado.mjs';
 
 // Guías y calculadoras: se validan al construir (cada una necesita su ficha en content/guias-meta.mjs).
 const { guias: GUIAS, temas: TEMAS_GUIAS } = prepararGuias([...GUIAS_BASE, ...GUIAS_LABORALES, ...GUIAS_SEO, ...GUIAS_EXTRA, ...GUIAS_NUEVAS, ...GUIAS_CALC], TEMAS, META, DESTACADAS);
@@ -356,6 +357,7 @@ async function main() {
   // Guías, calculadoras y páginas por tema
   const urlsGuias = construirGuias({ guias: GUIAS, temas: TEMAS_GUIAS, DESTACADAS, esc, json, fill, write, rootFor, SITE_URL, articleTpl, verifyMeta, fmtDate, jobsTotal: siteJobs.length });
 
+  const urlsMercado = construirMercado({ jobs: siteJobs, meta, CATEGORIES, PROVINCES, esc, json, fill, write, rootFor, SITE_URL, articleTpl, verifyMeta, fmtDate });
   const urlsHerr = construirHerramientas({ guias: GUIAS, esc, json, fill, write, rootFor, SITE_URL, articleTpl, verifyMeta, fmtDate });
 
   // 404 (fuera del índice de buscadores, con rutas absolutas para que funcione en cualquier URL)
@@ -365,7 +367,7 @@ async function main() {
   );
 
   writeFileSync(join(DIST, 'feed.xml'), rss(siteJobs));
-  const urls = [...specs.filter((s) => !s.thin).map((s) => [s.path, day, s.path ? '0.7' : '1.0', 'daily']), ...urlsGuias, ...urlsHerr];
+  const urls = [...specs.filter((s) => !s.thin).map((s) => [s.path, day, s.path ? '0.7' : '1.0', 'daily']), ...urlsGuias, ...urlsHerr, ...urlsMercado];
   writeFileSync(
     join(DIST, 'sitemap.xml'),
     `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map(([p, d, pr, cf]) => `<url><loc>${SITE_URL}/${p}</loc><lastmod>${d}</lastmod><changefreq>${cf}</changefreq><priority>${pr}</priority></url>`).join('')}</urlset>`,

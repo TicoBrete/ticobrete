@@ -76,3 +76,14 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Avisar a Bing y otros buscadores (IndexNow)
+        if: github.event_name == 'push'
+        continue-on-error: true
+        env:
+          INDEXNOW_KEY: 0f371049fcb72dbe44cc01c0cdabef1a
+        run: |
+          sleep 60
+          urls=$(curl -fsS "${{ env.SITE_URL }}/sitemap.xml" | grep -o '<loc>[^<]*</loc>' | sed 's/<[^>]*>//g' | head -500)
+          list=$(printf '%s\n' "$urls" | jq -R . | jq -s .)
+          curl -fsS -X POST https://api.indexnow.org/IndexNow -H 'Content-Type: application/json; charset=utf-8' -d "{\"host\":\"ticobrete.com\",\"key\":\"$INDEXNOW_KEY\",\"keyLocation\":\"https://ticobrete.com/$INDEXNOW_KEY.txt\",\"urlList\":$list}"
