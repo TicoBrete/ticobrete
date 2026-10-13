@@ -876,4 +876,306 @@ ${AVISO}
 <p>Si es sin goce, sí, lo que corresponda. Si te lo prometieron con goce, reclamalo por escrito.</p>
 `,
   },
+  {
+    slug: 'trabajo-informal-derechos-sin-contrato-costa-rica',
+    title: 'Trabajo informal en Costa Rica: tus derechos sin contrato escrito',
+    description: 'Si trabajás sin contrato escrito en Costa Rica, igual tenés derechos: salario mínimo, aguinaldo, vacaciones y CCSS. Cómo probar tu relación laboral y reclamar.',
+    h1: 'Trabajo informal: tus derechos aunque no tengas contrato escrito',
+    lead: 'Que no hayas firmado nada no significa que no tengas derechos. Así se prueba una relación laboral y qué podés reclamar.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<h2>Sin contrato escrito, igual hay relación laboral</h2>
+<p>El artículo 18 del Código de Trabajo dice que hay contrato de trabajo cuando alguien presta servicios a otra persona <strong>bajo su dependencia y dirección, a cambio de una remuneración</strong>, y que la ley <strong>presume que existe</strong> ese contrato entre quien trabaja y quien recibe el servicio. El artículo 25 agrega que <strong>la falta de contrato escrito se le imputa al patrono</strong>, y que el contrato verbal se prueba por todos los medios generales de prueba.</p>
+<p>O sea: si te dan órdenes, un horario y te pagan, sos una persona trabajadora aunque nunca hayas firmado un papel.</p>
+
+<h2>Cuándo puede ser verbal y cuándo no</h2>
+<ul>
+  <li>El contrato <strong>puede ser verbal</strong> en labores agrícolas o ganaderas y en trabajos accidentales o temporales de hasta 90 días (art. 22). En esos casos, el patrono debe darte cada 30 días, si lo pedís, una constancia escrita de los días trabajados y lo que te pagó.</li>
+  <li>En los demás casos <strong>debe ser escrito</strong>, en tres copias (art. 23). Mirá la guía de <a href="{ROOT}guias/tipos-de-contrato-periodo-de-prueba-costa-rica/">tipos de contrato</a>.</li>
+</ul>
+
+<h2>Qué derechos tenés igual</h2>
+<ul>
+  <li><strong>Salario</strong> al menos igual al <a href="{ROOT}guias/salario-minimo-por-ocupacion-costa-rica/">mínimo de tu ocupación</a>, pagado completo y a tiempo. Mirá <a href="{ROOT}guias/rebajos-salario-ilegales-costa-rica/">rebajos del salario</a>.</li>
+  <li><strong>Aguinaldo</strong> y <strong>vacaciones</strong>, proporcionales a lo que trabajaste. Mirá <a href="{ROOT}guias/aguinaldo-costa-rica/">aguinaldo</a> y <a href="{ROOT}guias/vacaciones-costa-rica/">vacaciones</a>.</li>
+  <li><strong>Seguro de la CCSS</strong> y póliza de riesgos del trabajo, que tu patrono debe pagar.</li>
+  <li><strong>Pago de horas extra y feriados</strong>. Mirá <a href="{ROOT}guias/horas-extra-feriados-costa-rica/">horas extra y feriados</a>.</li>
+  <li><strong>Preaviso y cesantía</strong> si te despiden sin justa causa y llevás el tiempo requerido. Mirá <a href="{ROOT}guias/despido-cesantia-preaviso-costa-rica/">despido y cesantía</a>.</li>
+</ul>
+
+<h2>Cómo probar que trabajás</h2>
+<p>Con contrato verbal, se prueba con cualquier medio. Empezá a juntar pruebas desde ya:</p>
+<ol>
+  <li><strong>Mensajes y correos</strong> donde te dan instrucciones, horarios o tareas.</li>
+  <li><strong>Comprobantes de pago:</strong> depósitos, transferencias, sobres o recibos.</li>
+  <li><strong>Fotos, uniforme, carné o ropa de trabajo</strong> y registros de entrada y salida.</li>
+  <li><strong>Testigos:</strong> compañeros o clientes que te vean trabajar. El Código pide más testigos cuando son personas al servicio del mismo patrono: tres declarantes conformes, o dos si el patrono ocupa a cuatro personas o menos.</li>
+  <li><strong>Un cuaderno</strong> con fechas, horas trabajadas y pagos recibidos.</li>
+</ol>
+
+<h2>Si te pagan "por fuera" o sin CCSS</h2>
+<p>Muchos patronos pagan una parte sin reportarla para ahorrar cargas sociales. A vos te perjudica: <strong>cotizás menos</strong> para tu pensión, tu incapacidad y tu seguro. Pedí que te reporten el salario real. Si no lo hacen, mirá la guía de <a href="{ROOT}guias/cuotas-ccss-pension-ivm-costa-rica/">cuotas de la CCSS y pensión</a> y la de <a href="{ROOT}guias/denunciar-patrono-mtss-costa-rica/">cómo denunciar</a>.</p>
+
+<h2>Cómo reclamar</h2>
+<ol>
+  <li><strong>Hablá con tu patrono</strong> y pedí por escrito lo que te corresponde.</li>
+  <li><strong>Consultá al MTSS</strong>: 800-TRABAJO (800 872 2256). La Inspección de Trabajo atiende denuncias aunque no tengas contrato escrito.</li>
+  <li><strong>No esperés mucho:</strong> los reclamos laborales tienen plazos de prescripción. En general, el plazo para reclamar derechos del contrato corre desde que termina la relación, así que consultá cuanto antes.</li>
+</ol>
+
+<h2>Si trabajás por tu cuenta de verdad</h2>
+<p>Si sos independiente de verdad (tenés tus propios clientes y decidís cómo trabajás), las reglas son otras. Mirá <a href="{ROOT}guias/trabajar-por-cuenta-propia-costa-rica/">trabajar por cuenta propia</a> para formalizarte con Hacienda y la CCSS.</p>
+
+<h2>Fuentes</h2>
+<ul>
+  <li><a href="https://es.wikisource.org/wiki/C%C3%B3digo_de_Trabajo,_de_27_de_agosto_de_1943,_(cr):_T%C3%ADtulo_2._Cap%C3%ADtulo_1" target="_blank" rel="noopener">Código de Trabajo, arts. 18 a 25</a></li>
+  <li><a href="https://www.mtss.go.cr/elministerio/marco-legal/documentos/Codigo_Trabajo_RPL.pdf" target="_blank" rel="noopener">Código de Trabajo (copia del MTSS)</a></li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Puedo reclamar si nunca firmé nada?</h3>
+<p>Sí. La ley presume la relación laboral y la falta de contrato escrito se imputa al patrono. Lo importante es reunir pruebas.</p>
+<h3>¿Me pueden despedir sin pagarme nada?</h3>
+<p>No. Tenés derecho al pago de lo trabajado, vacaciones y aguinaldo proporcionales, y, según el caso, a preaviso y cesantía.</p>
+<h3>¿Y si me pagan en efectivo?</h3>
+<p>Guardá todo lo que muestre que trabajaste y recibiste pago: mensajes, fotos, testigos. Pedí un comprobante cada vez.</p>
+`,
+  },
+  {
+    slug: 'trabajar-menor-de-18-anos-costa-rica',
+    title: 'Trabajar siendo menor de 18 años en Costa Rica: reglas básicas',
+    description: 'Qué dice la ley si querés trabajar siendo menor de edad en Costa Rica: edad mínima de 15 años, jornada de 6 horas, derechos y a quién consultar.',
+    h1: 'Trabajar siendo menor de 18 años en Costa Rica',
+    lead: 'Si tenés 15, 16 o 17 años y querés trabajar, hay reglas especiales para protegerte. Esto es lo básico y a quién consultar.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<h2>La edad mínima: 15 años</h2>
+<p>El Código de la Niñez y la Adolescencia (art. 92) prohíbe el trabajo de las personas menores de 15 años. Para que una persona menor de edad pueda ser contratada debe ser mayor de 15, según la Escuela Judicial. A partir de los 15 años, el Código de Trabajo reconoce la capacidad de contratar tu trabajo y de cobrar tu salario (art. 46); eso no significa que quedés emancipado.</p>
+<p>Entre los 15 y los 17 años se te llama <strong>persona adolescente trabajadora</strong> y tenés una protección reforzada.</p>
+
+<h2>Jornada: máximo 6 horas al día</h2>
+<p>La jornada autorizada para las personas adolescentes es de <strong>6 horas diarias y 36 semanales</strong>, según el Poder Judicial. Todo lo que pase de eso no debería aplicarse a vos. Si te piden más tiempo, consultá al MTSS.</p>
+
+<h2>Tus derechos son los mismos que los de cualquiera</h2>
+<ul>
+  <li><strong>Salario</strong> al menos el mínimo de la ocupación, proporcional a las horas. Mirá <a href="{ROOT}guias/salario-minimo-por-ocupacion-costa-rica/">salario mínimo por ocupación</a>.</li>
+  <li><strong>Aguinaldo, vacaciones y seguro de la CCSS</strong>, y póliza de riesgos del trabajo. Mirá <a href="{ROOT}guias/derechos-laborales-costa-rica/">derechos laborales</a>.</li>
+  <li><strong>Pago de horas extra y feriados.</strong></li>
+  <li><strong>Un contrato claro</strong> y trato digno. Mirá <a href="{ROOT}guias/acoso-laboral-hostigamiento-sexual-costa-rica/">acoso laboral y hostigamiento sexual</a>.</li>
+</ul>
+
+<h2>Trabajos que no son para menores</h2>
+<p>El trabajo adolescente no puede ser peligroso ni perjudicar tu salud, tu educación o tu desarrollo. El MTSS lo define como el trabajo que es <strong>nocivo para la salud o el desarrollo</strong>. Cosas como cargar mucho peso, manejar maquinaria peligrosa, usar químicos o trabajar en lugares de riesgo suelen estar vedadas. Si tenés dudas sobre un trabajo concreto, consultá antes de aceptarlo.</p>
+
+<h2>Antes de aceptar</h2>
+<ol>
+  <li><strong>Consultá el permiso:</strong> para que una persona adolescente trabaje pueden exigirse requisitos como la autorización del PANI y el consentimiento de tus padres o tutores. Confirmalo con el PANI y con el MTSS, porque el trámite lo debe gestionar el patrono.</li>
+  <li><strong>Pedí que te den un contrato</strong> con el horario y el salario. Mirá <a href="{ROOT}guias/tipos-de-contrato-periodo-de-prueba-costa-rica/">tipos de contrato</a>.</li>
+  <li><strong>Que no interfiera con el estudio.</strong> El colegio es parte de tu protección.</li>
+  <li><strong>Hablalo con tus padres o encargados.</strong></li>
+</ol>
+
+<h2>Opciones para empezar</h2>
+<ul>
+  <li><strong>Trabajos de medio tiempo</strong> o de fin de semana compatibles con tus estudios. Mirá <a href="{ROOT}guias/trabajar-y-estudiar-costa-rica/">trabajar y estudiar</a>.</li>
+  <li><strong>Cursos del INA</strong> para sumar conocimientos. Mirá <a href="{ROOT}guias/cursos-ina-becas-capacitacion-costa-rica/">cursos del INA y becas</a>.</li>
+  <li>Cuando cumplás 18, mirá la guía de <a href="{ROOT}guias/primer-empleo-costa-rica/">primer empleo</a>.</li>
+</ul>
+
+<h2>Si te sentís en riesgo o no te respetan</h2>
+<p>Consultá al MTSS (800-TRABAJO, 800 872 2256) o al PANI. Una persona menor de edad puede acudir a las autoridades. Mirá también <a href="{ROOT}guias/estafas-laborales-costa-rica/">estafas laborales</a>: a los jóvenes les ofrecen "trabajos fáciles" que son engaños.</p>
+
+<h2>Fuentes</h2>
+<ul>
+  <li><a href="https://escuelajudicialpj.poder-judicial.go.cr/Archivos/bibliotecaVirtual/otrasPublicaciones/brochures/Persona-Trabajadora-Adolescente.pdf" target="_blank" rel="noopener">Poder Judicial: Persona adolescente trabajadora</a></li>
+  <li><a href="https://www.mtss.go.cr/seguridad-social/trabajo-infantil/trabajo-infantil/guia_informativa_gobiernos_locales.pdf" target="_blank" rel="noopener">MTSS: guía informativa sobre trabajo infantil y adolescente</a></li>
+  <li><a href="https://es.wikisource.org/wiki/C%C3%B3digo_de_Trabajo,_de_27_de_agosto_de_1943,_(cr):_T%C3%ADtulo_2._Cap%C3%ADtulo_1" target="_blank" rel="noopener">Código de Trabajo, arts. 46 y 47</a></li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Puedo trabajar a los 14?</h3>
+<p>El trabajo de menores de 15 años está prohibido por el Código de la Niñez y la Adolescencia.</p>
+<h3>¿Me pueden pagar menos por ser menor?</h3>
+<p>El salario debe respetar el mínimo de la ocupación y se te debe pagar completo. Si te pagan menos, consultá al MTSS.</p>
+<h3>¿Puedo trabajar de noche?</h3>
+<p>La jornada autorizada para adolescentes es de 6 horas diarias y existen restricciones sobre el trabajo nocturno. Consultalo con el MTSS antes de aceptar un turno de noche.</p>
+`,
+  },
+  {
+    slug: 'cuotas-ccss-pension-ivm-costa-rica',
+    title: 'Cuotas de la CCSS y pensión IVM: cómo revisar las tuyas',
+    description: 'Qué son las cuotas de la CCSS y cómo se llega a la pensión por vejez (IVM): 65 años y 300 cuotas, cómo revisar tus cuotas y qué hacer si tu patrono no te reporta.',
+    h1: 'Cuotas de la CCSS y pensión: cómo revisar las tuyas',
+    lead: 'Cada mes te rebajan para tu pensión. Revisá que tu patrono las esté reportando bien, porque de eso depende tu pensión futura.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<h2>Qué son las cuotas</h2>
+<p>De tu salario se descuenta un aporte a la <strong>CCSS</strong>: seguro de salud (SEM) y pensión del régimen de <strong>Invalidez, Vejez y Muerte (IVM)</strong>. Tu patrono también aporta. Mirá cuánto se descuenta en la guía de <a href="{ROOT}guias/salario-bruto-neto-deducciones-costa-rica/">salario bruto y neto</a>. Cada mes que tu patrono reporta y paga es una <strong>cuota</strong> que cuenta para tu pensión.</p>
+
+<h2>Cuándo te podés pensionar por vejez</h2>
+<p>Según el Reglamento del Seguro de Invalidez, Vejez y Muerte, tiene derecho a la pensión por vejez ordinaria quien alcance los <strong>65 años de edad y haya contribuido con al menos 300 cuotas</strong> (25 años de cotización). El reglamento también contempla otras modalidades (con condiciones distintas), por lo que conviene consultar tu caso en la CCSS. El monto depende de tus salarios reportados y de las cuotas acumuladas.</p>
+
+<h2>Por qué importa que reporten tu salario real</h2>
+<ul>
+  <li>Una <strong>cuota reportada con menos salario</strong> da una pensión más baja.</li>
+  <li>Los meses <strong>sin reportar</strong> no cuentan.</li>
+  <li>También afecta tu <strong>incapacidad</strong>: el subsidio se calcula con tus salarios reportados. Mirá la <a href="{ROOT}guias/calculadora-incapacidad-costa-rica/">calculadora de incapacidad</a>.</li>
+  <li>Y tu <strong>seguro de salud</strong> y el de tu familia.</li>
+</ul>
+
+<h2>Cómo revisar tus cuotas</h2>
+<ol>
+  <li><strong>Oficina Virtual de la CCSS</strong> (en el sitio oficial ccss.sa.cr): podés consultar tu historial de cotización con tu cédula.</li>
+  <li><strong>En una sucursal de la CCSS</strong>: pedí un estado de cuenta o historial de cuotas.</li>
+  <li><strong>Revisá tu colilla de pago</strong> y compará el salario con lo que aparece reportado.</li>
+</ol>
+<p>Hacelo al menos una vez al año, y cada vez que cambiés de trabajo.</p>
+
+<h2>Qué hacer si tu patrono no te reporta o te reporta de menos</h2>
+<ol>
+  <li><strong>Pedí que lo corrijan por escrito</strong>, con tu colilla y el historial de la CCSS.</li>
+  <li><strong>Denunciá en la CCSS</strong> (Inspección) y consultá al MTSS: 800-TRABAJO (800 872 2256). Mirá la <a href="{ROOT}guias/denunciar-patrono-mtss-costa-rica/">guía para denunciar</a>.</li>
+  <li><strong>Guardá pruebas</strong> de que trabajaste y de lo que cobraste. Mirá <a href="{ROOT}guias/trabajo-informal-derechos-sin-contrato-costa-rica/">trabajo informal</a>.</li>
+</ol>
+
+<h2>Cómo tramitar la pensión</h2>
+<p>Cuando estés por cumplir los requisitos, la CCSS permite iniciar el trámite de pensión por vejez, incluso en línea desde la Oficina Virtual. Conviene empezar con tiempo, con tu cédula y tus documentos. Los pasos exactos y los requisitos cambian: revisalos en el sitio de la CCSS o en la SUPEN.</p>
+
+<h2>Si trabajás por tu cuenta</h2>
+<p>Como persona independiente podés afiliarte y cotizar tus propias cuotas. Mirá <a href="{ROOT}guias/trabajar-por-cuenta-propia-costa-rica/">trabajar por cuenta propia</a>.</p>
+
+<h2>Fuentes</h2>
+<ul>
+  <li><a href="https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=26485&param2=141400&param3=1&param4=" target="_blank" rel="noopener">Reglamento del Seguro de Invalidez, Vejez y Muerte (SINALEVI)</a></li>
+  <li><a href="https://www.ccss.sa.cr/pensionados" target="_blank" rel="noopener">CCSS: pensionados y trámites</a></li>
+  <li><a href="https://www.supen.fi.cr/en/tramites-para-pensionarme" target="_blank" rel="noopener">SUPEN: trámites para pensionarme</a></li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuántas cuotas necesito?</h3>
+<p>Para la pensión por vejez ordinaria, 300 cuotas (25 años) y 65 años de edad. Hay otras modalidades con requisitos distintos.</p>
+<h3>¿Cuentan los meses que trabajé sin que me reportaran?</h3>
+<p>No cuentan como cuotas mientras no se reporten. Por eso conviene reclamar y denunciar.</p>
+<h3>¿La pensión del IVM es lo mismo que la pensión complementaria?</h3>
+<p>No. El IVM es el régimen básico de la CCSS. La pensión complementaria es un ahorro adicional que administra una operadora de pensiones.</p>
+`,
+  },
+  {
+    slug: 'trabajo-personas-con-discapacidad-costa-rica',
+    title: 'Trabajo para personas con discapacidad en Costa Rica: derechos',
+    description: 'Derechos laborales de las personas con discapacidad en Costa Rica: Ley 8862 (5 % de plazas en el sector público), Ley 7600, no discriminación y dónde buscar apoyo.',
+    h1: 'Trabajo para personas con discapacidad en Costa Rica',
+    lead: 'Tenés derecho a un empleo adecuado a tus condiciones y a no ser discriminada o discriminado. Esto es lo que dice la ley y dónde buscar apoyo.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<h2>Tu derecho a trabajar</h2>
+<p>Según la guía del MTSS sobre inclusión laboral, el Estado garantiza a las personas con discapacidad, tanto en zonas rurales como urbanas, el <strong>derecho a un empleo adecuado a sus condiciones y necesidades</strong>. Esto se apoya en la Ley 7600 de Igualdad de Oportunidades para las Personas con Discapacidad y en la Ley 8862 para el sector público.</p>
+
+<h2>Ley 8862: sector público</h2>
+<p>La Ley 8862, de Inclusión y Protección Laboral de las Personas con Discapacidad en el Sector Público, establece que las instituciones del Estado deben <strong>reservar al menos el 5 % de sus plazas vacantes</strong> para personas con discapacidad. Su reglamento dice que contratar a una persona sin discapacidad en un puesto reservado es una falta grave. Si te interesa el sector público, mirá las convocatorias de cada institución y consultá al CONAPDIS.</p>
+
+<h2>Sector privado: no discriminación y apoyos</h2>
+<p>En el sector privado no se aplica la cuota del 5 %, pero la discriminación en el empleo está prohibida. Tu empleador no debe tratarte distinto, pagarte menos ni despedirte por tu discapacidad, y debe respetar tus derechos como a cualquier persona. Mirá <a href="{ROOT}guias/derechos-laborales-costa-rica/">derechos laborales</a>.</p>
+<p>Si necesitás <strong>ajustes en el puesto</strong> (acceso, horario, equipo o apoyos), pedilos por escrito y explicá qué te facilitaría el trabajo. Muchos ajustes son simples y de bajo costo.</p>
+
+<h2>Dónde buscar apoyo para encontrar trabajo</h2>
+<ul>
+  <li><strong>CONAPDIS</strong> (Consejo Nacional de Personas con Discapacidad): publica oportunidades y orienta sobre derechos.</li>
+  <li><strong>MTSS:</strong> tiene programas e información sobre inclusión laboral y la Agencia Nacional de Empleo. Mirá <a href="{ROOT}guias/bolsas-de-empleo-costa-rica/">bolsas de empleo</a>.</li>
+  <li><strong>INA:</strong> capacitación gratuita para ampliar tus opciones. Mirá <a href="{ROOT}guias/cursos-ina-becas-capacitacion-costa-rica/">cursos del INA</a>.</li>
+  <li><strong>Trabajo remoto:</strong> puede ser una buena opción si el transporte o el lugar son una barrera. Mirá <a href="{ROOT}empleos/remoto/">trabajos remotos</a>.</li>
+</ul>
+
+<h2>Cómo prepararte para postular</h2>
+<ol>
+  <li>Armá tu <a href="{ROOT}herramientas/armador-de-curriculum/">currículum</a> centrado en lo que sabés hacer.</li>
+  <li>Decidí cuándo y cómo hablar de tu discapacidad: no estás obligado a contarlo todo, pero si necesitás un ajuste para la entrevista, pedilo con tiempo.</li>
+  <li>Preparate con la guía de <a href="{ROOT}guias/entrevista-de-trabajo-costa-rica/">entrevista</a> y las <a href="{ROOT}guias/preguntas-entrevista-por-puesto-costa-rica/">preguntas por puesto</a>.</li>
+  <li>Verificá que la oferta sea real con el <a href="{ROOT}herramientas/verificador-de-ofertas-falsas/">verificador de ofertas</a>.</li>
+</ol>
+
+<h2>Si te discriminan</h2>
+<p>Guardá pruebas (mensajes, correos, testigos) y consultá al MTSS: 800-TRABAJO (800 872 2256), al CONAPDIS o a la Defensoría de los Habitantes. Mirá la <a href="{ROOT}guias/denunciar-patrono-mtss-costa-rica/">guía para denunciar</a>.</p>
+
+<h2>Fuentes</h2>
+<ul>
+  <li><a href="https://www.mtss.go.cr/seguridad-social/discapacidad/ABC_inclusion_laboral_discapacidad.pdf" target="_blank" rel="noopener">MTSS: ABC de la inclusión laboral de las personas con discapacidad</a></li>
+  <li><a href="https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=69886&param2=&param3=1&param4=" target="_blank" rel="noopener">Reglamento a la Ley 8862 (SINALEVI)</a></li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Las empresas privadas tienen que reservar plazas?</h3>
+<p>La reserva del 5 % de la Ley 8862 se aplica al sector público. En el privado rige la prohibición de discriminar.</p>
+<h3>¿Tengo que decir mi discapacidad en el currículum?</h3>
+<p>No estás obligado. Decidí según tu situación y lo que necesites para el proceso.</p>
+<h3>¿Dónde veo plazas reservadas?</h3>
+<p>En las convocatorias de cada institución pública y en los avisos del CONAPDIS.</p>
+`,
+  },
+  {
+    slug: 'cursos-ina-becas-capacitacion-costa-rica',
+    title: 'Cursos del INA gratis y becas para capacitarte en Costa Rica',
+    description: 'Cómo inscribirte en los cursos gratuitos del INA en Costa Rica, qué ofrecen, cuándo hay matrícula y otras opciones para capacitarte sin pagar.',
+    h1: 'Cursos del INA gratis y opciones de becas en Costa Rica',
+    lead: 'Capacitarte sube tus posibilidades de conseguir mejor trabajo y mejor salario. El INA es la puerta más grande y es gratuita.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<h2>Qué es el INA</h2>
+<p>El <strong>Instituto Nacional de Aprendizaje (INA)</strong> ofrece cursos y programas técnicos en todo el país, presenciales y virtuales, en áreas como tecnología, gastronomía, mecánica, redes, turismo y gestión empresarial. Según el propio INA, el acceso a sus programas es libre y gratuito. Algunos programas piden requisitos de escolaridad o de edad; revisalos en la ficha de cada curso.</p>
+
+<h2>Cómo inscribirte</h2>
+<ol>
+  <li><strong>Entrá a ina.ac.cr</strong> y buscá la sección de cursos o la <strong>búsqueda de cursos</strong>.</li>
+  <li><strong>Filtrá</strong> por área, regional (sede) y modalidad (presencial o virtual). Solo se muestran los cursos con fechas de matrícula definidas.</li>
+  <li><strong>Revisá los requisitos</strong> del curso: escolaridad, edad, horarios y documentos.</li>
+  <li><strong>Inscribite en el período de matrícula.</strong> El INA abre períodos de inscripción en fechas específicas durante el año, así que revisá su calendario y sus redes oficiales.</li>
+  <li><strong>Seguí las indicaciones</strong> que te envíen por correo (por ejemplo, la inducción o las pruebas de ingreso).</li>
+</ol>
+<p>Si tenés dudas, el INA atiende por teléfono y WhatsApp al 2210-6000.</p>
+
+<h2>Qué cursos conviene buscar según el trabajo</h2>
+<ul>
+  <li><strong>Cocina y restaurantes:</strong> manipulación de alimentos, cocina básica, servicio. Mirá <a href="{ROOT}guias/trabajo-cocina-restaurantes-costa-rica/">trabajar en restaurantes y cocina</a>.</li>
+  <li><strong>Logística y bodega:</strong> inventarios, montacargas, seguridad. Mirá <a href="{ROOT}guias/trabajo-bodega-logistica-costa-rica/">bodega y logística</a>.</li>
+  <li><strong>Servicio al cliente e inglés:</strong> idiomas y atención. Mirá <a href="{ROOT}guias/trabajar-call-center-costa-rica/">call center</a>.</li>
+  <li><strong>Tecnología y oficina:</strong> Excel, programación, soporte técnico.</li>
+  <li><strong>Oficios:</strong> electricidad, soldadura, mecánica y construcción.</li>
+</ul>
+
+<h2>Otras formas de capacitarte sin pagar</h2>
+<ul>
+  <li><strong>Programas del Estado y del MTSS</strong> para empleo y capacitación: los programas y requisitos cambian cada año, así que revisá las páginas de MTSS y de la Agencia Nacional de Empleo.</li>
+  <li><strong>Becas de estudio</strong> para colegio y universidad (por ejemplo, de FONABE, IMAS y de cada universidad): los requisitos y las fechas varían.</li>
+  <li><strong>Cursos en línea gratuitos</strong> de plataformas educativas.</li>
+</ul>
+<p>Antes de pagar un "curso" que promete trabajo, tené cuidado: un trabajo de verdad no te cobra por contratarte. Mirá la guía de <a href="{ROOT}guias/estafas-laborales-costa-rica/">estafas laborales</a> y el <a href="{ROOT}herramientas/verificador-de-ofertas-falsas/">verificador de ofertas</a>.</p>
+
+<h2>Cómo sacarle provecho</h2>
+<ol>
+  <li><strong>Escogé según las ofertas reales:</strong> revisá qué piden en los <a href="{ROOT}">bretes de TicoBrete</a> y estudiá lo que más aparece.</li>
+  <li><strong>Pedí el certificado</strong> y ponelo en tu <a href="{ROOT}herramientas/armador-de-curriculum/">currículum</a>.</li>
+  <li><strong>Combiná estudio y trabajo.</strong> Mirá <a href="{ROOT}guias/trabajar-y-estudiar-costa-rica/">trabajar y estudiar</a>.</li>
+  <li>Más adelante, usá lo aprendido para <a href="{ROOT}guias/como-pedir-aumento-costa-rica/">pedir un aumento</a> o para <a href="{ROOT}guias/pretension-salarial-cuanto-pedir-costa-rica/">negociar un mejor salario</a>.</li>
+</ol>
+
+<h2>Fuentes</h2>
+<ul>
+  <li><a href="https://www.ina.ac.cr/BusquedaCursos" target="_blank" rel="noopener">INA: búsqueda de cursos</a></li>
+  <li><a href="https://www.ina.ac.cr/SitePages/Faq.aspx" target="_blank" rel="noopener">INA: preguntas frecuentes</a></li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Los cursos del INA cuestan?</h3>
+<p>Según el INA, el acceso a sus programas es libre y gratuito. Algunos pueden pedir materiales o gastos propios, según el curso.</p>
+<h3>¿Necesito el colegio terminado?</h3>
+<p>Depende del programa. Hay cursos sin requisito de escolaridad y programas técnicos que sí piden estudios previos. Revisá la ficha del curso.</p>
+<h3>¿Cuándo es la matrícula?</h3>
+<p>El INA abre períodos de inscripción durante el año, con fechas distintas según el servicio. Seguí sus canales oficiales para no perder los plazos.</p>
+`,
+  },
 ];
