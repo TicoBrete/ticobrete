@@ -30,7 +30,7 @@ const BASE_PATH = new URL(SITE_URL).pathname.replace(/\/?$/, '/');
 const SITE = existsSync(join(ROOT, 'config', 'site.json')) ? JSON.parse(readFileSync(join(ROOT, 'config', 'site.json'), 'utf8')) : {};
 
 const MIN_COMBO = 5; // una página combinada solo existe si tiene contenido real
-const STATIC_JOBS = 30; // bretes escritos directo en el HTML para buscadores y personas sin JavaScript
+const STATIC_JOBS = 15; // bretes escritos directo en el HTML para buscadores y personas sin JavaScript
 
 const esc = (s = '') => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 const json = (o) => JSON.stringify(o).replace(/</g, '\\u003c');

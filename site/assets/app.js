@@ -535,7 +535,7 @@ function init() {
   let pedido = false;
   const pedir = () => { if (!pedido) { pedido = true; loadData(); } };
   for (const ev of ['pointerdown', 'keydown', 'focusin', 'touchstart']) addEventListener(ev, pedir, { once: true, capture: true, passive: true });
-  const luego = () => setTimeout(pedir, 150);
+  const luego = () => setTimeout(pedir, 300);
   if (document.readyState === 'complete') luego(); else addEventListener('load', luego, { once: true });
   if ('serviceWorker' in navigator) navigator.serviceWorker.register(`${ROOT}sw.js`).catch(() => {});
 }
