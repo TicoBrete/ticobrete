@@ -1,3 +1,4 @@
+import { shareHtml } from './share.mjs';
 import { SENALES } from '../../site/assets/verificador-core.js';
 const DATE = '2026-10-09';
 
@@ -314,7 +315,7 @@ export function construirHerramientas(ctx) {
     const canonical = `${SITE_URL}/${path}`;
     const html = fill(articleTpl, {
       ROOT: raiz, TITLE: esc(v.title), DESCRIPTION: esc(v.description), CANONICAL: esc(canonical), SITE_URL: esc(SITE_URL), VERIFY: verifyMeta(),
-      H1: esc(v.h1), LEAD: esc(v.lead), META_LINE: v.meta || '', CRUMBS: v.crumbs, BODY: v.body, SCRIPTS: v.scripts || '', OGTYPE: 'website',
+      H1: esc(v.h1), LEAD: esc(v.lead), META_LINE: v.meta || '', CRUMBS: v.crumbs, BODY: v.body, SHARE: shareHtml(v.h1, canonical), SCRIPTS: v.scripts || '', OGTYPE: 'website',
       JSONLD: `<script type="application/ld+json">${json(v.ld(canonical))}</script>`,
     }).replace(/\{ROOT\}/g, raiz);
     write(path, html);

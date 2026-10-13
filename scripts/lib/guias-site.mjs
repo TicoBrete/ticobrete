@@ -1,4 +1,5 @@
 import { fold } from './util.mjs';
+import { shareHtml } from './share.mjs';
 
 const palabras = (html) => html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
 const slugify = (s) => fold(s).replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -64,7 +65,7 @@ export function construirGuias(ctx) {
     const html = fill(articleTpl, {
       ROOT: raiz, TITLE: esc(v.title), DESCRIPTION: esc(v.description), CANONICAL: esc(canonical), SITE_URL: esc(SITE_URL),
       VERIFY: verifyMeta(), H1: esc(v.h1), LEAD: esc(v.lead || v.description), META_LINE: v.metaLine || '', CRUMBS: v.crumbs, BODY: v.body,
-      SCRIPTS: v.scripts || '', OGTYPE: v.ogtype || 'website',
+      SHARE: shareHtml(v.h1, canonical), SCRIPTS: v.scripts || '', OGTYPE: v.ogtype || 'website',
       JSONLD: `<script type="application/ld+json">${json(v.ld(canonical))}</script>`,
     }).replace(/\{ROOT\}/g, raiz);
     write(path, html);

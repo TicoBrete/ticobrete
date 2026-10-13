@@ -533,3 +533,19 @@ html[data-still] *, html[data-still] *::before, html[data-still] *::after { anim
 .ver-alto { border-color: #d6293e; background: color-mix(in srgb, #d6293e 8%, var(--surface)); }
 @media (max-width: 960px) { .ver-resultado { position: static; } }
 .page-article .article-main:has(.ver-app) { max-width: 1100px; }
+
+/* Compartir y herramientas en la portada */
+.share { margin: 34px 0 0; padding: 18px 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+.share-title { margin: 0 0 12px; font-weight: 700; }
+.share-btns { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.share-ok { color: var(--muted); font-weight: 650; font-size: .92rem; }
+.tools-home { margin-top: 56px; }
+.tools-home h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; }
+.tools-grid { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+.tools-grid a { display: grid; gap: 4px; padding: 16px 18px; height: 100%; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); color: var(--text); text-decoration: none; box-shadow: var(--shadow-sm); transition: .15s; }
+.tools-grid a:hover { border-color: var(--brand); transform: translateY(-2px); }
+.tools-grid b { font-weight: 750; }
+.tools-grid small { color: var(--muted); font-size: .86rem; }
+.tools-emoji { font-size: 1.5rem; line-height: 1; }
+.tools-more { margin-top: 16px; font-weight: 650; }
+.tools-more a, .tips a { color: var(--brand); font-weight: 650; text-underline-offset: 3px; }

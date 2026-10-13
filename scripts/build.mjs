@@ -202,6 +202,32 @@ function buildPageSpecs(jobs, meta, prevPaths = new Set()) {
   return specs;
 }
 
+// Guías y herramientas que se enlazan desde cada página de empleos, según la categoría.
+const GUIAS_BASE_LINKS = ['como-buscar-trabajo-en-costa-rica', 'curriculum-costa-rica', 'entrevista-de-trabajo-costa-rica', 'derechos-laborales-costa-rica', 'estafas-laborales-costa-rica', 'primer-empleo-costa-rica'];
+const GUIAS_POR_CAT = {
+  'servicio-cliente': ['trabajar-call-center-costa-rica', 'entrevista-en-ingles-costa-rica', 'preguntas-entrevista-por-puesto-costa-rica', 'pretension-salarial-cuanto-pedir-costa-rica'],
+  ventas: ['trabajo-ventas-costa-rica', 'preguntas-entrevista-por-puesto-costa-rica', 'pretension-salarial-cuanto-pedir-costa-rica', 'aguinaldo-costa-rica'],
+  logistica: ['trabajo-bodega-logistica-costa-rica', 'trabajo-conductor-mensajero-costa-rica', 'horas-extra-feriados-costa-rica', 'salario-minimo-por-ocupacion-costa-rica'],
+  manufactura: ['trabajo-bodega-logistica-costa-rica', 'salario-minimo-por-ocupacion-costa-rica', 'horas-extra-feriados-costa-rica', 'accidente-de-trabajo-riesgos-ins-costa-rica'],
+  turismo: ['trabajo-cocina-restaurantes-costa-rica', 'horas-extra-feriados-costa-rica', 'trabajar-y-estudiar-costa-rica', 'salario-minimo-por-ocupacion-costa-rica'],
+  servicios: ['trabajo-seguridad-costa-rica', 'salario-minimo-por-ocupacion-costa-rica', 'horas-extra-feriados-costa-rica', 'trabajo-informal-derechos-sin-contrato-costa-rica'],
+  construccion: ['salario-minimo-por-ocupacion-costa-rica', 'accidente-de-trabajo-riesgos-ins-costa-rica', 'trabajo-informal-derechos-sin-contrato-costa-rica', 'trabajar-por-cuenta-propia-costa-rica'],
+  tecnologia: ['trabajo-remoto-desde-costa-rica', 'pretension-salarial-cuanto-pedir-costa-rica', 'curriculum-costa-rica', 'entrevista-en-ingles-costa-rica'],
+  finanzas: ['curriculum-costa-rica', 'pretension-salarial-cuanto-pedir-costa-rica', 'entrevista-de-trabajo-costa-rica', 'tipos-de-contrato-periodo-de-prueba-costa-rica'],
+  gerencia: ['pretension-salarial-cuanto-pedir-costa-rica', 'curriculum-costa-rica', 'tipos-de-contrato-periodo-de-prueba-costa-rica', 'como-pedir-aumento-costa-rica'],
+  salud: ['curriculum-costa-rica', 'entrevista-de-trabajo-costa-rica', 'horas-extra-feriados-costa-rica', 'incapacidades-costa-rica'],
+  educacion: ['curriculum-costa-rica', 'entrevista-de-trabajo-costa-rica', 'tipos-de-contrato-periodo-de-prueba-costa-rica', 'vacaciones-costa-rica'],
+};
+const GUIAS_REMOTO = ['trabajo-remoto-desde-costa-rica', 'teletrabajo-ley-costa-rica', 'trabajar-por-cuenta-propia-costa-rica', 'entrevista-en-ingles-costa-rica'];
+const HERRAMIENTAS_LINKS = [['Armador de currículum', 'herramientas/armador-de-curriculum/'], ['Carta de presentación', 'herramientas/generador-carta-de-presentacion/'], ['Verificador de ofertas falsas', 'herramientas/verificador-de-ofertas-falsas/'], ['Calculadora de salario neto', 'guias/calculadora-salario-neto-costa-rica/']];
+
+function guiasContexto(spec) {
+  const cat = (spec.preset.match(/cat:([\w-]+)/) || [])[1];
+  const slugs = /scope:remote/.test(spec.preset) ? GUIAS_REMOTO : GUIAS_POR_CAT[cat] || GUIAS_BASE_LINKS;
+  const items = slugs.map((s) => GUIAS.find((g) => g.slug === s)).filter(Boolean);
+  return `<div><h3>Guías para este tipo de brete</h3><ul>${items.map((g) => `<li><a href="{ROOT}guias/${g.slug}/">${esc(g.h1)}</a></li>`).join('')}<li><a href="{ROOT}guias/">Todas las guías</a></li></ul></div>`;
+}
+const herramientasHtml = () => `<div><h3>Herramientas gratis</h3><ul>${HERRAMIENTAS_LINKS.map(([n, p]) => `<li><a href="{ROOT}${p}">${esc(n)}</a></li>`).join('')}<li><a href="{ROOT}herramientas/">Todas las herramientas</a></li></ul></div>`;
 function relatedHtml(spec, specs, jobs) {
   const exists = new Set(specs.map((s) => s.path));
   const provLinks = Object.entries(PROVINCES).map(([k, n]) => [`Empleos en ${n}`, `empleos/${k}/`, jobs.filter((j) => j.province === k).length]);
@@ -216,7 +242,7 @@ function relatedHtml(spec, specs, jobs) {
   if (p) {
     out.push(block(`Empleos en ${PROVINCES[p[1]]} por categoría`, Object.entries(CATEGORIES).map(([ck, cn]) => [cn, `empleos/${ck}/${p[1]}/`, jobs.filter((j) => j.category === ck && j.province === p[1]).length])));
   }
-  out.push(block('Por provincia', provLinks), block('Por categoría', catLinks), `<div><h3>Guías</h3><ul>${GUIAS.slice(0, 6).map((g) => `<li><a href="{ROOT}guias/${g.slug}/">${esc(g.h1)}</a></li>`).join('')}<li><a href="{ROOT}guias/">Todas las guías</a></li></ul></div>`);
+  out.push(block('Por provincia', provLinks), block('Por categoría', catLinks), guiasContexto(spec), herramientasHtml());
   return `<nav class="related" aria-label="Más empleos y guías">${out.join('')}</nav>`;
 }
 
