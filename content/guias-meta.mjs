@@ -109,6 +109,11 @@ export const META = {
   'liquidacion-laboral-finiquito-costa-rica': { tema: 'derechos-laborales', etiquetas: ['liquidación', 'finiquito', 'prestaciones'], cta: HOME },
   'denunciar-patrono-mtss-costa-rica': { tema: 'derechos-laborales', etiquetas: ['denuncia', 'mtss', 'inspección de trabajo'], cta: HOME },
 
+  'salario-bruto-neto-deducciones-costa-rica': { tema: 'derechos-laborales', etiquetas: ['salario neto', 'salario bruto', 'ccss', 'renta', 'deducciones', '2026'], cta: HOME },
+  'feriados-2027-costa-rica': { tema: 'derechos-laborales', etiquetas: ['feriados', '2027', 'horas extra', 'calendario'], cta: HOME },
+  'salario-minimo-por-ocupacion-costa-rica': { tema: 'derechos-laborales', etiquetas: ['salario mínimo', 'ocupación', 'mtss', '2026'], cta: HOME },
+  'como-renunciar-carta-renuncia-costa-rica': { tema: 'derechos-laborales', etiquetas: ['renuncia', 'preaviso', 'carta', 'liquidación'], cta: HOME },
+  'calculadora-salario-neto-costa-rica': { tema: 'calculadoras', etiquetas: ['salario neto', 'ccss', 'renta', 'calculadora'], cta: HOME },
   'trabajar-call-center-costa-rica': { tema: 'oficios', etiquetas: ['call center', 'servicio al cliente', 'inglés'], cta: ['Ver bretes de servicio al cliente', 'empleos/servicio-cliente/'] },
   'trabajo-seguridad-costa-rica': { tema: 'oficios', etiquetas: ['seguridad', 'oficial', 'agente', 'ley 8395'], cta: ['Ver bretes de servicios generales', 'empleos/servicios/'] },
   'trabajo-cocina-restaurantes-costa-rica': { tema: 'oficios', etiquetas: ['cocina', 'restaurante', 'salonero', 'carné de manipulación'], cta: ['Ver bretes de turismo y restaurantes', 'empleos/turismo/'] },

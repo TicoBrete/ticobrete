@@ -10,12 +10,13 @@ import { GUIAS_LABORALES } from '../content/guias-laborales.mjs';
 import { GUIAS_SEO } from '../content/guias-seo.mjs';
 import { GUIAS_EXTRA } from '../content/guias-extra.mjs';
 import { GUIAS_CALC } from '../content/guias-calc.mjs';
+import { GUIAS_NUEVAS } from '../content/guias-nuevas.mjs';
 import { DESTACADAS, META, TEMAS } from '../content/guias-meta.mjs';
 import { construirGuias, prepararGuias } from './lib/guias-site.mjs';
 import { construirHerramientas } from './lib/herramientas.mjs';
 
 // Guías y calculadoras: se validan al construir (cada una necesita su ficha en content/guias-meta.mjs).
-const { guias: GUIAS, temas: TEMAS_GUIAS } = prepararGuias([...GUIAS_BASE, ...GUIAS_LABORALES, ...GUIAS_SEO, ...GUIAS_EXTRA, ...GUIAS_CALC], TEMAS, META, DESTACADAS);
+const { guias: GUIAS, temas: TEMAS_GUIAS } = prepararGuias([...GUIAS_BASE, ...GUIAS_LABORALES, ...GUIAS_SEO, ...GUIAS_EXTRA, ...GUIAS_NUEVAS, ...GUIAS_CALC], TEMAS, META, DESTACADAS);
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist');

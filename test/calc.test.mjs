@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { aguinaldo, diasCesantia, diasPreaviso, diasVacaciones, horasExtra, inicioPeriodoAguinaldo, liquidacion, mesesEntre, vacaciones } from '../site/assets/calc.js';
+import { salarioNeto, aguinaldo, diasCesantia, diasPreaviso, diasVacaciones, horasExtra, inicioPeriodoAguinaldo, liquidacion, mesesEntre, vacaciones } from '../site/assets/calc.js';
 
 const d = (s) => new Date(`${s}T12:00:00`);
 
@@ -99,4 +99,19 @@ test('liquidación: renuncia no incluye cesantía y justa causa tampoco', () => 
   assert.ok(!jc.lineas.some((l) => /Cesant|Preaviso/.test(l.rubro)));
   const conPreaviso = liquidacion({ ...base, causa: 'despido', preavisoDado: true });
   assert.ok(!conPreaviso.lineas.some((l) => /Preaviso/.test(l.rubro)));
+});
+
+test('salario neto 2026: CCSS 10,83 % y renta por tramos', () => {
+  assert.equal(Math.round(salarioNeto({ bruto: 500000 }).neto), 445850);
+  assert.equal(salarioNeto({ bruto: 918000 }).renta, 0);
+  const a = salarioNeto({ bruto: 1000000 });
+  assert.equal(Math.round(a.ccss), 108300);
+  assert.equal(Math.round(a.renta), 8200);
+  assert.equal(Math.round(a.neto), 883500);
+  const b = salarioNeto({ bruto: 2000000 });
+  assert.equal(Math.round(b.renta), 140850);
+  assert.equal(Math.round(b.neto), 1642550);
+  assert.equal(Math.round(salarioNeto({ bruto: 2000000, hijos: 2, conyuge: true }).renta), 134840);
+  assert.equal(salarioNeto({ bruto: 1000000, hijos: 20, conyuge: true }).renta, 0);
+  assert.equal(salarioNeto({ bruto: 'x' }).neto, 0);
 });

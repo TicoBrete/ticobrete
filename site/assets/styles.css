@@ -513,3 +513,6 @@ html[data-still] *, html[data-still] *::before, html[data-still] *::after { anim
 @media (max-width: 700px) { .blob { animation: none; will-change: auto; } }
 .opt.is-empty { opacity: 1; }
 .opt.is-empty .opt-label, .opt.is-empty .opt-count { color: var(--muted); }
+.article-body blockquote { margin: 18px 0; padding: 16px 20px; border-left: 4px solid var(--brand); background: var(--surface); border-radius: 0 14px 14px 0; }
+.article-body blockquote p { margin: 0 0 10px; }
+.article-body blockquote p:last-child { margin-bottom: 0; }

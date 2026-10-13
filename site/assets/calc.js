@@ -79,7 +79,7 @@ export function liquidacion({ salario, inicio, fin, causa = 'despido', preavisoD
     else notas.push('Con menos de 3 meses de trabajo no hay cesantía ni preaviso.');
   } else if (causa === 'renuncia') {
     const dp = diasPreaviso(meses);
-    if (dp > 0 && !preavisoDado) notas.push(`Al renunciar debías dar ${dp} día(s) de preaviso. Según el MTSS, el empleador no puede rebajarlo de tus prestaciones; solo podría reclamarlo por la vía judicial.`);
+    if (dp > 0 && !preavisoDado) notas.push(`Al renunciar debías dar ${dp} día(s) de preaviso. Tu empleador podría reclamarlo; hay criterios distintos sobre si puede rebajarlo de la liquidación, así que consultá al MTSS antes de firmar.`);
     notas.push('Al renunciar, normalmente no corresponde cesantía.');
   } else {
     notas.push('Con despido por justa causa, normalmente no corresponden preaviso ni cesantía. Revisá que la causa sea real y esté demostrada.');
@@ -108,6 +108,25 @@ export function vacaciones({ semanas, salario }) {
   return { semanas: s, dias, dia, monto: dias * dia, faltan: Math.max(0, 50 - s) };
 }
 
+/** Salario neto 2026: CCSS obrera 10,83 % (SEM 5,50 + IVM 4,33 + Banco Popular 1,00) y renta sobre el salario bruto (Decreto 45333-H). */
+export const CCSS_OBRERA = 0.1083;
+export const TRAMOS_RENTA = [[918000, 0], [1347000, 0.10], [2364000, 0.15], [4727000, 0.20], [Infinity, 0.25]];
+export const CREDITO_HIJO = 1710;
+export const CREDITO_CONYUGE = 2590;
+
+export function salarioNeto({ bruto, hijos = 0, conyuge = false }) {
+  const b = num(bruto);
+  const ccss = b * CCSS_OBRERA;
+  let bruta = 0;
+  let desde = 0;
+  for (const [hasta, tasa] of TRAMOS_RENTA) {
+    if (b > desde) bruta += (Math.min(b, hasta) - desde) * tasa;
+    desde = hasta;
+  }
+  const creditos = bruta > 0 ? Math.min(bruta, Math.floor(num(hijos)) * CREDITO_HIJO + (conyuge ? CREDITO_CONYUGE : 0)) : 0;
+  const renta = bruta - creditos;
+  return { bruto: b, ccss, rentaBruta: bruta, creditos, renta, neto: b - ccss - renta };
+}
 /* ---------- Pantalla ---------- */
 const $ = (root, sel) => root.querySelector(sel);
 
@@ -157,7 +176,16 @@ const RENDER = {
       parrafo('Si tu salario cambió durante el año o ganás comisiones, sumá todo lo que realmente ganaste entre el 1 de diciembre y el 30 de noviembre y dividilo entre 12.', 'muted'),
     ];
   },
-  liquidacion(form) {
+  neto(form) {
+    const r = salarioNeto({ bruto: val(form, 'bruto'), hijos: val(form, 'hijos'), conyuge: form.elements.conyuge?.checked });
+    if (!r.bruto) return [parrafo('Escribí tu salario bruto mensual para calcular.', 'muted')];
+    const filas = [
+      ['Salario bruto', 'Antes de deducciones', colones(r.bruto)],
+      ['CCSS y Banco Popular', '10,83 % (SEM 5,50 + IVM 4,33 + Banco Popular 1,00)', '− ' + colones(r.ccss)],
+      ['Impuesto sobre el salario', r.rentaBruta ? (r.creditos ? `Tramos 2026, menos créditos fiscales de ${colones(r.creditos)}` : 'Tramos de renta 2026') : 'Tu salario está en el tramo exento (hasta ₡918.000)', '− ' + colones(r.renta)],
+    ];
+    return [tabla(filas, null), tabla([['Salario neto aproximado', 'Lo que te depositan al mes', colones(r.neto)]], null), parrafo('No incluye otras deducciones (préstamos, asociaciones, seguros voluntarios ni pensión complementaria voluntaria). Si ganás menos de ₡346.789 la CCSS usa una base mínima; revisá tu colilla.', 'muted')];
+  },  liquidacion(form) {
     const inicio = new Date(val(form, 'inicio'));
     const fin = new Date(val(form, 'fin'));
     if (!num(val(form, 'salario')) || Number.isNaN(+inicio) || Number.isNaN(+fin)) return [parrafo('Completá el salario y las dos fechas para calcular.', 'muted')];

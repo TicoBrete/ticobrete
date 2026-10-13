@@ -210,4 +210,53 @@ ${AVISO}
 <p>Dependen de lo que acordés con tu empleador, siempre respetando el descanso al que tenés derecho.</p>
 `,
   },
+  {
+    slug: 'calculadora-salario-neto-costa-rica',
+    tipo: 'calculadora',
+    title: 'Calculadora de salario neto en Costa Rica 2026',
+    description: 'Calculá tu salario neto en Costa Rica 2026: descuento de la CCSS (10,83 %), impuesto sobre la renta por tramos y créditos fiscales por hijos y cónyuge.',
+    h1: 'Calculadora de salario neto',
+    lead: 'Escribí tu salario bruto y mirá cuánto te depositan después de la CCSS y del impuesto sobre el salario, con las tarifas de 2026.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<section class="calc-box">
+  <form class="calc" data-calc="neto" novalidate>
+    <div class="calc-grid">
+      ${numero('Salario bruto mensual (₡)', 'bruto', 'El monto antes de deducciones, con horas extra y comisiones si las tuviste.', 'required')}
+      ${numero('Hijos a cargo', 'hijos', 'Cada hijo da un crédito fiscal de ₡1.710 al mes.', 'value="0" step="1" max="20"')}
+      <label class="field check"><input type="checkbox" name="conyuge"><span>Tengo cónyuge a cargo (crédito de ₡2.590)</span></label>
+    </div>
+    ${botones}
+  </form>
+  <div class="calc-result" data-resultado aria-live="polite" hidden></div>
+</section>
+
+<h2>Cómo se calcula</h2>
+<ol>
+  <li><strong>CCSS:</strong> se descuenta el 10,83 % del salario bruto (seguro de salud 5,50 %, pensión IVM 4,33 % y Banco Popular 1,00 %).</li>
+  <li><strong>Impuesto sobre el salario:</strong> exento hasta ₡918.000; 10 % de ₡918.000 a ₡1.347.000; 15 % hasta ₡2.364.000; 20 % hasta ₡4.727.000; y 25 % por encima. Cada tarifa se aplica solo al pedazo del salario que cae en ese tramo.</li>
+  <li><strong>Créditos fiscales:</strong> ₡1.710 por hijo y ₡2.590 por cónyuge, restados del impuesto.</li>
+  <li><strong>Salario neto</strong> = bruto − CCSS − impuesto.</li>
+</ol>
+
+<h2>Ejemplo</h2>
+<p>Con ₡1.000.000 de salario bruto: la CCSS se lleva ₡108.300, el impuesto es 10 % de ₡82.000 (lo que pasa de ₡918.000) = ₡8.200, y te quedan <strong>₡883.500</strong>.</p>
+
+<h2>Más información</h2>
+<ul>
+  <li><a href="{ROOT}guias/salario-bruto-neto-deducciones-costa-rica/">Salario bruto y neto: qué te rebajan en 2026</a>, con las fuentes oficiales.</li>
+  <li><a href="{ROOT}guias/salario-minimo-por-ocupacion-costa-rica/">Salario mínimo por ocupación</a>, para comparar con tu oferta.</li>
+  <li><a href="{ROOT}guias/calculadora-aguinaldo-costa-rica/">Calculadora de aguinaldo</a>.</li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Por qué mi colilla da un monto distinto?</h3>
+<p>Puede haber otras deducciones (préstamos, asociación solidarista, pólizas), una base mínima de la CCSS si ganás poco, o créditos fiscales que no declaraste. Pedí a tu patrono el desglose.</p>
+<h3>¿Las tarifas cambian?</h3>
+<p>Sí. Los tramos de renta se actualizan cada enero y la CCSS tiene aumentos programados hasta 2028. Esta calculadora usa las de 2026.</p>
+<h3>¿Sirve para salario por hora o por día?</h3>
+<p>Sumá todo lo que ganás en el mes y usalo como salario bruto mensual.</p>
+`,
+  },
 ];
