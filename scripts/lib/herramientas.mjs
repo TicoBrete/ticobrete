@@ -1,3 +1,4 @@
+import { SENALES } from '../../site/assets/verificador-core.js';
 const DATE = '2026-10-09';
 
 const campo = (k, etiqueta, extra = '') => `<label class="field"><span>${etiqueta}</span><input data-k="${k}" ${extra}></label>`;
@@ -249,6 +250,59 @@ const PRES = {
 <h3>¿Se guarda mi carta?</h3>
 <p>No. Todo se procesa en tu navegador y se borra al cerrar o recargar.</p>`,
 };
+const VER = {
+  slug: 'verificador-de-ofertas-falsas',
+  title: 'Verificador de ofertas de trabajo falsas: ¿es una estafa?',
+  description: 'Marcá lo que te pidieron o te ofrecieron y mirá el nivel de riesgo de una oferta de trabajo. Gratis, sin registro y sin enviar tus datos.',
+  h1: 'Verificador de ofertas de trabajo sospechosas',
+  lead: 'Marcá las señales que ves en la oferta y te decimos qué tan riesgosa es. Funciona en tu navegador: no se guarda ni se envía nada.',
+  body: `<div class="ver-app">
+  <form id="ver-form" class="ver-form" novalidate>
+    <fieldset><legend>¿Qué señales ves en la oferta?</legend>
+      <ul class="ver-lista">
+        ${SENALES.map((s) => `<li><label class="field check"><input type="checkbox" value="${s.id}"><span>${s.texto}</span></label></li>`).join('')}
+      </ul>
+    </fieldset>
+    <div class="calc-actions"><button class="btn btn-ghost" type="reset">Limpiar</button></div>
+  </form>
+  <div id="ver-resultado" class="ver-resultado" aria-live="polite"></div>
+</div>
+
+<h2>Cómo usar el verificador</h2>
+<ol>
+  <li>Marcá todo lo que se aplique a la oferta o al contacto: el resultado se actualiza solo.</li>
+  <li>Si sale <strong>riesgo alto</strong>, cortá la comunicación y no pagues ni mandes datos.</li>
+  <li>Si sale <strong>precaución o riesgo medio</strong>, verificá la empresa por tu cuenta: buscá su sitio oficial, llamá a un teléfono que no te hayan dado ellos y preguntá en la dirección que publican.</li>
+</ol>
+
+<h2>La regla de oro</h2>
+<p><strong>Un trabajo de verdad nunca te cobra para contratarte.</strong> Ni por uniforme, curso, carné, "capacitación" o "reservar" el puesto. Tampoco necesita tus claves, códigos de verificación ni que recibas plata de otras personas.</p>
+<p>Además, contratar costarricenses para trabajar en el exterior requiere permiso previo del Ministerio de Trabajo (art. 41 del Código de Trabajo). Si te ofrecen irte a trabajar fuera y te cobran gestiones, desconfiá.</p>
+
+<h2>Si ya enviaste datos o dinero</h2>
+<ol>
+  <li><strong>Cortá el contacto</strong> y guardá capturas de los mensajes, números y comprobantes.</li>
+  <li><strong>Avisá a tu banco</strong> de inmediato si hiciste una transferencia o compartiste datos de tu cuenta.</li>
+  <li><strong>Cambiá tus claves</strong> y activá la verificación en dos pasos.</li>
+  <li><strong>Denunciá</strong> ante el OIJ. Más pasos en la guía de <a href="{ROOT}guias/estafas-laborales-costa-rica/">estafas laborales</a>.</li>
+</ol>
+
+<h2>Para aprender más</h2>
+<ul>
+  <li><a href="{ROOT}guias/estafas-laborales-costa-rica/">Estafas laborales en Costa Rica: cómo reconocerlas</a>.</li>
+  <li><a href="{ROOT}guias/ofertas-de-trabajo-falsas-whatsapp-facebook/">Ofertas falsas en WhatsApp y Facebook</a>.</li>
+  <li>En TicoBrete revisamos las ofertas con filtros contra estafas, pero ningún filtro es perfecto: verificá siempre. Mirá <a href="{ROOT}">los bretes más recientes</a>.</li>
+</ul>
+<aside class="note"><strong>Herramienta de orientación, no un veredicto.</strong> Una oferta sin señales puede ser falsa, y una con señales puede ser mal redactada pero real. Usá tu criterio y verificá siempre.</aside>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Se guardan las respuestas?</h3>
+<p>No. Todo se calcula en tu navegador y no se envía a ningún lado.</p>
+<h3>¿Y si la oferta pide experiencia y es de una empresa conocida?</h3>
+<p>Aun así verificá que el contacto sea de la empresa: hay estafadores que usan el nombre de empresas reales.</p>
+<h3>¿Puedo confiar en las ofertas de TicoBrete?</h3>
+<p>Aplicamos filtros contra estafas y solo enlazamos fuentes públicas, pero te recomendamos verificar siempre antes de dar datos.</p>`,
+};
 export function construirHerramientas(ctx) {
   const { guias, esc, json, fill, write, rootFor, SITE_URL, articleTpl, verifyMeta, fmtDate } = ctx;
   const urls = [];
@@ -299,21 +353,32 @@ export function construirHerramientas(ctx) {
     ld: (c) => ({ '@context': 'https://schema.org', '@graph': [{ '@type': 'WebApplication', '@id': `${c}#app`, name: 'Generador de carta de presentación de TicoBrete', url: c, description: PRES.description, applicationCategory: 'BusinessApplication', operatingSystem: 'Any', inLanguage: 'es-CR', isAccessibleForFree: true, offers: { '@type': 'Offer', price: 0, priceCurrency: 'CRC' }, publisher: orgRef }, bc(migPres)] }),
   });
   urls.push([pathPres, '2026-10-13', '0.8', 'monthly']);
+  // Verificador de ofertas sospechosas
+  const pathVer = `herramientas/${VER.slug}/`;
+  const migVer = [['Herramientas', 'herramientas/'], ['Verificador de ofertas', pathVer]];
+  pagina(pathVer, {
+    ...VER, crumbs: crumbs(migVer), body: VER.body,
+    scripts: '<script type="module" src="{ROOT}assets/verificador.js"></script>',
+    meta: `<p class="article-meta"><span>Herramienta gratuita</span><span>Sin registro</span><span>Actualizada el <time datetime="2026-10-13">${esc(fmtDate('2026-10-13T18:00:00Z'))}</time></span></p>`,
+    ld: (c) => ({ '@context': 'https://schema.org', '@graph': [{ '@type': 'WebApplication', '@id': `${c}#app`, name: 'Verificador de ofertas de trabajo sospechosas de TicoBrete', url: c, description: VER.description, applicationCategory: 'SecurityApplication', operatingSystem: 'Any', inLanguage: 'es-CR', isAccessibleForFree: true, offers: { '@type': 'Offer', price: 0, priceCurrency: 'CRC' }, publisher: orgRef }, bc(migVer)] }),
+  });
+  urls.push([pathVer, '2026-10-13', '0.8', 'monthly']);
   // Página de herramientas
   const tarjeta = (href, tema, h, p, meta) => `<li><a href="{ROOT}${href}"><span class="card-tema">${esc(tema)}</span><h3>${esc(h)}</h3><p>${esc(p)}</p><span class="card-meta">${esc(meta)}</span></a></li>`;
   const lista = [
+    tarjeta(pathVer, '🛡️ Seguridad', VER.h1, VER.description, 'Gratis, sin registro'),
     tarjeta(pathCv, '📄 Currículum', CV.h1, CV.description, 'Gratis, sin registro'),
     tarjeta(pathPres, '📝 Carta', PRES.h1, PRES.description, 'Gratis, sin registro'),
     tarjeta(pathCarta, '✉️ Carta', CARTA.h1, CARTA.description, 'Gratis, sin registro'),
     ...calcs.map((g) => tarjeta(`guias/${g.slug}/`, '🧮 Calculadora', g.h1, g.description, 'Gratis, en tu navegador')),
   ];
   const mig = [['Herramientas', 'herramientas/']];
-  const desc = 'Herramientas gratis para buscar trabajo en Costa Rica: currículum, cartas de presentación y renuncia, y calculadoras de aguinaldo, salario neto y liquidación.';
+  const desc = 'Herramientas gratis para buscar trabajo en Costa Rica: verificador de estafas, currículum, cartas y calculadoras de aguinaldo, salario neto y liquidación.';
   pagina('herramientas/', {
     title: 'Herramientas gratis para buscar trabajo en Costa Rica | TicoBrete', description: desc, h1: 'Herramientas para tu búsqueda de trabajo',
     lead: 'Todo gratis, sin registro y sin enviar tus datos a ningún servidor: corre directamente en tu navegador.', crumbs: crumbs(mig),
     body: `<ul class="guide-list">${lista.join('')}</ul><p class="muted">¿Te falta alguna herramienta? Escribinos desde el enlace “Sugerir” del sitio principal.</p><p>También tenemos <a href="{ROOT}guias/">guías laborales</a> con información verificada.</p>`,
-    ld: (c) => ({ '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', '@id': `${c}#page`, url: c, name: 'Herramientas de TicoBrete', inLanguage: 'es-CR', description: desc, mainEntity: { '@type': 'ItemList', itemListElement: [[CV.h1, pathCv], [PRES.h1, pathPres], [CARTA.h1, pathCarta], ...calcs.map((g) => [g.h1, `guias/${g.slug}/`])].map(([n, p], i) => ({ '@type': 'ListItem', position: i + 1, name: n, url: `${SITE_URL}/${p}` })) } }, bc(mig)] }),
+    ld: (c) => ({ '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', '@id': `${c}#page`, url: c, name: 'Herramientas de TicoBrete', inLanguage: 'es-CR', description: desc, mainEntity: { '@type': 'ItemList', itemListElement: [[VER.h1, pathVer], [CV.h1, pathCv], [PRES.h1, pathPres], [CARTA.h1, pathCarta], ...calcs.map((g) => [g.h1, `guias/${g.slug}/`])].map(([n, p], i) => ({ '@type': 'ListItem', position: i + 1, name: n, url: `${SITE_URL}/${p}` })) } }, bc(mig)] }),
   });
   urls.push(['herramientas/', DATE, '0.8', 'weekly']);
   return urls;

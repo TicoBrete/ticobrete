@@ -259,4 +259,56 @@ ${AVISO}
 <p>Sumá todo lo que ganás en el mes y usalo como salario bruto mensual.</p>
 `,
   },
+  {
+    slug: 'calculadora-costo-empleado-costa-rica',
+    tipo: 'calculadora',
+    title: 'Calculadora de costo de un empleado en Costa Rica 2026',
+    description: 'Calculá cuánto le cuesta a la empresa una persona empleada en Costa Rica en 2026: salario, cargas sociales (26,83 %), aguinaldo y vacaciones.',
+    h1: 'Calculadora de costo de un empleado',
+    lead: 'Si vas a contratar, mirá cuánto cuesta realmente cada persona: el salario más las cargas sociales y las provisiones de aguinaldo y vacaciones.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<section class="calc-box">
+  <form class="calc" data-calc="costo" novalidate>
+    <div class="calc-grid">
+      ${numero('Salario bruto mensual (₡)', 'salario', 'El monto pactado, antes de deducciones.', 'required')}
+      <label class="field check"><input type="checkbox" name="sinIna"><span>Empresa no agrícola con menos de 5 personas empleadas (sin aporte al INA)</span></label>
+      <label class="field check"><input type="checkbox" name="aguinaldo" checked><span>Incluir provisión de aguinaldo</span></label>
+      <label class="field check"><input type="checkbox" name="vacaciones" checked><span>Incluir provisión de vacaciones</span></label>
+    </div>
+    ${botones}
+  </form>
+  <div class="calc-result" data-resultado aria-live="polite" hidden></div>
+</section>
+
+<h2>Cómo se calcula</h2>
+<ul>
+  <li><strong>Cargas sociales patronales:</strong> 26,83 % del salario en 2026 (CCSS, FODESAF, IMAS, INA, Banco Popular, fondo de capitalización laboral, pensión complementaria y riesgos del trabajo). Si la empresa no es agrícola y tiene menos de 5 personas empleadas, no aporta al INA y baja a 25,33 %.</li>
+  <li><strong>Aguinaldo:</strong> un doceavo del salario cada mes, para tenerlo listo en diciembre. No paga cargas sociales.</li>
+  <li><strong>Vacaciones:</strong> una provisión de referencia de 4,17 % del salario (dos semanas de descanso pagado por cada 50 trabajadas).</li>
+</ul>
+
+<h2>Ejemplo</h2>
+<p>Con un salario de ₡500.000: las cargas son ₡134.150, el aguinaldo ₡41.667 y las vacaciones ₡20.833. El costo mensual es de <strong>₡696.650</strong>, casi 1,4 veces el salario.</p>
+
+<h2>Lo que no incluye</h2>
+<p>Cesantía, incapacidades, horas extra, comisiones, equipo, capacitación, alimentación u otros beneficios que ofrezca tu empresa. Tampoco refleja lo que recibe la persona: eso es su <a href="{ROOT}guias/calculadora-salario-neto-costa-rica/">salario neto</a>.</p>
+
+<h2>Más información</h2>
+<ul>
+  <li><a href="{ROOT}guias/salario-bruto-neto-deducciones-costa-rica/">Salario bruto y neto: qué se rebaja</a>, con las tarifas de la CCSS.</li>
+  <li><a href="{ROOT}guias/salario-minimo-por-ocupacion-costa-rica/">Salario mínimo por ocupación</a>, para no pagar menos de lo que corresponde.</li>
+  <li><a href="{ROOT}guias/tipos-de-contrato-periodo-de-prueba-costa-rica/">Tipos de contrato y período de prueba</a>.</li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Las cargas patronales se le rebajan a la persona empleada?</h3>
+<p>No. Son un costo aparte de la empresa. A la persona se le rebaja su propia cuota (10,83 %).</p>
+<h3>¿El aguinaldo paga cargas sociales?</h3>
+<p>No. El aguinaldo está exento de cargas sociales.</p>
+<h3>¿Por qué usan una provisión para vacaciones?</h3>
+<p>Porque cada persona descansa dos semanas pagadas por cada 50 trabajadas. Es una forma de reflejar ese costo mes a mes.</p>
+`,
+  },
 ];

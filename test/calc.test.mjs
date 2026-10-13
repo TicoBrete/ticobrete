@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { salarioNeto, aguinaldo, diasCesantia, diasPreaviso, diasVacaciones, horasExtra, inicioPeriodoAguinaldo, liquidacion, mesesEntre, vacaciones } from '../site/assets/calc.js';
+import { costoEmpleado, salarioNeto, aguinaldo, diasCesantia, diasPreaviso, diasVacaciones, horasExtra, inicioPeriodoAguinaldo, liquidacion, mesesEntre, vacaciones } from '../site/assets/calc.js';
 
 const d = (s) => new Date(`${s}T12:00:00`);
 
@@ -114,4 +114,14 @@ test('salario neto 2026: CCSS 10,83 % y renta por tramos', () => {
   assert.equal(Math.round(salarioNeto({ bruto: 2000000, hijos: 2, conyuge: true }).renta), 134840);
   assert.equal(salarioNeto({ bruto: 1000000, hijos: 20, conyuge: true }).renta, 0);
   assert.equal(salarioNeto({ bruto: 'x' }).neto, 0);
+});
+test('costo de un empleado: cargas 26,83 %, aguinaldo y vacaciones', () => {
+  const r = costoEmpleado({ salario: 500000 });
+  assert.equal(Math.round(r.cargas), 134150);
+  assert.equal(Math.round(r.aguinaldo), 41667);
+  assert.equal(Math.round(r.vacaciones), 20833);
+  assert.equal(Math.round(r.total), 696650);
+  assert.equal(Math.round(costoEmpleado({ salario: 500000, sinIna: true }).cargas), 126650);
+  assert.equal(costoEmpleado({ salario: 500000, aguinaldo: false, vacaciones: false }).total, 634150);
+  assert.equal(costoEmpleado({ salario: 'x' }).total, 0);
 });

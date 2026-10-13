@@ -314,7 +314,7 @@ ${AVISO}
   </tbody>
 </table>
 <p>Durante el preaviso la relación laboral sigue normalmente: seguís trabajando y cobrando. Según criterios del MTSS, también tenés derecho a un <strong>día libre por semana</strong> durante el preaviso para buscar otro trabajo.</p>
-<p>Si no das el preaviso completo, el empleador podría reclamarlo. Hay criterios distintos sobre si puede descontarlo directamente de tu liquidación, así que si te lo quieren rebajar, consultá antes al MTSS.</p>
+<p>El mismo artículo 28 dice que el aviso puede omitirse <strong>pagándole a la otra parte una cantidad igual al salario</strong> de esos plazos. O sea: si no avisás, el empleador podría reclamarte ese monto. Pero según el artículo 32, el patrono pierde ese derecho si <strong>no lo reclama dentro de los 30 días</strong> siguientes a que terminó tu contrato. Si te lo quieren rebajar de tu liquidación, consultá antes al MTSS.</p>
 
 <h2>Cómo escribir la carta de renuncia</h2>
 <p>Una carta corta y respetuosa es suficiente. No necesitás explicar tus razones. Incluí tu nombre y cédula, el puesto, la fecha de la carta, el último día de trabajo y tu firma. Hacela <strong>en dos copias</strong> y pedí que firmen y fechen la tuya como recibida.</p>
@@ -339,7 +339,7 @@ ${AVISO}
 <h2>Después de renunciar</h2>
 <ol>
   <li><strong>Revisá el finiquito antes de firmar</strong> y pedí el desglose por escrito. Mirá la guía de <a href="{ROOT}guias/liquidacion-laboral-finiquito-costa-rica/">liquidación laboral</a>.</li>
-  <li><strong>Pedí tu constancia de trabajo</strong> y, si querés, una carta de recomendación.</li>
+  <li><strong>Pedí tu constancia de trabajo.</strong> El artículo 35 del Código dice que el patrono debe darte, si la pedís, un certificado con la fecha de entrada y salida y la clase de trabajo que hiciste.</li>
   <li><strong>Verificá con la CCSS</strong> que te hayan reportado hasta tu último día.</li>
   <li><strong>Devolvé lo que sea de la empresa</strong> (equipo, carné, llaves) y pedí constancia de que lo entregaste.</li>
 </ol>
@@ -357,11 +357,326 @@ ${AVISO}
 <h3>¿Tengo que explicar por qué renuncio?</h3>
 <p>No. Una carta breve, sin motivos, es suficiente.</p>
 <h3>¿Qué pasa si no doy el preaviso?</h3>
-<p>Tu empleador podría reclamarlo. Si te quieren rebajar dinero, consultá al MTSS antes de firmar.</p>
+<p>Tu empleador podría reclamarte el salario de esos días, pero pierde ese derecho si no lo reclama en 30 días. Si te quieren rebajar dinero, consultá al MTSS antes de firmar.</p>
 <h3>¿Me pueden negar la renuncia?</h3>
 <p>No. Es un derecho tuyo terminar el contrato avisando como corresponde.</p>
 <h3>¿Puedo renunciar por WhatsApp?</h3>
 <p>Mejor por escrito y con firma de recibido, o por correo con confirmación. Es la prueba de la fecha en que avisaste.</p>
+`,
+  },
+  {
+    slug: 'tipos-de-contrato-periodo-de-prueba-costa-rica',
+    title: 'Tipos de contrato y período de prueba en Costa Rica',
+    description: 'Contrato indefinido, a plazo fijo y por obra en Costa Rica: qué dice el Código de Trabajo, cuándo debe ser escrito, el período de prueba y qué revisar antes de firmar.',
+    h1: 'Tipos de contrato y período de prueba en Costa Rica',
+    lead: 'Antes de firmar conviene saber qué tipo de contrato te ofrecen y qué derechos tenés desde el primer día, incluso en el período de prueba.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<h2>Qué es un contrato de trabajo</h2>
+<p>Según el artículo 18 del Código de Trabajo, hay contrato de trabajo cuando una persona presta servicios a otra <strong>bajo su dependencia permanente y dirección</strong>, a cambio de una remuneración. Además, la ley <strong>presume que existe</strong> ese contrato entre quien trabaja y quien recibe el servicio. Si trabajás con horario, órdenes y un jefe, tenés una relación laboral aunque te digan "contratista" o "por servicios profesionales".</p>
+
+<h2>¿Tiene que ser por escrito?</h2>
+<p>Como regla general, sí. El artículo 23 dice que, salvo excepciones, el contrato debe hacerse <strong>por escrito en tres copias</strong>: una para cada parte y otra que el patrono hace llegar al Ministerio de Trabajo. Puede ser verbal en casos como las labores agrícolas o ganaderas y los trabajos accidentales o temporales de hasta 90 días (en ese caso el patrono debe darte, cada 30 días y si lo pedís, una constancia por escrito de los días trabajados y lo pagado).</p>
+<p>Si no hay contrato escrito cuando debería haberlo, <strong>la falta se le imputa al patrono</strong> (art. 25). Aun sin papel, tus derechos existen: el contrato verbal se prueba con testigos, mensajes, colillas o depósitos. Guardá todo.</p>
+
+<h2>Qué debe decir el contrato</h2>
+<p>Según el artículo 24, el contrato escrito incluye al menos:</p>
+<ul>
+  <li>Los datos de las dos partes.</li>
+  <li>Si es <strong>por tiempo indefinido, a plazo fijo o para obra determinada</strong>.</li>
+  <li>La <strong>jornada y el horario</strong>.</li>
+  <li>El <strong>salario</strong>, cómo se calcula y cuándo y dónde se paga.</li>
+  <li>El <strong>lugar</strong> donde se trabaja, la fecha y las firmas.</li>
+</ul>
+
+<h2>Los tipos de contrato</h2>
+<h3>Por tiempo indefinido</h3>
+<p>Es la regla general: no tiene fecha de fin. Termina por renuncia, despido, mutuo acuerdo u otra causa legal. Si te despiden sin justa causa, tenés derecho a preaviso y cesantía. Mirá la guía de <a href="{ROOT}guias/despido-cesantia-preaviso-costa-rica/">despido, preaviso y cesantía</a>.</p>
+<h3>A plazo fijo</h3>
+<p>Solo se puede pactar a plazo fijo <strong>cuando lo exige la naturaleza del servicio</strong> (por ejemplo, sustituir a alguien o un proyecto con fin claro), según el artículo 26. Tiene límites:</p>
+<ul>
+  <li>No puede pactarse por <strong>más de un año</strong> en perjuicio de la persona trabajadora, o hasta cinco años si el servicio requiere preparación técnica especial (art. 27).</li>
+  <li>Se puede prorrogar de forma expresa o tácita: si seguís trabajando con conocimiento del patrono, se prorroga.</li>
+  <li>Si al vencer el plazo siguen las razones que le dieron origen al trabajo, <strong>se considera por tiempo indefinido</strong> en lo que beneficie a quien trabaja.</li>
+</ul>
+<h3>Para obra determinada</h3>
+<p>Dura hasta que se termine la obra o el trabajo concreto. Aplican las mismas ideas del plazo fijo.</p>
+
+<h2>Si te terminan el contrato antes de tiempo</h2>
+<p>En los contratos a plazo fijo y por obra, cualquiera de las partes puede terminarlos sin justa causa antes del plazo, pero debe pagarle a la otra los <strong>daños y perjuicios</strong> que se demuestren (art. 31). Si lo hace el patrono, además debe pagar <strong>un día de salario por cada siete días trabajados</strong> (nunca menos de tres días), y <strong>no menos de 22 días de salario</strong> si el contrato era de seis meses o más.</p>
+
+<h2>El período de prueba</h2>
+<p>El Código no tiene un artículo con ese nombre, pero por cómo funcionan el preaviso y la cesantía (que empiezan después de <strong>tres meses</strong> de trabajo continuo, arts. 28 y 29), en la práctica <strong>los primeros tres meses se tratan como período de prueba</strong>: en ese tiempo cualquiera de las partes puede terminar la relación sin preaviso ni cesantía.</p>
+<p>Pero el período de prueba <strong>no te quita derechos</strong>. Desde el primer día tenés:</p>
+<ul>
+  <li>Salario completo, al menos el <a href="{ROOT}guias/salario-minimo-por-ocupacion-costa-rica/">mínimo de tu ocupación</a>.</li>
+  <li>Seguro de la CCSS y póliza de riesgos del trabajo.</li>
+  <li>Pago de horas extra y feriados que trabajés.</li>
+  <li><strong>Vacaciones y aguinaldo proporcionales</strong> a lo trabajado.</li>
+</ul>
+<p>Hay situaciones en que un despido no es libre ni siquiera en prueba (por ejemplo, el embarazo o la lactancia, o represalias). Si te pasa, consultá de inmediato al MTSS.</p>
+
+<h2>Antes de firmar, revisá</h2>
+<ol>
+  <li><strong>Que diga el tipo de contrato</strong> y, si es a plazo fijo, la razón y la fecha de fin.</li>
+  <li><strong>Que el salario, el horario y el lugar</strong> coincidan con lo que te ofrecieron.</li>
+  <li><strong>Cláusulas raras:</strong> pagos "por fuera", renuncias a derechos o pactos que interrumpan la continuidad (el art. 30 declara nula la cláusula que interrumpa la continuidad de tus servicios).</li>
+  <li><strong>Que te den tu copia firmada.</strong></li>
+  <li><strong>Que te asegure la CCSS</strong> con tu salario real.</li>
+</ol>
+<p>Al terminar, el patrono debe darte a pedido una <strong>constancia de trabajo</strong> con fechas y tipo de trabajo (art. 35).</p>
+
+<h2>"Servicios profesionales" o relación laboral</h2>
+<p>Si facturás de verdad como independiente, con tus propios clientes y autonomía, es otra cosa: mirá <a href="{ROOT}guias/trabajar-por-cuenta-propia-costa-rica/">trabajar por cuenta propia</a>. Pero si te piden factura y a la vez horario y órdenes de un jefe, puede ser una relación laboral disfrazada. Consultá al MTSS.</p>
+
+<h2>Fuentes</h2>
+<ul>
+  <li><a href="https://www.mtss.go.cr/elministerio/marco-legal/documentos/Codigo_Trabajo_RPL.pdf" target="_blank" rel="noopener">Código de Trabajo, arts. 18 a 35 (copia del MTSS)</a></li>
+  <li><a href="https://es.wikisource.org/wiki/C%C3%B3digo_de_Trabajo,_de_27_de_agosto_de_1943,_(cr):_T%C3%ADtulo_2._Cap%C3%ADtulo_1" target="_blank" rel="noopener">Código de Trabajo, Título 2, Capítulo 1 (texto)</a></li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuánto dura el período de prueba?</h3>
+<p>En la práctica, tres meses. Pasado ese tiempo, un despido sin justa causa da derecho a preaviso y cesantía.</p>
+<h3>¿Pueden renovarme muchas veces un contrato a plazo fijo?</h3>
+<p>Si siguen existiendo las causas que le dieron origen al trabajo, el contrato se considera por tiempo indefinido en lo que te beneficie. Si te los renuevan una y otra vez para el mismo trabajo, consultá al MTSS.</p>
+<h3>¿Me pueden contratar sin contrato escrito?</h3>
+<p>En ciertos casos, sí (por ejemplo, labores agrícolas o trabajos temporales de hasta 90 días). En los demás, debe ser por escrito, y la falta se le imputa al patrono.</p>
+`,
+  },
+  {
+    slug: 'rebajos-salario-ilegales-costa-rica',
+    title: 'Rebajos del salario en Costa Rica: qué te pueden descontar',
+    description: 'Qué descuentos del salario permite el Código de Trabajo en Costa Rica, qué límites tienen los adelantos y los embargos, y qué hacer si te rebajan de más.',
+    h1: 'Rebajos del salario: qué te pueden descontar y qué no',
+    lead: 'Que te rebajen plata del sueldo no siempre es legal. Estas son las reglas del Código de Trabajo sobre el pago completo, los adelantos y los embargos.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<h2>La regla: el salario se paga completo</h2>
+<p>El artículo 169 del Código de Trabajo dice que el salario <strong>debe liquidarse completo en cada período de pago</strong>, y que "salario completo" incluye lo ganado en jornada ordinaria y extraordinaria. El artículo 171 agrega que se paga directamente a la persona trabajadora <strong>"una vez hechas las deducciones y retenciones autorizadas"</strong> por el Código y sus leyes conexas. O sea: solo se puede rebajar lo que la ley autoriza.</p>
+
+<h2>Lo que sí te rebajan por ley</h2>
+<ul>
+  <li><strong>Cuotas de la CCSS y Banco Popular</strong> (10,83 % en 2026). Mirá <a href="{ROOT}guias/salario-bruto-neto-deducciones-costa-rica/">salario bruto y neto</a>.</li>
+  <li><strong>Impuesto sobre el salario</strong>, si ganás más del mínimo exento.</li>
+  <li><strong>Pensión alimentaria</strong>, cuando hay una orden judicial.</li>
+  <li><strong>Embargos judiciales</strong>, con los límites que explicamos abajo.</li>
+  <li><strong>Deducciones que vos autorizaste</strong> con instituciones o cooperativas legalmente constituidas (por ejemplo, cuotas de una cooperativa o asociación solidarista). El art. 174 permite ceder o gravar el salario solo en la proporción en que es embargable, y deja a salvo las operaciones con cooperativas e instituciones de crédito.</li>
+</ul>
+
+<h2>Adelantos y deudas con el patrono</h2>
+<ul>
+  <li>Un <strong>anticipo para inducirte a aceptar el empleo</strong> no puede pasar de la cuarta parte del salario mensual; lo que exceda ese límite es legalmente incobrable (art. 173).</li>
+  <li>Las deudas por <strong>anticipos o pagos hechos de más</strong> se amortizan en un mínimo de <strong>cuatro períodos de pago</strong> y <strong>no generan intereses</strong>.</li>
+  <li>Las deudas con el patrono solo se pueden compensar en la proporción en que el salario es embargable (art. 36).</li>
+</ul>
+
+<h2>Límites de los embargos</h2>
+<p>Según el artículo 172:</p>
+<ul>
+  <li>Los salarios que no pasen del <strong>menor salario mínimo mensual</strong> son inembargables.</li>
+  <li>Lo que exceda se embarga hasta en <strong>una octava parte</strong> de la porción hasta tres veces ese mínimo, y <strong>una cuarta parte</strong> del resto.</li>
+  <li>Por pensión alimentaria, el salario puede embargarse <strong>hasta un 50 %</strong>.</li>
+  <li>Se calcula sobre el salario líquido, ya descontadas las cuotas obligatorias.</li>
+</ul>
+
+<h2>Rebajos que deberías cuestionar</h2>
+<p>El Código <strong>no contiene una autorización general</strong> para que el patrono descuente por su cuenta cosas como estas, así que si te las rebajan, conviene preguntar en qué ley se basan y consultar al MTSS:</p>
+<ul>
+  <li><strong>Uniformes, herramientas o equipo</strong> de trabajo. En el trabajo por unidad de obra, el art. 24 prohíbe expresamente cobrar el desgaste natural de la herramienta.</li>
+  <li><strong>Faltantes de caja o de inventario</strong> sin un procedimiento claro y sin respetar los límites de arriba.</li>
+  <li><strong>"Multas"</strong> por llegadas tardías u otras sanciones inventadas por la empresa.</li>
+  <li><strong>Pagos en vales, fichas, cupones o mercadería</strong> en lugar de dinero: el artículo 165 lo prohíbe.</li>
+  <li><strong>Pagarte menos de lo pactado</strong> o menos del <a href="{ROOT}guias/salario-minimo-por-ocupacion-costa-rica/">salario mínimo</a>.</li>
+  <li><strong>Rebajar tu liquidación</strong>: el preaviso y la cesantía no se pueden compensar, vender ni ceder (art. 30), salvo la mitad por pensión alimentaria.</li>
+</ul>
+
+<h2>Qué hacer si te rebajan de más</h2>
+<ol>
+  <li><strong>Pedí tu colilla de pago</strong> con el detalle de cada rebajo.</li>
+  <li><strong>Preguntá por escrito</strong> en qué se basa cada descuento.</li>
+  <li><strong>No firmes</strong> autorizaciones de descuento sin leerlas y sin copia.</li>
+  <li><strong>Guardá</strong> contrato, colillas, mensajes y comprobantes de pago.</li>
+  <li><strong>Consultá al MTSS</strong>: 800-TRABAJO (800 872 2256). Mirá la <a href="{ROOT}guias/denunciar-patrono-mtss-costa-rica/">guía para denunciar</a>.</li>
+</ol>
+
+<h2>Fuentes</h2>
+<ul>
+  <li><a href="https://es.wikisource.org/wiki/C%C3%B3digo_de_Trabajo,_de_27_de_agosto_de_1943,_(cr):_T%C3%ADtulo_3._Cap%C3%ADtulo_4" target="_blank" rel="noopener">Código de Trabajo, arts. 162 a 176: del salario y las medidas que lo protegen</a></li>
+  <li><a href="https://www.mtss.go.cr/elministerio/marco-legal/documentos/Codigo_Trabajo_RPL.pdf" target="_blank" rel="noopener">Código de Trabajo (copia del MTSS)</a></li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Me pueden descontar el uniforme?</h3>
+<p>El Código no autoriza un descuento general por uniformes o herramientas. Si te lo rebajan, pedí por escrito el fundamento y consultá al MTSS.</p>
+<h3>¿Pueden descontarme por un faltante de caja?</h3>
+<p>No pueden rebajarte lo que quieran: solo lo que la ley autoriza y, en deudas, respetando los límites de embargo. Consultá antes de aceptar cualquier descuento.</p>
+<h3>¿Cuánto me pueden embargar?</h3>
+<p>Nada si ganás hasta el menor salario mínimo mensual. Sobre lo que exceda, una octava parte hasta tres veces ese mínimo y una cuarta del resto (hasta el 50 % por pensión alimentaria).</p>
+`,
+  },
+  {
+    slug: 'pretension-salarial-cuanto-pedir-costa-rica',
+    title: 'Pretensión salarial: cómo responder cuánto querés ganar',
+    description: 'Cómo contestar la pregunta de pretensión salarial en una entrevista en Costa Rica: cómo investigar, qué rango decir, ejemplos de respuesta y cómo negociar.',
+    h1: 'Pretensión salarial: cómo responder "¿cuánto querés ganar?"',
+    lead: 'Es la pregunta que más incomoda en una entrevista. Con un poco de preparación podés contestarla con seguridad y sin quedarte corto.',
+    date: '2026-10-13',
+    html: `
+<h2>Qué es la pretensión salarial</h2>
+<p>Es el monto que esperás ganar por el puesto. Suelen preguntarlo en la primera llamada, en el formulario de la oferta o al final de la entrevista. Responder mal tiene dos riesgos: pedir tan poco que te dejés plata sobre la mesa, o pedir tan alto que te descarten sin conversar.</p>
+
+<h2>Paso 1: Investigá el rango del puesto</h2>
+<ul>
+  <li>Mirá el <a href="{ROOT}guias/salario-minimo-por-ocupacion-costa-rica/">salario mínimo de tu ocupación</a>: es el piso legal, no una meta.</li>
+  <li>Revisá <strong>ofertas parecidas</strong> en <a href="{ROOT}">TicoBrete</a> y en otras bolsas: algunas publican el salario.</li>
+  <li>Preguntale a <strong>gente que trabaja en lo mismo</strong>.</li>
+  <li>Considerá tu <strong>experiencia, estudios, idiomas y zona</strong>: un puesto en San José y uno en una zona rural pueden pagar distinto.</li>
+</ul>
+
+<h2>Paso 2: Pensá en tu salario neto</h2>
+<p>Los números de las ofertas suelen ser brutos. Con la <a href="{ROOT}guias/calculadora-salario-neto-costa-rica/">calculadora de salario neto</a> mirá cuánto te queda realmente, para saber cuál es tu mínimo aceptable.</p>
+
+<h2>Paso 3: Definí tu rango</h2>
+<ul>
+  <li><strong>Piso:</strong> lo mínimo con lo que aceptarías.</li>
+  <li><strong>Meta:</strong> lo que realmente querés.</li>
+  <li><strong>Techo:</strong> lo que sería una muy buena oferta.</li>
+</ul>
+<p>Al responder, dá un <strong>rango</strong> cuyo punto más bajo sea cómodo para vos. Si el piso es ₡500.000 y tu meta ₡600.000, decí "entre ₡550.000 y ₡650.000 brutos".</p>
+
+<h2>Cómo responder, con ejemplos</h2>
+<p><strong>Si te piden un número:</strong></p>
+<blockquote><p>"Según lo que he visto para este puesto y mi experiencia, mi expectativa está entre ₡550.000 y ₡650.000 brutos al mes, y estoy abierto a conversar según las responsabilidades y los beneficios."</p></blockquote>
+<p><strong>Si preferís que ellos digan primero:</strong></p>
+<blockquote><p>"Me gustaría conocer el rango que tienen para este puesto para ver si encajamos."</p></blockquote>
+<p><strong>Si insisten y aún no conocés el puesto bien:</strong></p>
+<blockquote><p>"Prefiero entender mejor las funciones antes de dar una cifra, pero para que tengan una idea, estoy buscando algo en el rango de ₡X a ₡Y."</p></blockquote>
+<p><strong>En un formulario que pide un solo número:</strong> poné el punto medio de tu rango o un monto un poco arriba de tu meta, para tener espacio de negociar.</p>
+
+<h2>Más allá del salario base</h2>
+<p>Preguntá por todo lo que suma:</p>
+<ul>
+  <li>Comisiones o bonos, y cómo se calculan.</li>
+  <li>Seguro médico privado, alimentación, transporte o teletrabajo.</li>
+  <li>Días de vacaciones por encima del mínimo legal.</li>
+  <li>Capacitación y posibilidades de crecer o de pedir un <a href="{ROOT}guias/como-pedir-aumento-costa-rica/">aumento</a> más adelante.</li>
+</ul>
+
+<h2>Errores comunes</h2>
+<ul>
+  <li><strong>Decir "lo que ustedes me ofrezcan":</strong> da toda la ventaja a la otra parte.</li>
+  <li><strong>Comparar bruto con neto</strong> sin darte cuenta.</li>
+  <li><strong>Mentir sobre cuánto ganás ahora:</strong> si lo verifican, pierde confianza.</li>
+  <li><strong>Aceptar en el momento:</strong> está bien pedir un día para pensarlo.</li>
+  <li><strong>Pedir sin conocer el mercado.</strong></li>
+</ul>
+
+<h2>Si la oferta es menor a lo que esperabas</h2>
+<ol>
+  <li>Agradecé y pedí la oferta por escrito.</li>
+  <li>Explicá con calma por qué tu perfil vale más (logros, idiomas, experiencia).</li>
+  <li>Proponé una revisión a los tres o seis meses, con metas claras.</li>
+  <li>Compará con otras ofertas: sabé cuál es tu alternativa.</li>
+</ol>
+<p>Más preparación en la guía de <a href="{ROOT}guias/entrevista-de-trabajo-costa-rica/">entrevista de trabajo</a> y en las <a href="{ROOT}guias/preguntas-entrevista-por-puesto-costa-rica/">preguntas de entrevista por puesto</a>.</p>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Debo decir un número o un rango?</h3>
+<p>Un rango suele funcionar mejor, siempre que su punto más bajo sea un monto con el que estarías cómodo.</p>
+<h3>¿Digo salario bruto o neto?</h3>
+<p>Casi siempre se habla de bruto. Aclaralo en tu respuesta ("brutos al mes") para evitar malentendidos.</p>
+<h3>¿Qué pasa si me ofrecen menos del mínimo?</h3>
+<p>El salario no puede ser menor al mínimo de la ocupación. Mirá la guía de <a href="{ROOT}guias/salario-minimo-por-ocupacion-costa-rica/">salario mínimo por ocupación</a> y, si no se cumple, consultá al MTSS.</p>
+`,
+  },
+  {
+    slug: 'preguntas-entrevista-por-puesto-costa-rica',
+    title: 'Preguntas de entrevista por puesto en Costa Rica',
+    description: 'Preguntas frecuentes de entrevista y cómo responderlas para call center, ventas, restaurantes, seguridad y bodega en Costa Rica, con ejemplos de respuesta.',
+    h1: 'Preguntas de entrevista por puesto en Costa Rica',
+    lead: 'Cada tipo de trabajo tiene sus preguntas típicas. Preparate con estas, para call center, ventas, restaurantes, seguridad y bodega.',
+    date: '2026-10-13',
+    html: `
+<h2>Preguntas que casi siempre te hacen</h2>
+<ul>
+  <li><strong>"Hablame de vos."</strong> Respondé en un minuto: quién sos, qué hacés bien y por qué te interesa el puesto.</li>
+  <li><strong>"¿Por qué querés trabajar acá?"</strong> Mencioná algo concreto de la empresa o del puesto, no solo "necesito trabajar".</li>
+  <li><strong>"¿Cuál es tu mayor fortaleza?"</strong> Elegí una útil para el puesto y dá un ejemplo.</li>
+  <li><strong>"¿Cuál es tu punto débil?"</strong> Nombrá algo real y cómo lo estás mejorando.</li>
+  <li><strong>"¿Cuándo podrías empezar?"</strong> Sé claro con tu disponibilidad.</li>
+</ul>
+<p>Más ideas en la guía general de <a href="{ROOT}guias/entrevista-de-trabajo-costa-rica/">entrevista de trabajo</a>. Y si te preguntan cuánto querés ganar, mirá cómo responder la <a href="{ROOT}guias/pretension-salarial-cuanto-pedir-costa-rica/">pretensión salarial</a>.</p>
+
+<h2>Call center y servicio al cliente</h2>
+<ul>
+  <li><strong>"Contame de una vez que tuviste que calmar a una persona molesta."</strong> Contá la situación, qué hiciste (escuchar, disculparte, buscar solución) y cómo terminó.</li>
+  <li><strong>"¿Cómo manejás un día con muchas llamadas seguidas?"</strong> Hablá de organización, pausas y de mantener el buen trato.</li>
+  <li><strong>"¿Podés trabajar en turnos rotativos, fines de semana o feriados?"</strong> Sé honesto: te lo van a exigir.</li>
+  <li><strong>"Presentate en inglés."</strong> Practicá un párrafo corto. Mirá la guía de <a href="{ROOT}guias/entrevista-en-ingles-costa-rica/">entrevista en inglés</a>.</li>
+  <li><strong>Qué buscan:</strong> paciencia, buena comunicación, rapidez para aprender un sistema. Más en <a href="{ROOT}guias/trabajar-call-center-costa-rica/">trabajar en call center</a>.</li>
+</ul>
+
+<h2>Ventas</h2>
+<ul>
+  <li><strong>"Véndeme este lapicero."</strong> Preguntá primero qué necesita la persona, luego conectá el producto con esa necesidad.</li>
+  <li><strong>"¿Cómo manejás un "no"?"</strong> Con calma: preguntás qué lo frenó y aprendés para la próxima.</li>
+  <li><strong>"¿Cuál fue tu mejor venta?"</strong> Contá un resultado con números, si podés.</li>
+  <li><strong>"¿Te sentís cómodo trabajando con comisión?"</strong> Preguntá cómo se calcula y qué parte es salario base.</li>
+  <li><strong>Qué buscan:</strong> trato amable, constancia y resultados. Más en <a href="{ROOT}guias/trabajo-ventas-costa-rica/">trabajar en ventas</a>.</li>
+</ul>
+
+<h2>Restaurantes y cocina</h2>
+<ul>
+  <li><strong>"¿Tenés experiencia en servicio o en cocina?"</strong> Si no, hablá de tus ganas de aprender y de otros trabajos con atención al público.</li>
+  <li><strong>"¿Tenés el carné de manipulación de alimentos?"</strong> Si no lo tenés, decí que lo sacás y cuándo.</li>
+  <li><strong>"¿Cómo reaccionás cuando hay mucho trabajo a la vez?"</strong> Hablá de orden, prioridades y trabajo en equipo.</li>
+  <li><strong>"¿Podés trabajar fines de semana y feriados?"</strong></li>
+  <li><strong>Qué buscan:</strong> puntualidad, limpieza y buen trato. Más en <a href="{ROOT}guias/trabajo-cocina-restaurantes-costa-rica/">trabajar en restaurantes y cocina</a>.</li>
+</ul>
+
+<h2>Seguridad</h2>
+<ul>
+  <li><strong>"¿Qué harías si ves a alguien sospechoso?"</strong> Respondé con calma: observás, avisás a tu jefatura y seguís el protocolo, sin exponerte.</li>
+  <li><strong>"¿Cómo mantenés la atención en un turno largo o de noche?"</strong> Hablá de disciplina, rondas y descanso.</li>
+  <li><strong>"¿Tenés antecedentes o requisitos al día?"</strong> Llevá tus documentos. Mirá los requisitos en <a href="{ROOT}guias/trabajo-seguridad-costa-rica/">trabajar como oficial de seguridad</a>.</li>
+  <li><strong>Qué buscan:</strong> responsabilidad, honestidad y disponibilidad de horario.</li>
+</ul>
+
+<h2>Bodega y logística</h2>
+<ul>
+  <li><strong>"¿Tenés experiencia con inventarios o con montacargas?"</strong> Si no, decí qué sabés de orden y de herramientas, y que aprendés rápido.</li>
+  <li><strong>"¿Podés cargar peso y estar de pie varias horas?"</strong> Sé realista.</li>
+  <li><strong>"¿Qué harías si falta un producto en el conteo?"</strong> Revisás, avisás y documentás, sin ocultar el error.</li>
+  <li><strong>"¿Podés hacer horas extra en temporada alta?"</strong> Preguntá cómo se pagan: mirá <a href="{ROOT}guias/horas-extra-feriados-costa-rica/">horas extra y feriados</a>.</li>
+  <li><strong>Qué buscan:</strong> puntualidad, orden y cuidado con la seguridad. Más en <a href="{ROOT}guias/trabajo-bodega-logistica-costa-rica/">trabajar en bodega y logística</a>.</li>
+</ul>
+
+<h2>Preguntas que deberías hacer vos</h2>
+<ol>
+  <li>¿Cómo es un día típico en este puesto?</li>
+  <li>¿Cuál es el horario y cómo se pagan las horas extra y los feriados?</li>
+  <li>¿El contrato es por tiempo indefinido o a plazo fijo? Mirá los <a href="{ROOT}guias/tipos-de-contrato-periodo-de-prueba-costa-rica/">tipos de contrato</a>.</li>
+  <li>¿Cómo es la capacitación inicial?</li>
+  <li>¿Cuáles son los siguientes pasos del proceso?</li>
+</ol>
+
+<h2>Antes de la entrevista</h2>
+<ul>
+  <li>Llevá tu <a href="{ROOT}herramientas/armador-de-curriculum/">currículum</a> impreso, tu cédula y tus documentos.</li>
+  <li>Llegá 10 minutos antes y vestite según el puesto.</li>
+  <li>Verificá que la oferta sea real: usá el <a href="{ROOT}herramientas/verificador-de-ofertas-falsas/">verificador de ofertas sospechosas</a>.</li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Qué hago si no tengo experiencia?</h3>
+<p>Hablá de tu actitud, de trabajos informales, estudios y cursos, y de tu disposición a aprender. Mirá la guía de <a href="{ROOT}guias/trabajos-sin-experiencia-costa-rica/">trabajos sin experiencia</a>.</p>
+<h3>¿Está bien que pregunte por el salario?</h3>
+<p>Sí, es normal preguntar por el salario y los beneficios, preferiblemente cuando ya mostraron interés en vos.</p>
+<h3>¿Cómo me preparo en una tarde?</h3>
+<p>Practicá en voz alta tu presentación de un minuto, dos ejemplos de logros y las preguntas de tu puesto.</p>
 `,
   },
 ];

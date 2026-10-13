@@ -79,7 +79,7 @@ export function liquidacion({ salario, inicio, fin, causa = 'despido', preavisoD
     else notas.push('Con menos de 3 meses de trabajo no hay cesantía ni preaviso.');
   } else if (causa === 'renuncia') {
     const dp = diasPreaviso(meses);
-    if (dp > 0 && !preavisoDado) notas.push(`Al renunciar debías dar ${dp} día(s) de preaviso. Tu empleador podría reclamarlo; hay criterios distintos sobre si puede rebajarlo de la liquidación, así que consultá al MTSS antes de firmar.`);
+    if (dp > 0 && !preavisoDado) notas.push(`Al renunciar debías dar ${dp} día(s) de preaviso. Según el art. 28, tu empleador podría reclamarte ese monto, pero pierde el derecho si no lo reclama en 30 días (art. 32). Si te lo rebajan, consultá al MTSS.`);
     notas.push('Al renunciar, normalmente no corresponde cesantía.');
   } else {
     notas.push('Con despido por justa causa, normalmente no corresponden preaviso ni cesantía. Revisá que la causa sea real y esté demostrada.');
@@ -126,6 +126,18 @@ export function salarioNeto({ bruto, hijos = 0, conyuge = false }) {
   const creditos = bruta > 0 ? Math.min(bruta, Math.floor(num(hijos)) * CREDITO_HIJO + (conyuge ? CREDITO_CONYUGE : 0)) : 0;
   const renta = bruta - creditos;
   return { bruto: b, ccss, rentaBruta: bruta, creditos, renta, neto: b - ccss - renta };
+}
+/** Costo mensual de una persona empleada (para empresas): cargas patronales 2026 y provisiones de aguinaldo y vacaciones. */
+export const CARGAS_PATRONALES = 0.2683;
+export const CARGAS_PATRONALES_SIN_INA = 0.2533;
+
+export function costoEmpleado({ salario, sinIna = false, aguinaldo = true, vacaciones = true }) {
+  const s = num(salario);
+  const cargas = s * (sinIna ? CARGAS_PATRONALES_SIN_INA : CARGAS_PATRONALES);
+  const ag = aguinaldo ? s / 12 : 0;
+  const vac = vacaciones ? s / 24 : 0;
+  const total = s + cargas + ag + vac;
+  return { salario: s, cargas, aguinaldo: ag, vacaciones: vac, total, anual: total * 12, factor: s ? total / s : 0 };
 }
 /* ---------- Pantalla ---------- */
 const $ = (root, sel) => root.querySelector(sel);
@@ -185,6 +197,20 @@ const RENDER = {
       ['Impuesto sobre el salario', r.rentaBruta ? (r.creditos ? `Tramos 2026, menos créditos fiscales de ${colones(r.creditos)}` : 'Tramos de renta 2026') : 'Tu salario está en el tramo exento (hasta ₡918.000)', '− ' + colones(r.renta)],
     ];
     return [tabla(filas, null), tabla([['Salario neto aproximado', 'Lo que te depositan al mes', colones(r.neto)]], null), parrafo('No incluye otras deducciones (préstamos, asociaciones, seguros voluntarios ni pensión complementaria voluntaria). Si ganás menos de ₡346.789 la CCSS usa una base mínima; revisá tu colilla.', 'muted')];
+  },  costo(form) {
+    const r = costoEmpleado({ salario: val(form, 'salario'), sinIna: form.elements.sinIna?.checked, aguinaldo: form.elements.aguinaldo?.checked, vacaciones: form.elements.vacaciones?.checked });
+    if (!r.salario) return [parrafo('Escribí el salario bruto mensual para calcular.', 'muted')];
+    const filas = [
+      ['Salario bruto', 'Lo pactado con la persona', colones(r.salario)],
+      ['Cargas sociales patronales', form.elements.sinIna?.checked ? '25,33 % (sin aporte al INA)' : '26,83 %', colones(r.cargas)],
+    ];
+    if (r.aguinaldo) filas.push(['Provisión de aguinaldo', 'Un mes de salario por año ÷ 12', colones(r.aguinaldo)]);
+    if (r.vacaciones) filas.push(['Provisión de vacaciones', 'Referencia: 4,17 % del salario', colones(r.vacaciones)]);
+    return [
+      tabla(filas, null),
+      tabla([['Costo mensual total', `Equivale a ${r.factor.toFixed(2).replace('.', ',')} veces el salario`, colones(r.total)], ['Costo anual aproximado', 'Costo mensual × 12', colones(r.anual)]], null),
+      parrafo('No incluye cesantía, incapacidades, horas extra, comisiones, equipo ni otros beneficios. La persona recibe el salario neto, no el costo total.', 'muted'),
+    ];
   },  liquidacion(form) {
     const inicio = new Date(val(form, 'inicio'));
     const fin = new Date(val(form, 'fin'));
