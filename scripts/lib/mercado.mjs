@@ -60,7 +60,7 @@ ${sinProv > 0 ? `<p class="muted">${num(sinProv)} ofertas no indican una provinc
 
 <h2>Ofertas por modalidad</h2>
 ${tabla('Modalidad', porMod.map(([k, n]) => [k === 'remoto' ? link(MODALIDADES[k], 'empleos/remoto/', n) : esc(MODALIDADES[k]), n]))}
-${sinMod > 0 ? `<p class="muted">${num(sinMod)} ofertas no indican la modalidad en su anuncio original.</p>` : '}
+${sinMod > 0 ? `<p class="muted">${num(sinMod)} ofertas no indican la modalidad en su anuncio original.</p>` : ''}
 
 ${empresas.length ? `<h2>Empresas con más ofertas</h2>
 ${tabla('Empresa', empresas.map(([e, n]) => [esc(e), n]))}
