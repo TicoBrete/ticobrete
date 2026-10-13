@@ -168,6 +168,87 @@ const CARTA = {
 <h3>¿Se guarda mi carta?</h3>
 <p>No. Todo se procesa en tu navegador y se borra al cerrar o recargar la página.</p>`,
 };
+const area = (k, etiqueta, filas, max, ayuda = '') => `<label class="field wide"><span>${etiqueta}</span><textarea data-k="${k}" rows="${filas}" maxlength="${max}"></textarea>${ayuda ? `<small>${ayuda}</small>` : ''}</label>`;
+
+const PRES = {
+  slug: 'generador-carta-de-presentacion',
+  title: 'Generador de carta de presentación para trabajo (Word)',
+  description: 'Armá tu carta de presentación para una oferta de trabajo en Costa Rica y descargala en Word. Gratis, sin registro y sin enviar tus datos.',
+  h1: 'Generador de carta de presentación',
+  lead: 'Respondé unas preguntas y obtené una carta de presentación clara, lista para adjuntar con tu currículum. Corre en tu navegador: no se guarda ni se envía nada.',
+  body: `<div class="cv-app">
+  <form id="pres-form" class="cv-form" autocomplete="off" novalidate>
+    <fieldset><legend>1. Tus datos</legend>
+      <div class="calc-grid">
+        ${lbl('nombre', 'Nombre completo', 'type="text" maxlength="80"')}
+        ${lbl('email', 'Correo', 'type="email" maxlength="80"')}
+        ${lbl('tel', 'Teléfono', 'type="tel" maxlength="30"')}
+        ${lbl('ciudad', 'Provincia o cantón', 'type="text" maxlength="60"')}
+      </div>
+    </fieldset>
+    <fieldset><legend>2. El puesto</legend>
+      <div class="calc-grid">
+        ${lbl('puesto', 'Puesto al que aplicás', 'type="text" maxlength="80"')}
+        ${lbl('empresa', 'Nombre de la empresa', 'type="text" maxlength="100"')}
+        ${lbl('destinatario', 'Nombre de la persona que recluta (opcional)', 'type="text" maxlength="80"')}
+        ${lbl('fecha', 'Fecha', 'type="date"')}
+      </div>
+    </fieldset>
+    <fieldset><legend>3. Tu perfil</legend>
+      ${area('presentacion', 'Presentate en una o dos frases', 3, 400, 'Ejemplo: Soy asesora de servicio al cliente con 3 años de experiencia atendiendo por teléfono y chat, y un nivel de inglés B2.')}
+      ${area('logros', 'Tus fortalezas y logros (uno por línea)', 4, 600, 'Mejor con números: "Mantuve una satisfacción del cliente de 94 %".')}
+      ${area('motivo', 'Por qué te interesa esta empresa o este puesto', 3, 400, 'Ejemplo: valoro su enfoque en capacitar a su gente y quiero crecer en el área de servicio.')}
+    </fieldset>
+    <fieldset><legend>4. Disponibilidad</legend>
+      <label class="field"><span>¿Cuándo podrías empezar?</span>
+        <select data-k="disponibilidad">
+          <option value="inmediata">Inmediatamente</option>
+          <option value="quince">En 15 días</option>
+          <option value="mes">En un mes</option>
+          <option value="conversar">A convenir</option>
+        </select>
+      </label>
+    </fieldset>
+  </form>
+  <section class="cv-side" aria-label="Vista previa y descargas">
+    <div class="cv-actions">
+      <button type="button" class="btn btn-primary" id="pres-word">Descargar Word</button>
+      <button type="button" class="btn btn-ghost" id="pres-copiar">Copiar texto</button>
+      <button type="button" class="btn btn-ghost" id="pres-borrar">Borrar todo</button>
+    </div>
+    <p id="pres-aviso" class="muted" role="status" hidden></p>
+    <div id="pres-preview" class="cv-paper carta-paper" aria-live="polite"></div>
+  </section>
+</div>
+<p class="muted cv-priv">🔒 Tus datos no salen de tu dispositivo y esta página no los guarda: si recargás, se borran.</p>
+
+<h2>Cómo sacarle provecho a tu carta</h2>
+<ol>
+  <li><strong>Personalizala para cada oferta.</strong> Cambiá el puesto, la empresa y el motivo; una carta genérica se nota.</li>
+  <li><strong>Usá las palabras del anuncio.</strong> Si piden "atención al cliente" o "manejo de Excel" y lo sabés hacer, mencionalo con esas palabras.</li>
+  <li><strong>Que quepa en una página</strong>, y que cada línea aporte algo.</li>
+  <li><strong>Adjuntala con tu <a href="{ROOT}herramientas/armador-de-curriculum/">currículum</a></strong> y revisá la ortografía antes de enviar.</li>
+</ol>
+
+<h2>Qué debe tener una buena carta de presentación</h2>
+<ul>
+  <li><strong>Quién sos</strong> y a qué puesto aplicás.</li>
+  <li><strong>Dos o tres logros o fortalezas</strong> que respondan a lo que piden.</li>
+  <li><strong>Por qué esa empresa</strong>, en una frase.</li>
+  <li><strong>Tu disponibilidad</strong> y cómo contactarte.</li>
+</ul>
+<p>Más ideas en la guía de <a href="{ROOT}guias/carta-de-presentacion-costa-rica/">cómo escribir una carta de presentación</a> y en la de <a href="{ROOT}guias/entrevista-de-trabajo-costa-rica/">entrevista de trabajo</a>.</p>
+
+<aside class="article-cta"><h2>¿Ya tenés tu carta?</h2><p>Buscá ofertas actualizadas todos los días, sin registro.</p><a class="btn btn-primary" href="{ROOT}">Ver los bretes más recientes</a></aside>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Necesito carta de presentación para todos los trabajos?</h3>
+<p>No siempre. Si la oferta no la pide, un mensaje breve en el correo funciona. Pero con ella te diferenciás, sobre todo si tenés poca experiencia.</p>
+<h3>¿Es gratis?</h3>
+<p>Sí. No hay cuenta, marca de agua ni pagos.</p>
+<h3>¿Se guarda mi carta?</h3>
+<p>No. Todo se procesa en tu navegador y se borra al cerrar o recargar.</p>`,
+};
 export function construirHerramientas(ctx) {
   const { guias, esc, json, fill, write, rootFor, SITE_URL, articleTpl, verifyMeta, fmtDate } = ctx;
   const urls = [];
@@ -208,20 +289,31 @@ export function construirHerramientas(ctx) {
     ld: (c) => ({ '@context': 'https://schema.org', '@graph': [{ '@type': 'WebApplication', '@id': `${c}#app`, name: 'Generador de carta de renuncia de TicoBrete', url: c, description: CARTA.description, applicationCategory: 'BusinessApplication', operatingSystem: 'Any', inLanguage: 'es-CR', isAccessibleForFree: true, offers: { '@type': 'Offer', price: 0, priceCurrency: 'CRC' }, publisher: orgRef }, bc(migCarta)] }),
   });
   urls.push([pathCarta, '2026-10-13', '0.8', 'monthly']);
+  // Generador de carta de presentación
+  const pathPres = `herramientas/${PRES.slug}/`;
+  const migPres = [['Herramientas', 'herramientas/'], ['Carta de presentación', pathPres]];
+  pagina(pathPres, {
+    ...PRES, crumbs: crumbs(migPres), body: PRES.body,
+    scripts: '<script type="module" src="{ROOT}assets/presentacion.js"></script>',
+    meta: `<p class="article-meta"><span>Herramienta gratuita</span><span>Sin registro</span><span>Actualizada el <time datetime="2026-10-13">${esc(fmtDate('2026-10-13T18:00:00Z'))}</time></span></p>`,
+    ld: (c) => ({ '@context': 'https://schema.org', '@graph': [{ '@type': 'WebApplication', '@id': `${c}#app`, name: 'Generador de carta de presentación de TicoBrete', url: c, description: PRES.description, applicationCategory: 'BusinessApplication', operatingSystem: 'Any', inLanguage: 'es-CR', isAccessibleForFree: true, offers: { '@type': 'Offer', price: 0, priceCurrency: 'CRC' }, publisher: orgRef }, bc(migPres)] }),
+  });
+  urls.push([pathPres, '2026-10-13', '0.8', 'monthly']);
   // Página de herramientas
   const tarjeta = (href, tema, h, p, meta) => `<li><a href="{ROOT}${href}"><span class="card-tema">${esc(tema)}</span><h3>${esc(h)}</h3><p>${esc(p)}</p><span class="card-meta">${esc(meta)}</span></a></li>`;
   const lista = [
     tarjeta(pathCv, '📄 Currículum', CV.h1, CV.description, 'Gratis, sin registro'),
+    tarjeta(pathPres, '📝 Carta', PRES.h1, PRES.description, 'Gratis, sin registro'),
     tarjeta(pathCarta, '✉️ Carta', CARTA.h1, CARTA.description, 'Gratis, sin registro'),
     ...calcs.map((g) => tarjeta(`guias/${g.slug}/`, '🧮 Calculadora', g.h1, g.description, 'Gratis, en tu navegador')),
   ];
   const mig = [['Herramientas', 'herramientas/']];
-  const desc = 'Herramientas gratuitas para buscar trabajo en Costa Rica: armador de currículum, carta de renuncia y calculadoras de aguinaldo, liquidación, horas extra y vacaciones.';
+  const desc = 'Herramientas gratis para buscar trabajo en Costa Rica: currículum, cartas de presentación y renuncia, y calculadoras de aguinaldo, salario neto y liquidación.';
   pagina('herramientas/', {
     title: 'Herramientas gratis para buscar trabajo en Costa Rica | TicoBrete', description: desc, h1: 'Herramientas para tu búsqueda de trabajo',
     lead: 'Todo gratis, sin registro y sin enviar tus datos a ningún servidor: corre directamente en tu navegador.', crumbs: crumbs(mig),
     body: `<ul class="guide-list">${lista.join('')}</ul><p class="muted">¿Te falta alguna herramienta? Escribinos desde el enlace “Sugerir” del sitio principal.</p><p>También tenemos <a href="{ROOT}guias/">guías laborales</a> con información verificada.</p>`,
-    ld: (c) => ({ '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', '@id': `${c}#page`, url: c, name: 'Herramientas de TicoBrete', inLanguage: 'es-CR', description: desc, mainEntity: { '@type': 'ItemList', itemListElement: [[CV.h1, pathCv], [CARTA.h1, pathCarta], ...calcs.map((g) => [g.h1, `guias/${g.slug}/`])].map(([n, p], i) => ({ '@type': 'ListItem', position: i + 1, name: n, url: `${SITE_URL}/${p}` })) } }, bc(mig)] }),
+    ld: (c) => ({ '@context': 'https://schema.org', '@graph': [{ '@type': 'CollectionPage', '@id': `${c}#page`, url: c, name: 'Herramientas de TicoBrete', inLanguage: 'es-CR', description: desc, mainEntity: { '@type': 'ItemList', itemListElement: [[CV.h1, pathCv], [PRES.h1, pathPres], [CARTA.h1, pathCarta], ...calcs.map((g) => [g.h1, `guias/${g.slug}/`])].map(([n, p], i) => ({ '@type': 'ListItem', position: i + 1, name: n, url: `${SITE_URL}/${p}` })) } }, bc(mig)] }),
   });
   urls.push(['herramientas/', DATE, '0.8', 'weekly']);
   return urls;

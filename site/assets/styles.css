@@ -512,3 +512,6 @@ html[data-still] *, html[data-still] *::before, html[data-still] *::after { anim
 .article-body blockquote p:last-child { margin-bottom: 0; }
 
 .carta-paper p { margin: 0 0 12px; }
+
+.carta-paper ul { margin: 0 0 12px; }
+.carta-paper li { margin-top: 4px; }
