@@ -311,4 +311,53 @@ ${AVISO}
 <p>Porque cada persona descansa dos semanas pagadas por cada 50 trabajadas. Es una forma de reflejar ese costo mes a mes.</p>
 `,
   },
+  {
+    slug: 'calculadora-incapacidad-costa-rica',
+    tipo: 'calculadora',
+    title: 'Calculadora de incapacidad en Costa Rica: cuánto te pagan',
+    description: 'Calculá cuánto recibís en una incapacidad por enfermedad en Costa Rica: 50 % del patrono los primeros 3 días y subsidio de la CCSS del 60 % desde el día 4.',
+    h1: 'Calculadora de incapacidad',
+    lead: 'Escribí tu salario y los días de incapacidad, y mirá cuánto pagan el patrono y la CCSS, y cuánto dejás de recibir frente a tu salario normal.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<section class="calc-box">
+  <form class="calc" data-calc="incapacidad" novalidate>
+    <div class="calc-grid">
+      ${numero('Salario mensual (₡)', 'salario', 'Para la CCSS se usa el promedio de tus últimos 3 meses de salario reportado.', 'required')}
+      ${numero('Días de incapacidad', 'dias', 'Contá todos los días del documento, incluidos fines de semana.', 'required step="1" max="365"')}
+      <label class="field check"><input type="checkbox" name="cotizo" checked><span>Cotizaste al seguro de salud al menos 3 meses (requisito habitual del subsidio)</span></label>
+    </div>
+    ${botones}
+  </form>
+  <div class="calc-result" data-resultado aria-live="polite" hidden></div>
+</section>
+
+<h2>Cómo se calcula</h2>
+<ul>
+  <li><strong>Los primeros 3 días</strong> los paga el patrono, que debe reconocerte el <strong>50 %</strong> de tu salario diario.</li>
+  <li><strong>Desde el día 4</strong> paga la CCSS un subsidio equivalente al <strong>60 %</strong> del promedio de tus salarios de los últimos 3 meses.</li>
+  <li>El valor de un día se calcula como tu salario mensual ÷ 30.</li>
+</ul>
+
+<h2>Ejemplo</h2>
+<p>Con un salario de ₡600.000 y 10 días de incapacidad: cada día vale ₡20.000. El patrono paga 3 días al 50 % (₡30.000) y la CCSS 7 días al 60 % (₡84.000). Recibís <strong>₡114.000</strong> en lugar de ₡200.000.</p>
+
+<h2>Lo que conviene saber</h2>
+<ul>
+  <li><strong>Si es un accidente de trabajo</strong>, no paga la CCSS sino el INS. Mirá la guía de <a href="{ROOT}guias/accidente-de-trabajo-riesgos-ins-costa-rica/">accidente de trabajo</a>.</li>
+  <li><strong>Algunas empresas completan el pago</strong> hasta el 100 % por política interna o convención colectiva. Preguntalo en Recursos Humanos.</li>
+  <li><strong>La CCSS puede pedir otros requisitos</strong> (como estar al día con las cuotas) y el pago llega unos días después. Revisalos en la CCSS.</li>
+  <li>Más detalle en la guía de <a href="{ROOT}guias/incapacidades-costa-rica/">incapacidades</a>.</li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Cuánto tarda en llegar el subsidio?</h3>
+<p>La CCSS lo deposita después de procesar la incapacidad. Entregá tu documento rápido y verificá que tu patrono la reporte.</p>
+<h3>¿Y si mi salario cambia de un mes a otro?</h3>
+<p>Usá el promedio de los últimos 3 meses de salario reportado a la CCSS, incluidas horas extra y comisiones.</p>
+<h3>¿El resultado es exacto?</h3>
+<p>Es una referencia. La CCSS hace el cálculo oficial con tus datos reportados.</p>
+`,
+  },
 ];

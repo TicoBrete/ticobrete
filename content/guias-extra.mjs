@@ -205,7 +205,7 @@ ${AVISO}
 <p>Si la incapacidad se prolonga, el médico emite una extensión. Entregala también a tu empleador. Si una incapacidad se extiende dentro de un plazo corto desde la anterior, el reglamento de la CCSS tiene reglas especiales, así que conservá todos los documentos.</p>
 
 <h2>Cuando es un accidente de trabajo</h2>
-<p>Si te enfermás o te lesionás por tu trabajo, es un <strong>riesgo de trabajo</strong>, que se cubre por la póliza del INS que debe tener tu empleador. Es otro trámite, distinto al de una incapacidad común. Avisá de inmediato a tu empleador y pedí que se reporte el accidente.</p>
+<p>Si te enfermás o te lesionás por tu trabajo, es un <strong>riesgo de trabajo</strong>, que se cubre por la póliza del INS que debe tener tu empleador. Es otro trámite, distinto al de una incapacidad común. Avisá de inmediato a tu empleador y pedí que se reporte el accidente. Mirá la guía de <a href="{ROOT}guias/accidente-de-trabajo-riesgos-ins-costa-rica/">accidente de trabajo</a>. Para estimar cuánto vas a recibir en una incapacidad por enfermedad, usá la <a href="{ROOT}guias/calculadora-incapacidad-costa-rica/">calculadora de incapacidad</a>.</p>
 
 <h2>Si no te pagan</h2>
 <p>Guardá la incapacidad y tus colillas de pago. Hablá con tu empleador por escrito. Si no se corrige, consultá al MTSS. Mirá la <a href="{ROOT}guias/denunciar-patrono-mtss-costa-rica/">guía para denunciar</a>.</p>

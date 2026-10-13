@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { costoEmpleado, salarioNeto, aguinaldo, diasCesantia, diasPreaviso, diasVacaciones, horasExtra, inicioPeriodoAguinaldo, liquidacion, mesesEntre, vacaciones } from '../site/assets/calc.js';
+import { incapacidad, costoEmpleado, salarioNeto, aguinaldo, diasCesantia, diasPreaviso, diasVacaciones, horasExtra, inicioPeriodoAguinaldo, liquidacion, mesesEntre, vacaciones } from '../site/assets/calc.js';
 
 const d = (s) => new Date(`${s}T12:00:00`);
 
@@ -124,4 +124,17 @@ test('costo de un empleado: cargas 26,83 %, aguinaldo y vacaciones', () => {
   assert.equal(Math.round(costoEmpleado({ salario: 500000, sinIna: true }).cargas), 126650);
   assert.equal(costoEmpleado({ salario: 500000, aguinaldo: false, vacaciones: false }).total, 634150);
   assert.equal(costoEmpleado({ salario: 'x' }).total, 0);
+});
+test('incapacidad: 50 % patrono los primeros 3 días y 60 % CCSS desde el día 4', () => {
+  const r = incapacidad({ salario: 600000, dias: 10 });
+  assert.equal(r.dia, 20000);
+  assert.equal(r.patrono, 30000);
+  assert.equal(r.ccss, 84000);
+  assert.equal(r.total, 114000);
+  assert.equal(r.normal, 200000);
+  assert.equal(r.diferencia, 86000);
+  assert.equal(incapacidad({ salario: 600000, dias: 2 }).ccss, 0);
+  assert.equal(incapacidad({ salario: 600000, dias: 2 }).patrono, 20000);
+  assert.equal(incapacidad({ salario: 600000, dias: 10, cotizo: false }).ccss, 0);
+  assert.equal(incapacidad({ salario: 'x', dias: 5 }).total, 0);
 });

@@ -139,6 +139,18 @@ export function costoEmpleado({ salario, sinIna = false, aguinaldo = true, vacac
   const total = s + cargas + ag + vac;
   return { salario: s, cargas, aguinaldo: ag, vacaciones: vac, total, anual: total * 12, factor: s ? total / s : 0 };
 }
+/** Incapacidad por enfermedad común: el patrono paga 50 % de los primeros 3 días y desde el día 4 la CCSS paga un subsidio del 60 % del promedio de los últimos 3 meses. */
+export function incapacidad({ salario, dias, cotizo = true, conceptoPatrono = 0.5 }) {
+  const s = num(salario);
+  const d = Math.floor(num(dias));
+  const dia = s / 30;
+  const diasPatrono = Math.min(d, 3);
+  const diasCcss = Math.max(0, d - 3);
+  const patrono = diasPatrono * dia * conceptoPatrono;
+  const ccss = cotizo ? diasCcss * dia * 0.6 : 0;
+  const normal = d * dia;
+  return { dia, dias: d, diasPatrono, diasCcss, patrono, ccss, total: patrono + ccss, normal, diferencia: normal - (patrono + ccss) };
+}
 /* ---------- Pantalla ---------- */
 const $ = (root, sel) => root.querySelector(sel);
 
@@ -210,6 +222,17 @@ const RENDER = {
       tabla(filas, null),
       tabla([['Costo mensual total', `Equivale a ${r.factor.toFixed(2).replace('.', ',')} veces el salario`, colones(r.total)], ['Costo anual aproximado', 'Costo mensual × 12', colones(r.anual)]], null),
       parrafo('No incluye cesantía, incapacidades, horas extra, comisiones, equipo ni otros beneficios. La persona recibe el salario neto, no el costo total.', 'muted'),
+    ];
+  },  incapacidad(form) {
+    const r = incapacidad({ salario: val(form, 'salario'), dias: val(form, 'dias'), cotizo: form.elements.cotizo?.checked });
+    if (!r.dia || !r.dias) return [parrafo('Escribí tu salario mensual y los días de incapacidad para calcular.', 'muted')];
+    const filas = [['Valor de un día', 'Salario mensual ÷ 30', colones(r.dia)]];
+    if (r.diasPatrono) filas.push(['Paga el patrono', `${r.diasPatrono} día(s) al 50 %`, colones(r.patrono)]);
+    if (r.diasCcss) filas.push(['Paga la CCSS', form.elements.cotizo?.checked ? `${r.diasCcss} día(s) al 60 %` : 'Sin subsidio: no cumplís el requisito de cotización', colones(r.ccss)]);
+    return [
+      tabla(filas, colones(r.total)),
+      parrafo(`Con salario normal habrías recibido ${colones(r.normal)} por esos días: la diferencia es de ${colones(r.diferencia)}.`),
+      parrafo('El subsidio de la CCSS se calcula sobre el promedio de tus últimos 3 meses de salario reportado; usá ese promedio como salario. Algunas empresas completan el pago hasta el 100 %: preguntalo. Si fue un accidente de trabajo, paga el INS (60 % del salario diario durante los primeros 45 días).', 'muted'),
     ];
   },  liquidacion(form) {
     const inicio = new Date(val(form, 'inicio'));

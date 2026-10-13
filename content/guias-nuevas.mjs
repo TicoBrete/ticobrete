@@ -679,4 +679,200 @@ ${AVISO}
 <p>Practicá en voz alta tu presentación de un minuto, dos ejemplos de logros y las preguntas de tu puesto.</p>
 `,
   },
+  {
+    slug: 'accidente-de-trabajo-riesgos-ins-costa-rica',
+    title: 'Accidente de trabajo en Costa Rica: qué hacer y qué te cubre',
+    description: 'Qué hacer si sufrís un accidente laboral en Costa Rica: aviso al patrono y al INS, atención médica, subsidio del 60 % y qué pasa si tu empresa no tiene póliza.',
+    h1: 'Accidente de trabajo en Costa Rica: qué hacer y qué te cubre',
+    lead: 'Si te lastimás en el trabajo, lo que hagás en los primeros días importa. Estos son los pasos, quién paga y qué derechos tenés.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<h2>Qué se considera accidente de trabajo</h2>
+<p>Es el que te sucede <strong>por causa de tu labor o como consecuencia de ella</strong>, durante el tiempo y en el lugar de trabajo. También hay <strong>enfermedades del trabajo</strong>, que se desarrollan por las condiciones de tu labor (por ejemplo, por ruido, químicos o movimientos repetitivos). Todo esto lo cubre el <strong>Seguro de Riesgos del Trabajo</strong> del INS, que es distinto del seguro de salud de la CCSS.</p>
+
+<h2>Tu empleador debe tener póliza</h2>
+<p>Según el Código de Trabajo, todo patrono está obligado a asegurar a sus personas trabajadoras contra los riesgos del trabajo con el INS. Si tu empleador no tiene póliza o no te reportó, <strong>sigue siendo responsable</strong> de tu atención y de las prestaciones; consultá de inmediato al MTSS.</p>
+
+<h2>Qué hacer si te accidentás</h2>
+<ol>
+  <li><strong>Atendé tu salud primero.</strong> Si es una emergencia, andá al centro médico más cercano.</li>
+  <li><strong>Avisá de inmediato a tu jefatura o al patrono</strong>, preferiblemente por escrito (correo o mensaje) para que quede constancia.</li>
+  <li><strong>Pedí que se complete el formulario de aviso.</strong> Es el "Aviso de accidente o enfermedad de trabajo y orden de atención médica": con él el INS autoriza tu atención.</li>
+  <li><strong>Guardá pruebas:</strong> fotos del lugar, nombres de testigos, la hora y cómo pasó.</li>
+  <li><strong>Seguí el tratamiento y las citas</strong> del INS, y conservá todas las incapacidades.</li>
+</ol>
+
+<h2>Plazo del aviso al INS</h2>
+<p>El patrono debe reportar el accidente al INS con rapidez; según la normativa del seguro, el aviso debe darse a más tardar dentro de <strong>8 días hábiles</strong>. Por eso conviene avisar de inmediato: si se atrasa el reporte, pueden surgir problemas para tu atención.</p>
+
+<h2>Qué cubre el seguro</h2>
+<ul>
+  <li><strong>Atención médica y hospitalaria</strong>, medicinas, exámenes y rehabilitación relacionados con el accidente.</li>
+  <li><strong>Subsidio por incapacidad:</strong> durante la incapacidad temporal, el Código y el reglamento del seguro establecen un subsidio del <strong>60 % de tu salario diario</strong> durante los primeros 45 días. Después de ese plazo el porcentaje y las condiciones varían: consultalo con el INS.</li>
+  <li><strong>Indemnización</strong> si queda una incapacidad permanente, y beneficios para la familia en caso de fallecimiento.</li>
+</ul>
+<p>Esto es distinto de la incapacidad por enfermedad común, que paga la CCSS. Mirá la guía de <a href="{ROOT}guias/incapacidades-costa-rica/">incapacidades</a> y la <a href="{ROOT}guias/calculadora-incapacidad-costa-rica/">calculadora de incapacidad</a>.</p>
+
+<h2>Lo que no te pueden hacer</h2>
+<ul>
+  <li><strong>Cobrarte la atención</strong> o decirte que "lo arreglás vos" para no reportar el accidente.</li>
+  <li><strong>Obligarte a volver a trabajar</strong> antes de que el médico te dé de alta.</li>
+  <li><strong>Despedirte como represalia</strong> por reportar. Si pasa, consultá al MTSS: 800-TRABAJO (800 872 2256).</li>
+</ul>
+
+<h2>Prevención: lo que debe darte tu empleador</h2>
+<p>Tu patrono debe cumplir las medidas de seguridad e higiene: <strong>equipo de protección, capacitación, herramientas en buen estado y un lugar seguro</strong>. Si hay peligro grave para tu seguridad o tu salud, el artículo 83 del Código de Trabajo lo reconoce como una causa justa para que termines el contrato conservando tus derechos. Antes de hacerlo, consultá al MTSS. Mirá también la guía de <a href="{ROOT}guias/trabajo-bodega-logistica-costa-rica/">trabajo en bodega y logística</a>.</p>
+
+<h2>Si no te atienden o no te pagan</h2>
+<ol>
+  <li>Reclamá por escrito al patrono y al INS, con tu número de caso.</li>
+  <li>Guardá el aviso, las incapacidades y los comprobantes.</li>
+  <li>Denunciá ante el MTSS o la Inspección de Trabajo. Mirá la <a href="{ROOT}guias/denunciar-patrono-mtss-costa-rica/">guía para denunciar</a>.</li>
+</ol>
+
+<h2>Fuentes</h2>
+<ul>
+  <li><a href="https://www.mtss.go.cr/elministerio/marco-legal/documentos/Codigo_Trabajo_RPL.pdf" target="_blank" rel="noopener">Código de Trabajo, Título 4: Riesgos del trabajo (copia del MTSS)</a></li>
+  <li><a href="https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=97626&param2=132011&param3=1&param4=" target="_blank" rel="noopener">Norma Técnica del Seguro Obligatorio de Riesgos del Trabajo (SINALEVI)</a></li>
+  <li><a href="https://www.grupoins.com/media/jtzivcle/condiciones-generales-riesgos-del-trabajo-2023.pdf" target="_blank" rel="noopener">INS: condiciones generales del seguro de riesgos del trabajo</a></li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Un accidente camino al trabajo cuenta?</h3>
+<p>Depende del caso y de cómo lo defina la póliza. Reportalo siempre y dejá que el INS determine la cobertura.</p>
+<h3>¿Cuánto tengo para avisar?</h3>
+<p>Avisá de inmediato. El patrono tiene un plazo máximo de 8 días hábiles para reportar al INS.</p>
+<h3>¿Qué hago si mi empleador no reporta el accidente?</h3>
+<p>Pedí atención médica igual, guardá pruebas y consultá al MTSS y al INS. La falta de reporte no te quita tus derechos.</p>
+`,
+  },
+  {
+    slug: 'acoso-laboral-hostigamiento-sexual-costa-rica',
+    title: 'Acoso laboral y hostigamiento sexual en Costa Rica: qué hacer',
+    description: 'Qué es el hostigamiento sexual (Ley 7476) y el acoso laboral en Costa Rica, cómo documentarlos, dónde denunciar, el plazo de dos años y qué derechos tenés.',
+    h1: 'Acoso laboral y hostigamiento sexual en Costa Rica',
+    lead: 'Nadie debería aguantar maltrato en el trabajo. Esto es lo que dice la ley, cómo juntar pruebas y dónde denunciar.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<h2>Dos situaciones distintas</h2>
+<p>En Costa Rica el <strong>hostigamiento (o acoso) sexual</strong> tiene una ley específica, la <strong>Ley 7476</strong>. El <strong>acoso laboral</strong> (también llamado mobbing o persecución laboral) <strong>no tiene todavía una ley general propia</strong>: existen proyectos de ley, pero hoy se trata con el Código de Trabajo, criterios del MTSS y la jurisprudencia.</p>
+
+<h2>Hostigamiento sexual: qué dice la Ley 7476</h2>
+<p>La ley define el acoso sexual como <strong>toda conducta sexual indeseada por quien la recibe, reiterada y que provoque efectos perjudiciales</strong> en tus condiciones de empleo, en tu desempeño o en tu bienestar personal. Entre sus manifestaciones están:</p>
+<ul>
+  <li>Pedirte favores sexuales a cambio de algo (un ascenso, mantener tu empleo) o con amenazas si te negás.</li>
+  <li>Comentarios, gestos, mensajes, fotos o chistes de contenido sexual que te incomodan.</li>
+  <li>Acercamientos o contactos corporales que no querés.</li>
+  <li>Insistir en invitaciones o contactos después de que dijiste que no.</li>
+</ul>
+<p>La ley obliga a las empresas y a las instituciones a tener un <strong>procedimiento interno</strong> para recibir y tramitar las denuncias. El procedimiento debe resolverse en un plazo ordenatorio de tres meses desde la denuncia. Si la persona hostigadora es la jefatura o el patrono, o la empresa no actúa, podés acudir a las autoridades externas.</p>
+
+<h2>El plazo para denunciar</h2>
+<p>Según la ley, tenés <strong>dos años</strong> para presentar la denuncia, contados desde el último hecho de hostigamiento (o desde que terminó la causa que te impedía denunciar). No esperés: mientras más pronto, más fácil reunir pruebas.</p>
+
+<h2>Acoso laboral: qué cuenta y qué dice la ley</h2>
+<p>Es el maltrato repetido y deliberado en el trabajo para humillarte, aislarte o hacerte renunciar: gritos o insultos, burlas, quitarte funciones sin razón, aislarte, asignarte tareas imposibles, amenazas o vigilancia excesiva. El MTSS lo considera un <strong>ejercicio abusivo del poder</strong>.</p>
+<p>El Código de Trabajo establece que los patronos deben <strong>guardar a las personas trabajadoras la debida consideración, absteniéndose del maltrato de palabra o de obra</strong> (art. 69, inciso c). Y el artículo 83 reconoce como causa justa para que la persona trabajadora termine el contrato, <strong>con responsabilidad del patrono</strong>, cuando este (o un representante) recurre a <strong>injuria, calumnia o vías de hecho</strong> contra ella.</p>
+
+<h2>Cómo juntar pruebas</h2>
+<ol>
+  <li><strong>Anotá cada hecho:</strong> fecha, hora, lugar, qué pasó, quién estaba presente.</li>
+  <li><strong>Guardá mensajes, correos, audios y capturas</strong> en un lugar fuera del trabajo.</li>
+  <li><strong>Buscá testigos</strong> de confianza, o personas a quienes les contaste en ese momento.</li>
+  <li><strong>Guardá evaluaciones, horarios y cambios de funciones</strong> que muestren un trato distinto.</li>
+  <li><strong>Si el estrés te afecta,</strong> acudí a un médico o psicólogo y pedí un informe.</li>
+</ol>
+
+<h2>Dónde denunciar</h2>
+<ul>
+  <li><strong>Dentro de la empresa:</strong> recursos humanos, la comisión de hostigamiento sexual o el procedimiento interno, siempre por escrito y con copia.</li>
+  <li><strong>Ministerio de Trabajo (MTSS):</strong> 800-TRABAJO (800 872 2256). Mirá la <a href="{ROOT}guias/denunciar-patrono-mtss-costa-rica/">guía para denunciar</a>.</li>
+  <li><strong>Autoridades judiciales:</strong> los tribunales de trabajo, y la vía penal cuando hay delito (por ejemplo, agresiones o acoso con amenazas).</li>
+  <li><strong>Apoyo:</strong> el INAMU y la Defensoría de los Habitantes pueden orientarte.</li>
+</ul>
+<p>La ley y los reglamentos prohíben las <strong>represalias</strong> contra quien denuncia o declara como testigo. Si te despiden o te cambian condiciones después de denunciar, documentalo y consultá de inmediato.</p>
+
+<h2>Antes de renunciar</h2>
+<p>Si el maltrato es grave, el artículo 84 dice que podés separarte de tu trabajo <strong>conservando tus indemnizaciones y prestaciones</strong> cuando se da una de las causas del artículo 83. Pero si después se discute y se comprueba que dejaste el trabajo sin justa causa, podrías tener que pagar el preaviso. Por eso, <strong>consultá al MTSS o a una persona abogada antes de renunciar</strong>, y no faltés al trabajo sin avisar: ausentarte sin justificación dos días consecutivos o más de dos alternos en un mes puede ser causa de despido (art. 81). Mirá también <a href="{ROOT}guias/como-renunciar-carta-renuncia-costa-rica/">cómo renunciar</a> y <a href="{ROOT}guias/despido-cesantia-preaviso-costa-rica/">despido y cesantía</a>.</p>
+
+<h2>Fuentes</h2>
+<ul>
+  <li><a href="https://www.asamblea.go.cr/sd/Documents/BIBLIOTECADIGITAL/DOCUMENTOS/LEYES/Ley%207476%20Ley%20Contra%20el%20Hostigamiento%20Sexual%20en%20el%20Empleo%20y%20la%20Docencia.pdf" target="_blank" rel="noopener">Ley 7476: Ley contra el Hostigamiento Sexual en el Empleo y la Docencia</a></li>
+  <li><a href="https://www.mtss.go.cr/elministerio/estructura/direccion-asuntos-juridicos/criterios_juridicos/documetos/OFP-MTSS-DAJ-AER-065-2024.pdf" target="_blank" rel="noopener">MTSS: criterio general sobre acoso laboral (OFP-MTSS-DAJ-AER-065-2024)</a></li>
+  <li><a href="https://es.wikisource.org/wiki/C%C3%B3digo_de_Trabajo,_de_27_de_agosto_de_1943,_(cr):_T%C3%ADtulo_2._Cap%C3%ADtulo_6" target="_blank" rel="noopener">Código de Trabajo, arts. 81 a 85</a></li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Un solo comentario ya es hostigamiento?</h3>
+<p>La ley habla de una conducta reiterada, pero hechos graves pueden ser denunciados aunque ocurran una sola vez. Guardá pruebas y consultá.</p>
+<h3>¿Puedo denunciar si el acosador es mi jefe?</h3>
+<p>Sí. Podés acudir a recursos humanos, y si no hay respuesta o el patrono es quien hostiga, al MTSS y a las autoridades externas.</p>
+<h3>¿Hay una ley contra el acoso laboral?</h3>
+<p>Hoy no hay una ley general específica. Se trata con el Código de Trabajo, criterios del MTSS y jurisprudencia. Hay proyectos de ley en discusión.</p>
+<h3>¿Qué pasa si me despiden por denunciar?</h3>
+<p>Las represalias están prohibidas. Documentá todo y consultá al MTSS cuanto antes.</p>
+`,
+  },
+  {
+    slug: 'permisos-con-goce-de-salario-costa-rica',
+    title: 'Permisos con goce de salario en Costa Rica: qué dice la ley',
+    description: 'Qué permisos y licencias tenés en el trabajo en Costa Rica: citas médicas, matrimonio, fallecimiento de un familiar, estudios, y cómo pedirlos sin perder tu salario.',
+    h1: 'Permisos con goce de salario en Costa Rica',
+    lead: 'Matrimonio, un fallecimiento, una cita médica. ¿Tu empresa está obligada a darte el permiso y a pagártelo? Esto es lo que dice la ley y lo que depende de tu contrato.',
+    date: '2026-10-13',
+    html: `
+${AVISO}
+<h2>Lo primero: qué fija la ley y qué no</h2>
+<p>En Costa Rica, para el <strong>sector privado</strong>, el Código de Trabajo fija algunos descansos y licencias específicos, pero <strong>no tiene una lista general</strong> de permisos con goce de salario para situaciones como matrimonio, fallecimiento de un familiar o citas médicas. Muchas de esas situaciones se regulan por el <strong>contrato, el reglamento interno de la empresa o una convención colectiva</strong>, y por eso cambian de un trabajo a otro. En el sector público hay reglamentos que sí los listan.</p>
+
+<h2>Lo que sí está en la ley</h2>
+<ul>
+  <li><strong>Vacaciones pagadas:</strong> dos semanas por cada 50 trabajadas. Mirá <a href="{ROOT}guias/vacaciones-costa-rica/">vacaciones</a>.</li>
+  <li><strong>Feriados:</strong> el descanso y el pago especial. Mirá <a href="{ROOT}guias/feriados-2027-costa-rica/">feriados 2027</a>.</li>
+  <li><strong>Maternidad y paternidad, y pausas de lactancia.</strong> Mirá <a href="{ROOT}guias/licencia-maternidad-paternidad-costa-rica/">licencias de maternidad y paternidad</a>.</li>
+  <li><strong>Incapacidades por enfermedad:</strong> mientras estás incapacitado no tenés que trabajar y se paga un subsidio. Mirá <a href="{ROOT}guias/incapacidades-costa-rica/">incapacidades</a> y <a href="{ROOT}guias/accidente-de-trabajo-riesgos-ins-costa-rica/">accidentes de trabajo</a>.</li>
+  <li><strong>Un día libre a la semana durante el preaviso</strong>, para buscar otro trabajo (art. 28). Mirá <a href="{ROOT}guias/como-renunciar-carta-renuncia-costa-rica/">cómo renunciar</a>.</li>
+</ul>
+
+<h2>Lo que suele depender de tu empresa</h2>
+<ul>
+  <li><strong>Matrimonio:</strong> muchas empresas dan unos días con goce, pero no es una obligación general en el sector privado.</li>
+  <li><strong>Fallecimiento de un familiar cercano:</strong> es común que se conceda, normalmente por unos días. Se pacta o se concede por política interna.</li>
+  <li><strong>Citas médicas:</strong> el Código de Trabajo no las regula de forma expresa. Lo habitual es presentar el comprobante de la cita y acordar cómo se justifica la ausencia.</li>
+  <li><strong>Trámites, estudios o diligencias personales:</strong> normalmente se acuerdan con tu jefatura, con goce, con rebajo o compensando horas.</li>
+</ul>
+<p>Revisá tu <strong>contrato, el reglamento interno y, si existe, la convención colectiva</strong>: ahí puede estar el derecho. Lo que tu empresa te haya reconocido por costumbre o por escrito no te lo pueden quitar de un momento a otro sin consecuencias, así que guardá los correos o mensajes en que te lo confirmaron.</p>
+
+<h2>Cómo pedir un permiso</h2>
+<ol>
+  <li><strong>Pedilo con tiempo</strong> y por escrito (correo o mensaje), con fechas y motivo.</li>
+  <li><strong>Adjuntá el comprobante</strong> cuando lo tengas: cita médica, certificado de matrimonio, constancia del fallecimiento.</li>
+  <li><strong>Preguntá cómo se paga:</strong> con goce, sin goce, con vacaciones o reponiendo horas.</li>
+  <li><strong>Guardá la respuesta</strong> por escrito.</li>
+</ol>
+
+<h2>Cuidado con ausentarte sin permiso</h2>
+<p>Faltar al trabajo <strong>sin permiso y sin causa justificada</strong> dos días consecutivos, o más de dos días alternos dentro del mismo mes, es una causa justa de despido según el artículo 81. Si tenés una emergencia, <strong>avisá lo antes posible</strong> y justificá después con comprobantes.</p>
+
+<h2>Si te niegan lo que tu contrato o reglamento dice</h2>
+<p>Si el permiso está reconocido en tu contrato, reglamento interno o convención y no te lo dan, o te lo rebajan, guardá la prueba y consultá al MTSS: 800-TRABAJO (800 872 2256). Mirá la <a href="{ROOT}guias/rebajos-salario-ilegales-costa-rica/">guía de rebajos del salario</a> y la de <a href="{ROOT}guias/denunciar-patrono-mtss-costa-rica/">cómo denunciar</a>.</p>
+
+<h2>Fuentes</h2>
+<ul>
+  <li><a href="https://www.mtss.go.cr/elministerio/marco-legal/documentos/Codigo_Trabajo_RPL.pdf" target="_blank" rel="noopener">Código de Trabajo (copia del MTSS)</a></li>
+  <li><a href="https://es.wikisource.org/wiki/C%C3%B3digo_de_Trabajo,_de_27_de_agosto_de_1943,_(cr):_T%C3%ADtulo_2._Cap%C3%ADtulo_6" target="_blank" rel="noopener">Código de Trabajo, arts. 81 a 85 (texto)</a></li>
+  <li><a href="https://godinez-legal.com/citas-medicas-en-horario-laboral-costa-rica/" target="_blank" rel="noopener">Citas médicas en horario laboral (análisis jurídico)</a></li>
+</ul>
+
+<h2>Preguntas frecuentes</h2>
+<h3>¿Me tienen que dar permiso para ir al médico?</h3>
+<p>El Código no lo regula de forma expresa. Pedilo por escrito, presentá el comprobante y revisá si tu contrato o reglamento lo contempla.</p>
+<h3>¿Me dan días por matrimonio o por un fallecimiento?</h3>
+<p>No hay una regla general para el sector privado: depende de tu contrato, reglamento o convención. Preguntalo a Recursos Humanos.</p>
+<h3>¿Pueden descontarme el día del permiso?</h3>
+<p>Si es sin goce, sí, lo que corresponda. Si te lo prometieron con goce, reclamalo por escrito.</p>
+`,
+  },
 ];
