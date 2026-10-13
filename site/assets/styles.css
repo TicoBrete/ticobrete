@@ -496,12 +496,6 @@ html[data-still] *, html[data-still] *::before, html[data-still] *::after { anim
 .cv-paper li { margin-top: 2px; }
 .cv-vacio { color: #777; text-align: center; padding-top: 40px; }
 .cv-priv { margin-top: 10px; }
-@page { margin: 14mm; }
-@media print {
-  body:has(.cv-app) * { visibility: hidden; }
-  body:has(.cv-app) .cv-paper, body:has(.cv-app) .cv-paper * { visibility: visible; }
-  body:has(.cv-app) .cv-paper { position: absolute; left: 0; top: 0; width: 100%; max-height: none; overflow: visible; border: 0; box-shadow: none; padding: 0; font-size: 10.5pt; }
-}
 .lang-note { margin: 8px 0 0; font-size: .9rem; color: var(--muted, #5b6480); }
 .lang-note .link-btn { padding: 0 2px; font-size: inherit; }
 
@@ -516,3 +510,5 @@ html[data-still] *, html[data-still] *::before, html[data-still] *::after { anim
 .article-body blockquote { margin: 18px 0; padding: 16px 20px; border-left: 4px solid var(--brand); background: var(--surface); border-radius: 0 14px 14px 0; }
 .article-body blockquote p { margin: 0 0 10px; }
 .article-body blockquote p:last-child { margin-bottom: 0; }
+
+.carta-paper p { margin: 0 0 12px; }

@@ -118,15 +118,6 @@ if (form && papel) {
   form.addEventListener('submit', (e) => e.preventDefault());
   for (const b of document.querySelectorAll('[data-agregar]')) b.addEventListener('click', () => { entrada(b.dataset.agregar); actualizar(); });
 
-  document.getElementById('cv-pdf').addEventListener('click', () => {
-    const d = leer();
-    if (!construirBloques(d).length) return aviso('Llená al menos tu nombre para generar el PDF.');
-    const antes = document.title;
-    document.title = nombreArchivo(d);
-    window.print();
-    document.title = antes;
-    aviso('En la ventana de impresión elegí “Guardar como PDF” como destino.');
-  });
   document.getElementById('cv-word').addEventListener('click', () => {
     const d = leer();
     const bloques = construirBloques(d);
