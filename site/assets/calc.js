@@ -4,7 +4,7 @@
 // Días de salario de cesantía por cada año de trabajo, según el MTSS. Del año 13 en adelante son 20.
 export const TABLA_CESANTIA = [19.5, 20, 20.5, 21, 21.24, 21.5, 22, 22, 22, 21.5, 21, 20.5, 20];
 
-export const colones = (n) => '₡' + Math.round(Number.isFinite(n) ? n : 0).toLocaleString('es-CR');
+export const colones = (n) => '₡' + String(Math.round(Number.isFinite(n) ? n : 0)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 const num = (v) => {
   const n = Number(String(v ?? '').replace(',', '.'));
   return Number.isFinite(n) && n > 0 ? n : 0;
@@ -65,7 +65,7 @@ export function liquidacion({ salario, inicio, fin, causa = 'despido', preavisoD
 
   const periodo = inicioPeriodoAguinaldo(fin);
   const mesesAguinaldo = Math.min(12, mesesEntre(inicio > periodo ? inicio : periodo, fin));
-  lineas.push({ rubro: 'Aguinaldo proporcional', detalle: `${mesesAguinaldo.toFixed(1)} meses del período ÷ 12`, monto: (sal * mesesAguinaldo) / 12 });
+  lineas.push({ rubro: 'Aguinaldo proporcional', detalle: `${mesesAguinaldo.toFixed(1).replace('.', ',')} meses del período ÷ 12`, monto: (sal * mesesAguinaldo) / 12 });
 
   const dv = diasVacaciones(num(mesesVacaciones));
   lineas.push({ rubro: 'Vacaciones pendientes o proporcionales', detalle: `${dv} día(s) × valor de un día`, monto: dv * dia });

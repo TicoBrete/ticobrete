@@ -704,7 +704,7 @@ ${AVISO}
 </ol>
 
 <h2>Plazo del aviso al INS</h2>
-<p>El patrono debe reportar el accidente al INS con rapidez; según la normativa del seguro, el aviso debe darse a más tardar dentro de <strong>8 días hábiles</strong>. Por eso conviene avisar de inmediato: si se atrasa el reporte, pueden surgir problemas para tu atención.</p>
+<p>El patrono debe reportar el accidente al INS con rapidez; según el Reglamento del Seguro de Riesgos del Trabajo, el patrono debe denunciar el riesgo al INS dentro de los <strong>ocho días hábiles</strong> siguientes a que ocurre. Por eso conviene avisar de inmediato: si se atrasa el reporte, pueden surgir problemas para tu atención.</p>
 
 <h2>Qué cubre el seguro</h2>
 <ul>
@@ -735,6 +735,7 @@ ${AVISO}
 <ul>
   <li><a href="https://www.mtss.go.cr/elministerio/marco-legal/documentos/Codigo_Trabajo_RPL.pdf" target="_blank" rel="noopener">Código de Trabajo, Título 4: Riesgos del trabajo (copia del MTSS)</a></li>
   <li><a href="https://sinalevi.go.cr/ResultadosNormativa/Informacion?param1=97626&param2=132011&param3=1&param4=" target="_blank" rel="noopener">Norma Técnica del Seguro Obligatorio de Riesgos del Trabajo (SINALEVI)</a></li>
+  <li><a href="https://www.imprentanacional.go.cr/pub/2014/05/07/COMP_07_05_2014.html" target="_blank" rel="noopener">La Gaceta N.° 86 de 2014: Reglamento del Seguro de Riesgos del Trabajo</a></li>
   <li><a href="https://www.grupoins.com/media/jtzivcle/condiciones-generales-riesgos-del-trabajo-2023.pdf" target="_blank" rel="noopener">INS: condiciones generales del seguro de riesgos del trabajo</a></li>
 </ul>
 
